@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PokédexProject</string>
+    <string name="title">Pokédex</string>
+    <string name="searchbar_hint">Pokémon zoeken</string>
+    <string name="all_pokémon">Alle pokémon</string>
+    <string name="team_button_text">mijn team</string>
+    <string name="bookmarks_button_text">mijn favorieten</string>
 </resources>

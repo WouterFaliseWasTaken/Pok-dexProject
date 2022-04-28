@@ -23,6 +23,7 @@ TODO:
 * Detail Activity
   * Display data 
     * Name
+    * Index
     * Typing
       * Display using official typing images  
     * Image
@@ -32,8 +33,6 @@ TODO:
       * Power
       * Stat affinity
       * Accuracy
-    * Typing
-    * Index
     * Stats
   * Add/Remove to Favorites
   * Add/Remove to team
