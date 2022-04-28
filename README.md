@@ -1,22 +1,25 @@
 # Pok-dexProject
 Repository for android trial project. 
 
-Last updated: 10:10 28/04/2022(DD/MM/YY)
+Last updated: 16:20 28/04/2022(DD/MM/YY)
 
 
 TODO:  
 * Main Activity
     * Adapter to turn pokémon data into cards
-        * Name 
-        * Index
-        * Image
-        * Typing(single, double)
+        * ~~Name~~ 
+        * ~~Index~~
+        * ~~Image~~
+        * ~~Typing(single, double)~~
             * Display using official typing images
-    * Card Layout
+    * ~~Card Layout~~
     * Menu Header
-        * Search bar
-        * Bookmark filter
-        * Team filter
+        * ~~Search bar~~
+           * Implement functionality
+        * ~~Bookmark button~~
+           * Implement functionality
+        * ~~Team button~~
+           * Implement functionality
     * Data retrieval from the API
         * Use Retrofit
     * Navigate to detail activity by tapping card in main activity  

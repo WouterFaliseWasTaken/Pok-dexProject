@@ -5,4 +5,5 @@
     <string name="all_pokémon">Alle pokémon</string>
     <string name="team_button_text">mijn team</string>
     <string name="bookmarks_button_text">mijn favorieten</string>
+    <string name="sort_button">Sorteer</string>
 </resources>
