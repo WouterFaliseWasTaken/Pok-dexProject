@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pokdex">
+    package="com.example.pokdexproject">
 
     <application
         android:allowBackup="true"
@@ -8,12 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Pokédex">
+        android:theme="@style/Theme.PokédexProject">
         <activity
-            android:name=".ScrollingActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Pokédex.NoActionBar">
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -19,7 +19,7 @@ TODO:
         * Team filter
     * Data retrieval from the API
         * Use Retrofit
-      * Navigate to detail activity by tapping card in main activity  
+    * Navigate to detail activity by tapping card in main activity  
 * Detail Activity
   * Display data 
     * Name
