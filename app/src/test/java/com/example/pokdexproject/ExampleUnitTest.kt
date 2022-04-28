@@ -1,4 +1,4 @@
-package com.example.pokdex
+package com.example.pokdexproject
 
 import org.junit.Test
 
