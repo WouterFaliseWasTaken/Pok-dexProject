@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.1281793842034806" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_bookmark.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_main.xml" value="0.378125" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_scrolling.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/list_item.xml" value="0.378125" />
       </map>
     </option>
