@@ -6,15 +6,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokdexproject.R
+import com.example.pokdex.R
 import com.example.pokdexproject.model.Pokémon
 
 class ItemAdapter (private val context: Context,private val dataset:List<Pokémon>):RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(private val view: View):RecyclerView.ViewHolder(view){
-        val imageView:ImageView = view.findViewById(R.id.item_image)
+        val imageView:ImageView = view.findViewById(R.id.item_image_1)
         val indexView:TextView = view.findViewById(R.id.item_index)
-        val nameView:TextView = view.findViewById(R.id.item_name)
+        val nameView:TextView = view.findViewById(R.id.item_name_1)
         val type1View:TextView = view.findViewById(R.id.item_type1)
         val type2View:TextView = view.findViewById(R.id.item_type2)
     }
@@ -27,12 +27,13 @@ class ItemAdapter (private val context: Context,private val dataset:List<Pokémo
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.imageView.setImageResource(R.drawable.ic_launcher_background)//replace this later
-        holder.indexView.text = item.index.toString()
+        holder.indexView.text = item.index
         holder.nameView.text = item.name
         holder.type1View.text = item.type1.type.name
         holder.type2View.text = item.type2?.type?.name
     }
 
-    override fun getItemCount(): Int = dataset.size
-
+    override fun getItemCount(): Int {
+        return dataset.size
+    }
 }
