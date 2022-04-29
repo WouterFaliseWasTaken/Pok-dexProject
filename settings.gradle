@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "PokédexProject"
+rootProject.name = "Pokédex"
 include ':app'
