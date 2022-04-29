@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">PokédexProject</string>
-    <string name="title">Pokédex</string>
+    <string name="app_name">Pokédex</string>
     <string name="searchbar_hint">Pokémon zoeken</string>
-    <string name="all_pokémon">Alle pokémon</string>
+    <string name="title_bookmark">Favorieten</string>
+    <string name="title">Pokédex</string>
+    <string name ="title_team">mijn team</string>
     <string name="team_button_text">mijn team</string>
     <string name="bookmarks_button_text">mijn favorieten</string>
-    <string name="sort_button">Sorteer</string>
+    <string name="sort_button">Sorteer pokémon</string>
+    <string name="large_text"></string>//this is here because I botched a commit and don't know how to get the compiler to stop asking about it.
 </resources>

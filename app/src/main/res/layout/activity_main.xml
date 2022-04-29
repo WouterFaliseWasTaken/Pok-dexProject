@@ -61,6 +61,8 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/black"
         android:contentDescription="@string/sort_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         app:icon="@android:drawable/ic_menu_sort_by_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -75,9 +77,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="501dp"
-            app:layoutManager="LinearLayoutManager"
-            android:scrollbars="vertical"/>
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layoutManager="LinearLayoutManager" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
