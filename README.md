@@ -11,18 +11,15 @@ TODO:
         * ~~Index~~
         * ~~Image~~
         * ~~Typing(single, double)~~
-            * Display using official typing labels
+            * Display using official typing images
     * ~~Card Layout~~
     * Menu Header
         * ~~Search bar~~
            * Implement functionality
         * ~~Bookmark button~~
-           * ~~Implement functionality~~
+           * Implement functionality
         * ~~Team button~~
-           * ~~Implement functionality~~
-        * Sort and filter options button
-            *Sort options
-            *Filter options
+           * Implement functionality
     * Data retrieval from the API
         * Use Retrofit
     * Navigate to detail activity by tapping card in main activity  
