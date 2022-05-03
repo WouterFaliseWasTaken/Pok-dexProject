@@ -12,6 +12,7 @@ TODO:
         * ~~Image~~
         * ~~Typing(single, double)~~
             * Display using official typing labels
+        * Re-implement using fragments
     * ~~Card Layout~~
     * Menu Header
         * ~~Search bar~~
@@ -22,7 +23,6 @@ TODO:
            * ~~Implement functionality~~
         * Sort and filter options button
             *Sort options
-            *Filter options
     * Data retrieval from the API
         * Use Retrofit
     * Navigate to detail activity by tapping card in main activity  

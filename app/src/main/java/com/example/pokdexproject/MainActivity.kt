@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokdex.R
+import com.example.pokdexproject.R
 import com.example.pokdexproject.Adapter.ItemAdapter
 import com.example.pokdexproject.data.TestDataSource
-import com.example.pokdexproject.model.Pokémon
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,11 +19,11 @@ class MainActivity : AppCompatActivity() {
 
         val bookmarkButton = findViewById<Button>(R.id.bookmark_button)
 
-        bookmarkButton.setOnClickListener {startActivity(Intent(this, bookmarkActivity::class.java))}
+        bookmarkButton.setOnClickListener {startActivity(Intent(this, BookmarkActivity::class.java))}
 
         val teamButton = findViewById<Button>(R.id.team_Button)
 
-        teamButton.setOnClickListener {startActivity(Intent(this, onTeamActivity::class.java))}
+        teamButton.setOnClickListener {startActivity(Intent(this, OnTeamActivity::class.java))}
 
         recyclerView.adapter = ItemAdapter(this, myDataSet)
         recyclerView.setHasFixedSize(true)

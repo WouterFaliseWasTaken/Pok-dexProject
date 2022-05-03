@@ -3,7 +3,7 @@
     <string name="searchbar_hint">Pokémon zoeken</string>
     <string name="title_bookmark">Favorieten</string>
     <string name="title">Pokédex</string>
-    <string name ="title_team">mijn team</string>
+    <string name ="title_team">Mijn team</string>
     <string name="team_button_text">mijn team</string>
     <string name="bookmarks_button_text">mijn favorieten</string>
     <string name="sort_button">Sorteer pokémon</string>

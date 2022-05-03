@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokdex.R
+import com.example.pokdexproject.R
 import com.example.pokdexproject.model.Pokémon
 
 class ItemAdapter (private val context: Context,private val dataset:List<Pokémon>):RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
