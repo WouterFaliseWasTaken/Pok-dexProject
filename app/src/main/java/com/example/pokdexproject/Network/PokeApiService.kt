@@ -7,7 +7,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL =
-    "https://android-kotlin-fun-mars-server.appspot.com"
+    "https://stoplight.io/mocks/appwise-be/pokemon/32428517/"
+
+
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
@@ -17,8 +19,9 @@ private val retrofit = Retrofit.Builder()
     .build()
 interface PokeApiService {
     // TODO: Fetch basic pokémon values for 150 pokémon
-
-    object MarsApi{
+    @GET("pokemon")
+    suspend fun getBasicInfo() : List<PokemonData>
+    object PokeApi{
         val retrofitService : PokeApiService by lazy{
             retrofit.create(PokeApiService::class.java)
         }

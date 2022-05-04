@@ -1,15 +1,19 @@
 package com.example.pokdexproject.Adapter
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pokdexproject.Network.PokemonData
 import com.example.pokdexproject.R
-import com.example.pokdexproject.model.Pokémon
+import com.example.pokdexproject.model.PokémonViewModel
 
-class ItemAdapter (private val context: Context,private val dataset:List<Pokémon>):RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+const val TAG = "POKEMONDEBUG"
+
+class ItemAdapter (private val context: Context,private val dataset:List<PokemonData>):RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(private val view: View):RecyclerView.ViewHolder(view){
         val imageView:ImageView = view.findViewById(R.id.item_image_1)
@@ -25,15 +29,17 @@ class ItemAdapter (private val context: Context,private val dataset:List<Pokémo
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = dataset[position]
+        val item = dataset
         holder.imageView.setImageResource(R.drawable.ic_launcher_background)//replace this later
-        holder.indexView.text = item.index
-        holder.nameView.text = item.name
-        holder.type1View.text = item.type1.type.name
-        holder.type2View.text = item.type2?.type?.name
+        holder.indexView.text = item[position].id.toString()
+        holder.nameView.text = item[position].name
+        holder.type1View.text = item[position].types[0].type[0].name
+        holder.type2View.text = item[position].types[1].type[1].name
+        Log.d(TAG,"Ping!")
     }
 
     override fun getItemCount(): Int {
         return dataset.size
     }
+
 }

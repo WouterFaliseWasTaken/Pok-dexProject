@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="90dp">
 
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/item_card"
         android:layout_width="wrap_content"
@@ -15,9 +17,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
+            <data>
+                <variable>
+                name = "pokemonViewModel"
+                type = "com.example.pokdexproject.model.PokémonViewModel"
+                </variable>
+            </data>
 
             <ImageView
                 android:id="@+id/item_image_1"
