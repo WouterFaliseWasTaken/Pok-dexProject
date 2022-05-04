@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="25dp"
-                    android:text="@{pokemon.types[0].type.name}"
+                    android:text="@{pokemon.types[1].type.name}"
                     app:layout_constraintEnd_toStartOf="@+id/item_type1"
                     app:layout_constraintTop_toTopOf="@+id/item_image_1"
                     tools:text="Poison" />

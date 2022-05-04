@@ -25,8 +25,8 @@ class PokémonViewModel : ViewModel() {
     private val _type2 = MutableLiveData<PokémonType?>(PokémonType(""))
     val type2: LiveData<PokémonType?> = _type2
 */
-    private var _pokémon = MutableLiveData<List<PokemonData>>(mutableListOf<PokemonData>())
-    val pokémon : LiveData<List<PokemonData>> =_pokémon
+    private var _pokemon = MutableLiveData<List<PokemonData>>(mutableListOf<PokemonData>())
+    val pokemon : LiveData<List<PokemonData>> =_pokemon
     /**
     private val _abilities = MutableLiveData<List<Ability>>(mutableListOf<Ability>())
     private val _moveset = MutableLiveData<List<Move>>(mutableListOf<Move>())
@@ -49,8 +49,8 @@ class PokémonViewModel : ViewModel() {
             try {
                 val listResult = PokeApiService.PokeApi.retrofitService.getBasicInfo()
                 Log.d(TAG,listResult.toString())
-                _pokémon.value = listResult
-                Log.d(TAG, "_pokemon has ${_pokémon.value!!.size}")
+                _pokemon.value = listResult
+                Log.d(TAG, "_pokemon has ${_pokemon.value!!.size}")
                 Log.d(TAG, "list_result has ${listResult.size}")
             } catch (e: Exception) {
             }

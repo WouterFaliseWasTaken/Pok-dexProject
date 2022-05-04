@@ -7,5 +7,4 @@
     <string name="team_button_text">mijn team</string>
     <string name="bookmarks_button_text">mijn favorieten</string>
     <string name="sort_button">Sorteer pokémon</string>
-    <string name="large_text"></string>//this is here because I botched a commit and don't know how to get the compiler to stop asking about it.
 </resources>
