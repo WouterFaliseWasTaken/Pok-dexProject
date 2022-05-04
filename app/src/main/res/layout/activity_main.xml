@@ -80,6 +80,7 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             app:layoutManager="LinearLayoutManager" />
+            app:listData="@{viewModel.pokemon}"
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

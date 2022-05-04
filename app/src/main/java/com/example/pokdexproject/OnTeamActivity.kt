@@ -3,7 +3,7 @@ package com.example.pokdexproject
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokdexproject.Adapter.ItemAdapter
+import com.example.pokdexproject.adapter.ItemAdapter
 import com.example.pokdexproject.model.PokémonViewModel
 
 class OnTeamActivity : AppCompatActivity(){

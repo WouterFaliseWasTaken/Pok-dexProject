@@ -1,11 +1,9 @@
-package com.example.pokdexproject.Network
-
-import com.squareup.moshi.Json
+package com.example.pokdexproject.network
 
 data class PokemonData(
     val id:Int,
     val name:String,
-    val sprites:List<PokemonImage>,
+    val sprites:PokemonImage,
     val types: List<Type>
 )
 
@@ -15,7 +13,7 @@ data class PokemonImage(
 
 data class Type(
     val slot:Int,
-    val type:List<TypeName>,
+    val type:TypeName,
 )
 
 data class TypeName(

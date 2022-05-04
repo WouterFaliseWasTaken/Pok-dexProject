@@ -1,89 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="90dp">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name = "pokemon"
+            type = "com.example.pokdexproject.network.PokemonData"
+        />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
 
 
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/item_card"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_margin="8dp"
-        android:layout_marginEnd="59dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/item_card"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:layout_marginEnd="59dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <data>
-                <variable>
-                name = "pokemonViewModel"
-                type = "com.example.pokdexproject.model.PokémonViewModel"
-                </variable>
-            </data>
 
-            <ImageView
-                android:id="@+id/item_image_1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:importantForAccessibility="no"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ImageContrastCheck"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/item_name_1"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/item_image_1"
-                app:layout_constraintTop_toTopOf="@+id/item_image_1"
-                tools:text="Bulbasaur" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/item_index"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/item_image_1"
-                app:layout_constraintStart_toEndOf="@+id/item_image_1"
-                tools:text="#001" />
 
-            <TextView
-                android:id="@+id/item_type1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="128dp"
-                android:layout_marginEnd="35dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/item_name_1"
-                app:layout_constraintTop_toTopOf="@+id/item_name_1"
-                tools:text="Grass" />
+                <ImageView
+                    android:id="@+id/item_image_1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:importantForAccessibility="no"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ImageContrastCheck"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/item_type2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
-                app:layout_constraintEnd_toStartOf="@+id/item_type1"
-                app:layout_constraintTop_toTopOf="@+id/item_image_1"
-                tools:text="Poison" />
+                <TextView
+                    android:id="@+id/item_name_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textStyle="bold"
+                    android:text="@{pokemon.id}"
+                    app:layout_constraintStart_toEndOf="@+id/item_image_1"
+                    app:layout_constraintTop_toTopOf="@+id/item_image_1"
+                    tools:text="Bulbasaur" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/item_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@{pokemon.name}"
+                    app:layout_constraintBottom_toBottomOf="@+id/item_image_1"
+                    app:layout_constraintStart_toEndOf="@+id/item_image_1"
+                    tools:text="#001" />
+
+                <TextView
+                    android:id="@+id/item_type1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="128dp"
+                    android:layout_marginEnd="35dp"
+                    android:text="@{pokemon.types[0].type.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/item_name_1"
+                    app:layout_constraintTop_toTopOf="@+id/item_name_1"
+                    tools:text="Grass" />
+
+                <TextView
+                    android:id="@+id/item_type2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:text="@{pokemon.types[0].type.name}"
+                    app:layout_constraintEnd_toStartOf="@+id/item_type1"
+                    app:layout_constraintTop_toTopOf="@+id/item_image_1"
+                    tools:text="Poison" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

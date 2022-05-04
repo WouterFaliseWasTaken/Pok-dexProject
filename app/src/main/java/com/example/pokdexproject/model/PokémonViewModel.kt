@@ -5,11 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokdexproject.Network.PokeApiService
-import com.example.pokdexproject.Network.PokemonData
+import com.example.pokdexproject.network.PokeApiService
+import com.example.pokdexproject.network.PokemonData
 import kotlinx.coroutines.launch
 
 const val TAG = "POKEMONDEBUG"
+
 class PokémonViewModel : ViewModel() {
     /**
     private val _index = MutableLiveData<Int>(0)
@@ -47,7 +48,10 @@ class PokémonViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val listResult = PokeApiService.PokeApi.retrofitService.getBasicInfo()
+                Log.d(TAG,listResult.toString())
                 _pokémon.value = listResult
+                Log.d(TAG, "_pokemon has ${_pokémon.value!!.size}")
+                Log.d(TAG, "list_result has ${listResult.size}")
             } catch (e: Exception) {
             }
         }

@@ -1,4 +1,4 @@
-package com.example.pokdexproject.Network
+package com.example.pokdexproject.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -8,8 +8,6 @@ import retrofit2.http.GET
 
 private const val BASE_URL =
     "https://stoplight.io/mocks/appwise-be/pokemon/32428517/"
-
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
