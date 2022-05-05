@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokdexproject.adapter.ItemAdapter
+import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.model.PokémonViewModel
 
 class BookmarkActivity :AppCompatActivity() {
@@ -14,7 +15,7 @@ class BookmarkActivity :AppCompatActivity() {
 
             //TODO: replace with real data source!
             val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_bookmark)
-            recyclerView.adapter = ItemAdapter(this, viewModel.pokémon.value!!)
+            recyclerView.adapter = PokemonListAdapter()
             recyclerView.setHasFixedSize(true)
 
         }

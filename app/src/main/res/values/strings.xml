@@ -7,4 +7,38 @@
     <string name="team_button_text">mijn team</string>
     <string name="bookmarks_button_text">mijn favorieten</string>
     <string name="sort_button">Sorteer pokémon</string>
+    <string name="about">Over</string>
+    <string name="type">Type</string>
+    <string name="gender">Geslacht</string>
+    <string name="name">Naam</string>
+    <string name="height">Hoogte</string>
+    <string name="weight">Gewicht</string>
+    <string name="category">Categorie</string>
+    <string name="length">Lengte</string>
+    <string name="ability">Vaardigheid</string>
+    <string name="placeholder_type">grass</string>
+    <string name="one_meter">1m</string>
+    <string name="one_kilogram">1kg</string>
+    <string name="seed">Zaad</string>
+    <string name="malefemale">♂♀</string>
+    <string name="overgrowth">Overgroeien</string>
+    <string name="number">Nummer</string>
+    <string name="one">001</string>
+    <string name="stats">Statistieken</string>
+    <string name="attack">Attack</string>
+    <string name="defense">Defense</string>
+    <string name="special_attack">Sp. Attack</string>
+    <string name="special_defense">Sp. Defense</string>
+    <string name="hp">HP</string>
+    <string name="speed">Speed</string>
+    <string name="total">Totaal</string>
+    <string name="moveset">Moveset</string>
+    <string name="lorem_ipsum">
+        Spicy jalapeno bacon ipsum dolor amet filet mignon meatball pastrami
+        leberkas picanha ribeye. Pork chop beef porchetta hamburger,
+        rump shankle turducken leberkas chicken tongue.
+        Porchetta t-bone kielbasa fatback picanha drumstick burgdoggen boudin
+        swine ribeye venison corned beef. Short ribs flank doner turducken ham kevin
+        salami. Beef ribs brisket fatback tenderloin.</string>
+
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokdexproject.adapter.ItemAdapter
+import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.model.PokémonViewModel
 
 class OnTeamActivity : AppCompatActivity(){
@@ -14,7 +15,7 @@ class OnTeamActivity : AppCompatActivity(){
         val viewModel = PokémonViewModel()
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_team)
         //TODO: replace with real data source!
-        recyclerView.adapter = ItemAdapter(this, viewModel.pokémon.value!!)
+        recyclerView.adapter = PokemonListAdapter()
         recyclerView.setHasFixedSize(true)
         //Because of constraints, the data fits on a single screen comfortably. Do we need a recyclerview here or are there better options?
     }
