@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="typeEnum"
+            type="com.example.pokdexproject.network.Type" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/typeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:cardBackgroundColor="#0000FF"
+        app:cardCornerRadius="100dp"
+        app:contentPaddingBottom="3dp"
+        app:contentPaddingLeft="10dp"
+        app:contentPaddingRight="10dp"
+        app:contentPaddingTop="3dp"
+        app:cardBackgroundColor="@{typeEnum.getTypeColor()}"
+        >
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="Poison"
+            android:text = "@{typeEnum.unCapsLock()}"/>
+    </androidx.cardview.widget.CardView>
+</layout>

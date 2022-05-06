@@ -13,7 +13,7 @@ class PokemonListAdapter : ListAdapter<PokemonData, PokemonListAdapter.PokemonDa
 
     override fun onCreateViewHolder(parent: ViewGroup,position:Int):PokemonListAdapter.PokemonDataViewHolder
     {
-        return PokemonDataViewHolder(ListItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return PokemonDataViewHolder(ListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder:PokemonListAdapter.PokemonDataViewHolder, position:Int){
@@ -33,9 +33,8 @@ class PokemonListAdapter : ListAdapter<PokemonData, PokemonListAdapter.PokemonDa
     }
 
     class PokemonDataViewHolder(private var binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(PokemonData: PokemonData){
-            binding.pokemon = PokemonData
-            binding.executePendingBindings()
+        fun bind(pokemonData: PokemonData){
+            binding.pokemon = pokemonData
         }
     }
 

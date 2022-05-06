@@ -7,7 +7,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL =
-    "https://stoplight.io/mocks/appwise-be/pokemon/32428517/"
+    "https://stoplight.io/mocks/appwise-be/pokemon/57519009/"
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()

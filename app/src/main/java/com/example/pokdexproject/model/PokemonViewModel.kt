@@ -53,6 +53,7 @@ class PokémonViewModel : ViewModel() {
                 Log.d(TAG, "_pokemon has ${_pokemon.value!!.size}")
                 Log.d(TAG, "list_result has ${listResult.size}")
             } catch (e: Exception) {
+                Log.d(TAG, "LOADING DATA FAILED")
             }
         }
     }

@@ -9,7 +9,10 @@
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_main.xml" value="0.378125" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_scrolling.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_team.xml" value="0.1" />
-        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/list_item.xml" value="0.378125" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/list_item.xml" value="0.5" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/tes_list_item.xml" value="0.19947916666666668" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/test_list_item.xml" value="0.19947916666666668" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/type_view.xml" value="0.5" />
       </map>
     </option>
   </component>

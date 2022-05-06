@@ -3,7 +3,6 @@ package com.example.pokdexproject
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokdexproject.adapter.ItemAdapter
 import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.model.PokémonViewModel
 
