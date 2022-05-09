@@ -20,7 +20,7 @@
         app:contentPaddingLeft="10dp"
         app:contentPaddingRight="10dp"
         app:contentPaddingTop="3dp"
-        app:cardBackgroundColor="@{typeEnum.getTypeColor()}"
+        app:cardBackgroundColor="@{typeEnum.color}"
         >
         <TextView
             android:id="@+id/textView5"

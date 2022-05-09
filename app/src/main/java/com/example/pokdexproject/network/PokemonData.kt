@@ -45,34 +45,15 @@ data class TypeName(
     val name: String
 )
 
-enum class Type {
-    NORMAL, FIRE, FIGHTING, WATER, FLYING, GRASS, POISON, ELECTRIC, GROUND, PSYCHIC, ROCK, ICE, BUG, DRAGON, GHOST, DARK, STEEL, FAIRY,NULLTYPE;
-
-    fun getTypeColor(): Int {
-        //9:10 there's a better way to write this. Can't find it though.
-        return when (this) {
-            NORMAL -> R.color.normal_color
-            FIRE -> R.color.fire_color
-            FIGHTING -> R.color.fighting_color
-            WATER -> R.color.water_color
-            FLYING -> R.color.flying_color
-            GRASS -> R.color.grass_color
-            POISON -> R.color.poison_color
-            ELECTRIC -> R.color.electric_color
-            GROUND -> R.color.ground_color
-            PSYCHIC -> R.color.psychic_color
-            ROCK -> R.color.rock_color
-            ICE -> R.color.ice_color
-            BUG -> R.color.bug_color
-            DRAGON -> R.color.dragon_color
-            GHOST -> R.color.ghost_color
-            DARK -> R.color.dark_color
-            STEEL -> R.color.steel_color
-            FAIRY -> R.color.fairy_color
-            NULLTYPE -> R.color.nulltype_color
-        }
-    }
-
+enum class Type(val color: Int) {
+    NORMAL(0xFFA8A878.toInt()), FIRE(0xFF9C531F.toInt()),
+    FIGHTING(0xFF7D1F1A.toInt()), WATER(0xFF445E9C.toInt()),
+    FLYING(0xFF6D5E9C.toInt()), GRASS(0xFF4E8234.toInt()),
+    POISON(0xFF682A68.toInt()), ELECTRIC(0xFFA1871F.toInt()),
+    GROUND(0xFF927D44.toInt()), PSYCHIC(0xFFA13959.toInt()), ROCK(0xFF786824.toInt()),
+    ICE(0xFF638D8D.toInt()), BUG(0xFF6D7815.toInt()), DRAGON(0xFF4924A1.toInt()),
+    GHOST(0xFF493963.toInt()), DARK(0xFF49392F.toInt()), STEEL(0xFF877887.toInt())
+    ,FAIRY(0xFF9B6470.toInt()),NULLTYPE(0xFFFFFFFF.toInt());
     /**
      * Returns Enum as a capitalised, but not all caps. Incase the pokemon only has 1 type, returns an empty string.
      */

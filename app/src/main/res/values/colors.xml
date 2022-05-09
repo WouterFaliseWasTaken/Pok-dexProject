@@ -9,25 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="normal_color">#FFA8A878</color>
-    <color name="fire_color">#FF9C531F</color>
-    <color name="fighting_color">#FF7D1F1A</color>
-    <color name="water_color">#FF445E9C</color>
-    <color name="flying_color">#FF6D5E9C</color>
-    <color name="grass_color">#FF4E8234</color>
-    <color name="poison_color">#FF682A68</color>
-    <color name="electric_color">#FFA1871F</color>
-    <color name="ground_color">#FF927D44</color>
-    <color name="psychic_color">#FFA13959</color>
-    <color name="rock_color">#FF786824</color>
-    <color name="ice_color">#FF638D8D</color>
-    <color name="bug_color">#FF6D7815</color>
-    <color name="dragon_color">#FF4924A1</color>
-    <color name="ghost_color">#FF493963</color>
-    <color name="dark_color">#FF49392F</color>
-    <color name="steel_color">#FF877887</color>
-    <color name="fairy_color">#FF9B6470</color>
-    <color name="nulltype_color">#00FFFFFF</color>
+
 
 
 
