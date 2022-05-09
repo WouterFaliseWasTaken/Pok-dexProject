@@ -27,7 +27,7 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_launcher_background"
+                    app:imageURL="@{pokemon.sprites.front_default}"
                     android:layout_marginBottom="10dp"
                     android:importantForAccessibility="no"
                     app:layout_constraintBottom_toBottomOf="parent"

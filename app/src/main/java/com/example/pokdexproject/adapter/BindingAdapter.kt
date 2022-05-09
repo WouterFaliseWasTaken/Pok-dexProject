@@ -8,7 +8,7 @@ import coil.load
 import com.example.pokdexproject.network.PokemonData
 import com.example.pokdexproject.R
 
-/**
+
 @BindingAdapter("imageURL")
 fun bindImage(imgView: ImageView, imgUrl:String){
     imgUrl?.let{
@@ -19,7 +19,7 @@ fun bindImage(imgView: ImageView, imgUrl:String){
         }
     }
 }
-*/
+
 
 @BindingAdapter("listItem")
 fun bindRecyclerView(recyclerView:RecyclerView,data: List<PokemonData>?){
