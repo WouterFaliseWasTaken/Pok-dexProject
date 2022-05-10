@@ -1,21 +1,20 @@
 package com.example.pokdexproject
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokdex.R
-import com.example.pokdexproject.Adapter.ItemAdapter
-import com.example.pokdexproject.data.TestDataSource
+import com.example.pokdexproject.adapter.PokemonListAdapter
+import com.example.pokdexproject.model.PokémonViewModel
 
-    class bookmarkActivity :AppCompatActivity() {
+class BookmarkActivity :AppCompatActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_bookmark)
-            val myDataSet = TestDataSource().getListOfPokémon().filter{it.bookmarked}
+            val viewModel = PokémonViewModel()
+
             //TODO: replace with real data source!
             val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_bookmark)
-            recyclerView.adapter = ItemAdapter(this, myDataSet)
+            recyclerView.adapter = PokemonListAdapter()
             recyclerView.setHasFixedSize(true)
 
         }
