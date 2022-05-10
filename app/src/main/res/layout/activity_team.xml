@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/team_button_background">
+    android:background="@drawable/team_activity_background">
 
     <TextView
         android:id="@+id/textView2"

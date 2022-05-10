@@ -3,7 +3,7 @@
     <string name="searchbar_hint">Pokémon zoeken</string>
     <string name="title_bookmark">Favorieten</string>
     <string name="title">Pokédex</string>
-    <string name ="title_team">Mijn team</string>
+    <string name="title_team">Mijn team</string>
     <string name="team_button_text">Mijn team</string>
     <string name="bookmarks_button_text">Mijn favorieten</string>
     <string name="sort_button">Sorteer pokémon</string>
@@ -40,5 +40,8 @@
         Porchetta t-bone kielbasa fatback picanha drumstick burgdoggen boudin
         swine ribeye venison corned beef. Short ribs flank doner turducken ham kevin
         salami. Beef ribs brisket fatback tenderloin.</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_sort">Sorteer</string>
+    <string name="bookmark">In Favorieten Plaatsen</string>
 
 </resources>

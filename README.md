@@ -7,11 +7,11 @@ Last updated: 16:20 28/04/2022(DD/MM/YY)
 TODO:  
 * Main Activity
     * Adapter to turn pokémon data into cards
-        * Name
-        * Index
-        * Image
-        * Typing(single, double)
-            * Display using official typing labels
+        * ~~Name~~
+        * ~~Index~~
+        * ~~Image~~
+        * ~~Typing(single, double)~~
+            * ~~Display using official typing labels~~
         * Re-implement using fragments
     * ~~Card Layout~~
     * Menu Header
@@ -21,8 +21,8 @@ TODO:
            * Implement functionality
         * ~~Team button~~
            * Implement functionality
-        * Sort and filter options button
-            *Sort options
+        * ~~Sort and filter options button~~
+            *Implement functionality
     * ~~Data retrieval from the API~~
         * ~~Use Retrofit~~
     * Navigate to detail activity by tapping card in main activity  
