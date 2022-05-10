@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             lifecycleOwner = this@MainActivity
             viewModel = ViewModelProvider(this@MainActivity).get(PokémonViewModel::class.java)
         }
-
+        /**
         val bookmarkButton = findViewById<Button>(R.id.bookmark_button)
 
         bookmarkButton.setOnClickListener {startActivity(Intent(this, BookmarkActivity::class.java))}
@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         val teamButton = findViewById<Button>(R.id.team_Button)
 
         teamButton.setOnClickListener { startActivity(Intent(this, OnTeamActivity::class.java)) }
+        */
 
         val adapter = PokemonListAdapter()
         with(binding.recyclerView){

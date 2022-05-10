@@ -27,9 +27,10 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="10dp"
-                    app:imageURL="@{pokemon.sprites.front_default}"
                     android:layout_marginBottom="10dp"
+                    android:adjustViewBounds="true"
                     android:importantForAccessibility="no"
+                    app:imageURL="@{pokemon.sprites.front_default}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -42,11 +43,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
-                    android:text="@{pokemon.name}"
+                    android:text="@{pokemon.capitaliseName()}"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/item_image_1"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="bulbasaur" />
+                    tools:text="Bulbasaur" />
 
 
                 <TextView
@@ -56,11 +59,12 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="1dp"
                     android:text="@{pokemon.getIdString()}"
+                    android:textColor="#919698"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@+id/item_image_1"
                     app:layout_constraintStart_toEndOf="@+id/item_image_1"
                     app:layout_constraintTop_toBottomOf="@+id/item_name_1"
-                    tools:text="#001" />
+                    tools:text="Nr.001" />
 
                 <include
                     android:id="@+id/item_type1"

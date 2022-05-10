@@ -16,7 +16,6 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 interface PokeApiService {
-    // TODO: Fetch basic pokémon values for 150 pokémon
     @GET("pokemon")
     suspend fun getBasicInfo() : List<PokemonData>
     object PokeApi{

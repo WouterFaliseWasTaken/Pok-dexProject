@@ -10,20 +10,32 @@
             name="viewModel"
             type="com.example.pokdexproject.model.PokémonViewModel" />
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E5E5E5"
+        android:background="#FFF9F9F9"
         tools:context=".MainActivity">
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/separator"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="411dp"
+            app:barrierDirection="top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="731dp" />
 
         <SearchView
             android:id="@+id/pokémon_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="16dp"
+            android:background="#EFF0F1"
             android:queryHint="@string/searchbar_hint"
-            app:layout_constraintEnd_toStartOf="@+id/sort_button"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             tools:visibility="visible" />
@@ -40,52 +52,107 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/team_Button"
-            android:layout_width="167dp"
-            android:layout_height="117dp"
-            android:layout_marginStart="16dp"
-            android:backgroundTint="#F3A79B"
 
+        <TextView
+            android:id="@+id/count_bookmark_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="100dp"
+            android:textColor="@color/semi_transparant_white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/bookmark_label_text"
+            app:layout_constraintTop_toBottomOf="@+id/bookmark_label_text"
+            tools:ignore="TextContrastCheck"
+            tools:text="1 Pokémon" />
+
+
+        <TextView
+            android:id="@+id/bookmark_label_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="46dp"
+            android:elevation="100dp"
+            android:text="@string/bookmarks_button_text"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/bookmark_button"
+            app:layout_constraintTop_toTopOf="@id/bookmark_button"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/team_label_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="46dp"
+            android:elevation="100dp"
             android:text="@string/team_button_text"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/team_button"
+            app:layout_constraintTop_toTopOf="@id/team_button" />
+
+
+        <TextView
+            android:id="@+id/count_team_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="100dp"
+            android:textColor="@color/semi_transparant_white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/team_label_text"
+            app:layout_constraintTop_toBottomOf="@+id/team_label_text"
+            tools:ignore="TextContrastCheck"
+            tools:text="1 Pokémon" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/team_button"
+            _toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/team_button_background"
+            android:contentDescription="@string/team_button_text"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toStartOf="@id/separator"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pokémon_search" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bookmark_button"
-            android:layout_width="167dp"
-            android:layout_height="117dp"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="9dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#FFE49B"
-            android:text="@string/bookmarks_button_text"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pokémon_search" />
-
-        <Button
-            android:id="@+id/sort_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/black"
-            android:contentDescription="@string/sort_button"
+            android:background="@drawable/bookmark_button_background"
+            android:contentDescription="@string/bookmarks_button_text"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            app:icon="@android:drawable/ic_menu_sort_by_size"
+            app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintStart_toEndOf="@+id/team_button"
+            app:layout_constraintTop_toTopOf="@+id/team_button" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="20dp"
             android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/team_Button"
-            tools:listitem="@layout/list_item"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/team_button"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/list_item">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
