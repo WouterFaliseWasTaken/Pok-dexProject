@@ -21,6 +21,7 @@
         app:contentPaddingRight="10dp"
         app:contentPaddingTop="3dp"
         app:cardBackgroundColor="@{typeEnum.color}"
+        app:cardElevation="0dp"
         >
         <TextView
             android:id="@+id/textView5"

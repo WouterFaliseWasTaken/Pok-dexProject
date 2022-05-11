@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         */
 
         setSupportActionBar(findViewById(R.id.main_toolbar))
-
+        getSupportActionBar()!!.setDisplayShowTitleEnabled(false)
         val adapter = PokemonListAdapter()
         with(binding.recyclerView){
            this.adapter = adapter
