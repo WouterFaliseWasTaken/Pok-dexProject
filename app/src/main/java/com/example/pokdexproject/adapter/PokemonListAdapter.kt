@@ -9,16 +9,19 @@ import com.example.pokdexproject.network.PokemonData
 import com.example.pokdexproject.databinding.ListItemBinding
 
 
-class PokemonListAdapter : ListAdapter<PokemonData, PokemonListAdapter.PokemonDataViewHolder>(DiffCallBack){
+class PokemonListAdapter(private val onClickListener: OnClickListener) : ListAdapter<PokemonData, PokemonListAdapter.PokemonDataViewHolder>(DiffCallBack){
 
-    override fun onCreateViewHolder(parent: ViewGroup,position:Int):PokemonListAdapter.PokemonDataViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup,position:Int):PokemonDataViewHolder
     {
         return PokemonDataViewHolder(ListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
-    override fun onBindViewHolder(holder:PokemonListAdapter.PokemonDataViewHolder, position:Int){
+    override fun onBindViewHolder(holder:PokemonDataViewHolder, position:Int){
         val pokemon = getItem(position)
         holder.bind(pokemon)
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(pokemon)
+        }
     }
 
     companion object DiffCallBack: DiffUtil.ItemCallback<PokemonData>(){
@@ -27,9 +30,13 @@ class PokemonListAdapter : ListAdapter<PokemonData, PokemonListAdapter.PokemonDa
         }
 
         override fun areContentsTheSame(oldItem: PokemonData, newItem: PokemonData): Boolean {
-            return oldItem.id == newItem.id
-        }
+            return oldItem == newItem        }
 
+
+    }
+
+    class OnClickListener(val clickListener: (data:PokemonData)-> Unit){
+        fun onClick(data:PokemonData) = clickListener(data)
     }
 
     class PokemonDataViewHolder(private var binding: ListItemBinding):RecyclerView.ViewHolder(binding.root){

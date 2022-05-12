@@ -8,19 +8,19 @@
 
         <variable
             name="viewModel"
-            type="com.example.pokdexproject.model.PokémonViewModel" />
+            type="com.example.pokdexproject.model.PokemonViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFF9F9F9"
-        tools:context=".MainActivity">
+        android:background="@color/ivory_egg"
+        tools:context=".activities.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#00FFFFFF"
+            android:background="@color/transparant"
             android:elevation="101dp"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -31,22 +31,21 @@
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/separator"
-            android:layout_width="500dp"
+            android:layout_width="9dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="411dp"
             app:barrierDirection="top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="731dp" />
 
         <SearchView
-            android:id="@+id/pokémon_search"
+            android:id="@+id/pokemon_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="16dp"
-            android:background="#EFF0F1"
+            android:background="@color/wago_light_gray"
             android:queryHint="@string/searchbar_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +133,7 @@
             app:cornerRadius="10dp"
             app:layout_constraintEnd_toStartOf="@id/separator"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pokémon_search" />
+            app:layout_constraintTop_toBottomOf="@id/pokemon_search" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bookmark_button"

@@ -11,11 +11,9 @@ import com.example.pokdexproject.R
 
 @BindingAdapter("imageURL")
 fun bindImage(imgView: ImageView, imgUrl:String){
-    imgUrl?.let{
+    imgUrl.let{
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         imgView.load(imgUri){
-            placeholder(R.drawable.ic_launcher_background)
-            error(R.drawable.ic_launcher_foreground)
         }
     }
 }
@@ -25,7 +23,4 @@ fun bindImage(imgView: ImageView, imgUrl:String){
 fun bindRecyclerView(recyclerView:RecyclerView,data: List<PokemonData>?){
     val adapter = recyclerView.adapter as PokemonListAdapter
     adapter.submitList(data)
-}
-
-class BindingAdapter{
 }

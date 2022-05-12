@@ -26,7 +26,6 @@ data class PokemonData(
      */
     fun parseString(s:String?):Type{
         if(s.isNullOrBlank()) return Type.NULLTYPE
-        Log.d(TAG,"${s.uppercase()}")
         return Type.valueOf((s.uppercase()))
     }
     fun capitaliseName():String{
