@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.pokdexproject.model.PokemonViewModel" />
+            type="com.example.pokdexproject.activities.main.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,9 +41,9 @@
             android:id="@+id/recycler_view_bookmark"
             android:layout_width="409dp"
             android:layout_height="674dp"
+            app:layoutManager="LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bookmark_title"
-            app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/list_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

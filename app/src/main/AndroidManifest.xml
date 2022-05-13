@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pokdexproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokédex.NoActionBar">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.main.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Pokédex.NoActionBar">
@@ -22,16 +22,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.BookmarkActivity"
+            android:name=".activities.bookmark.BookmarkActivity"
             android:exported="true"
             android:label="@string/title_bookmark"
-            android:theme="@style/Theme.Pokédex.NoActionBar"
-            android:parentActivityName="com.example.pokdexproject.activities.MainActivity" >
+            android:parentActivityName="com.example.pokdexproject.activities.main.MainActivity"
+            android:theme="@style/Theme.Pokédex.NoActionBar">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pokdexproject.activities.MainActivity" />
+                android:value="com.example.pokdexproject.activities.main.MainActivity" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,16 +40,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.OnTeamActivity"
+            android:name=".activities.onTeam.OnTeamActivity"
             android:exported="true"
             android:label="@string/title_team"
-            android:theme="@style/Theme.Pokédex.NoActionBar"
-            android:parentActivityName="com.example.pokdexproject.activities.MainActivity" >
+            android:parentActivityName="com.example.pokdexproject.activities.main.MainActivity"
+            android:theme="@style/Theme.Pokédex.NoActionBar">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pokdexproject.activities.MainActivity" />
+                android:value="com.example.pokdexproject.activities.main.MainActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

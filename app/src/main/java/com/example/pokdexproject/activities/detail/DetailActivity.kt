@@ -1,4 +1,4 @@
-package com.example.pokdexproject.activities
+package com.example.pokdexproject.activities.detail
 
 import android.os.Bundle
 import android.view.Menu
@@ -6,17 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokdexproject.R
+import com.example.pokdexproject.activities.main.MainViewModel
 import com.example.pokdexproject.databinding.ActivityMainBinding
-import com.example.pokdexproject.model.PokemonViewModel
 
-class DetailActivity:AppCompatActivity() {
+class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
+        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(
+            this,
             R.layout.activity_detail
         ).apply {
             lifecycleOwner = this@DetailActivity
-            viewModel = ViewModelProvider(this@DetailActivity).get(PokemonViewModel::class.java)
+            viewModel = ViewModelProvider(
+                this@DetailActivity,
+                MainViewModel.MainViewModelFactory(application)
+            ).get(MainViewModel::class.java)
         }
 
 
@@ -24,7 +28,7 @@ class DetailActivity:AppCompatActivity() {
 
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_detail_menu,menu)
+        menuInflater.inflate(R.menu.activity_detail_menu, menu)
         return super.onPrepareOptionsMenu(menu)
     }
 }

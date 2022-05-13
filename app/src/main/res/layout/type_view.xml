@@ -5,30 +5,31 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="typeEnum"
-            type="com.example.pokdexproject.network.Type" />
+            type="com.example.pokdexproject.model.Type" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/typeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:cardBackgroundColor="#0000FF"
+        app:cardBackgroundColor="@{typeEnum.color}"
         app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
         app:contentPaddingBottom="3dp"
         app:contentPaddingLeft="10dp"
         app:contentPaddingRight="10dp"
         app:contentPaddingTop="3dp"
-        app:cardBackgroundColor="@{typeEnum.color}"
-        app:cardElevation="0dp"
-        >
+        tools:cardBackgroundColor="#0000FF">
+
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{typeEnum.unCapsLock()}"
             android:textColor="@color/white"
-            tools:text="Poison"
-            android:text = "@{typeEnum.unCapsLock()}"/>
+            tools:text="Poison" />
     </androidx.cardview.widget.CardView>
 </layout>

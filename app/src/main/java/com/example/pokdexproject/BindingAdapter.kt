@@ -5,22 +5,21 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.pokdexproject.network.PokemonData
-import com.example.pokdexproject.R
+import com.example.pokdexproject.model.PokemonModel
 
 
 @BindingAdapter("imageURL")
-fun bindImage(imgView: ImageView, imgUrl:String){
-    imgUrl.let{
+fun bindImage(imgView: ImageView, imgUrl: String) {
+    imgUrl.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        imgView.load(imgUri){
+        imgView.load(imgUri) {
         }
     }
 }
 
 
 @BindingAdapter("listItem")
-fun bindRecyclerView(recyclerView:RecyclerView,data: List<PokemonData>?){
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<PokemonModel>?) {
     val adapter = recyclerView.adapter as PokemonListAdapter
     adapter.submitList(data)
 }

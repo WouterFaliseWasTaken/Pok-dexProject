@@ -10,5 +10,5 @@
         android:id="@+id/action_sort"
         android:icon="@drawable/sort_icon"
         android:title="@string/action_sort"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 </menu>
