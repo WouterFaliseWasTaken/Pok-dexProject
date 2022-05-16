@@ -2,9 +2,12 @@ package com.example.pokdexproject.activities.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.SearchView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +17,7 @@ import com.example.pokdexproject.activities.bookmark.BookmarkActivity
 import com.example.pokdexproject.activities.onTeam.OnTeamActivity
 import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityMainBinding
+import com.example.pokdexproject.databinding.DialogMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,10 +33,8 @@ class MainActivity : AppCompatActivity() {
                 MainViewModel.MainViewModelFactory(application)
             ).get(MainViewModel::class.java)
         }
-
-
         setupAppbar()
-        initializeListeners()
+        initializeListeners(binding)
         val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { listItem ->
             //todo: Add intent to go to detail activity
         })
@@ -43,16 +45,21 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel?.pokemon?.observe(this) {
             adapter.submitList(it)
         }
-
-
     }
 
-    private fun setupAppbar() {
-        setSupportActionBar(findViewById(R.id.main_toolbar))
-        getSupportActionBar()!!.setDisplayShowTitleEnabled(false)
-    }
+    private fun initializeListeners(binding: ActivityMainBinding) {
+        findViewById<SearchView>(R.id.pokemon_search).setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
 
-    private fun initializeListeners() {
+            override fun onQueryTextChange(query: String?): Boolean {
+                if(query.isNullOrBlank()) binding.viewModel?.setSearch("")
+                else binding.viewModel?.setSearch(query)
+                return true
+            }
+        })
         findViewById<Button>(R.id.bookmark_button).setOnClickListener {
             startActivity(
                 Intent(
@@ -70,24 +77,29 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
+    private fun setupAppbar() {
+        setSupportActionBar(findViewById(R.id.main_toolbar))
+        getSupportActionBar()!!.setDisplayShowTitleEnabled(false)
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_sort -> {
-            //todo: Implement sort function
+            MainActivitySortDialog(this ).show()
+
             true
         }
         R.id.action_filter -> {
-            //todo: Implement filter function
+
+            //todo
             true
         }
         else -> super.onOptionsItemSelected(item)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_main_menu, menu)
+        menuInflater.inflate(R.menu.menu_activity_main, menu)
         return super.onPrepareOptionsMenu(menu)
     }
 }
-
-
 

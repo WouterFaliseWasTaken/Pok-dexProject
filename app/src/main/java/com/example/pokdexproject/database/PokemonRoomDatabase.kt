@@ -1,6 +1,7 @@
 package com.example.pokdexproject.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -10,6 +11,9 @@ import com.example.pokdexproject.data.pokemon.PokemonData
 import com.example.pokdexproject.data.type.TypeDao
 import com.example.pokdexproject.data.type.TypeData
 import com.example.pokdexproject.data.type.dealsmodifieddamageto.DealsModifiedDamageToDao
+import java.util.concurrent.Executors
+
+const val TAG = "QUERY"
 
 @Database(
     entities = [PokemonData::class, TypeData::class, DealsModifiedDamageTo::class],
@@ -31,7 +35,11 @@ abstract class PokemonRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     PokemonRoomDatabase::class.java,
                     "pokemon_database",
-                ).fallbackToDestructiveMigration().build()
+                ).fallbackToDestructiveMigration()
+                    .setQueryCallback(RoomDatabase.QueryCallback { sqlQuery, bindArgs ->
+                        Log.d(TAG,("SQL Query: $sqlQuery SQL Args: $bindArgs"))
+                    }, Executors.newSingleThreadExecutor())
+                    .build()
                 INSTANCE = instance
                 return instance
             }

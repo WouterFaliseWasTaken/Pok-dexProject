@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{typeEnum.unCapsLock()}"
-            android:textColor="@color/white"
+            style="@style/type_style"
             tools:text="Poison" />
     </androidx.cardview.widget.CardView>
 </layout>

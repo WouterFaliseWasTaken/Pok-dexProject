@@ -46,9 +46,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="15dp"
                 android:text="@{pokemon.capitaliseName()}"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold"
+                style="@style/list_item_label"
                 app:layout_constraintStart_toEndOf="@+id/item_image_1"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Bulbasaur" />
@@ -62,7 +60,8 @@
                 android:layout_marginEnd="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_chevron_right_24" />
+                app:srcCompat="@drawable/ic_baseline_chevron_right_24"
+                android:importantForAccessibility="no"/>
 
             <TextView
                 android:id="@+id/item_index"
@@ -71,8 +70,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="1dp"
                 android:text="@{pokemon.getIdString()}"
-                android:textColor="#919698"
-                android:textSize="15sp"
+                style="@style/list_item_id"
                 app:layout_constraintBottom_toBottomOf="@+id/item_image_1"
                 app:layout_constraintStart_toEndOf="@+id/item_image_1"
                 app:layout_constraintTop_toBottomOf="@+id/item_name_1"

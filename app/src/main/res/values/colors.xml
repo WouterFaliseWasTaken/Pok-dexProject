@@ -11,6 +11,9 @@
     <color name="ivory_egg">#F9F9F9</color>
     <color name="transparant">#00FFFFFF</color>
     <color name="wago_light_gray">#EFF0F1</color>
-
+    <color name="blind_eye_white">#F7F7F9</color>
+    <color name="sort_icon_grey">#ACB2C1</color>
+    <color name="dark_1">#1F2029</color>
+    <color name="the_uninhibited">#919698</color>
 
 </resources>

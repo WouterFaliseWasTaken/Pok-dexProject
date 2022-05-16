@@ -43,5 +43,12 @@
     <string name="action_filter">Filter</string>
     <string name="action_sort">Sorteer</string>
     <string name="bookmark">In Favorieten Plaatsen</string>
+    <string name="exit_dialog">\"Teruggaan\"</string>
+    <string name="ascending_by_name">Alfabetisch oplopend</string>
+    <string name="descending_by_name">Alfabetisch aflopend</string>
+    <string name="ascending_by_id">Numerisch oplopend</string>
+    <string name="descending_by_id">Numerisch aflopend</string>
+    <string name="sort_label">Sorteren op</string>
+    <string name="apply">Toepassen</string>
 
 </resources>

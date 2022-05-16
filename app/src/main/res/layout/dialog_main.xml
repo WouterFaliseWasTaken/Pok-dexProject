@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/exit_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/transparant"
+            android:contentDescription="@string/exit_dialog"
+            android:elevation="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="18dp"
+            app:icon="@drawable/exit_icon"
+            app:iconPadding="0dp"
+            app:iconTint="@color/sort_icon_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sort_dialog_text"
+            style="@style/header2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="29dp"
+            android:text="@string/sort_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="14dp"
+            android:elevation="1dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/sort_option_group"
+            app:layout_constraintEnd_toEndOf="@+id/sort_option_group"
+            app:layout_constraintTop_toTopOf="@+id/sort_option_group">
+
+            <ImageView
+                android:id="@+id/sort_by_name_ascending_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:srcCompat="@drawable/checkmark" />
+
+            <ImageView
+                android:id="@+id/sort_by_name_desending_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46dp"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/checkmark" />
+
+            <ImageView
+                android:id="@+id/sort_by_id_ascending_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46dp"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/checkmark" />
+
+            <ImageView
+                android:id="@+id/sort_by_id_descending_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46dp"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/checkmark" />
+        </LinearLayout>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/sort_option_group"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="16dp"
+            app:checkedChip="@id/sort_alphabetical_ascending_chip"
+            app:chipSpacingHorizontal="0dp"
+            app:chipSpacingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sort_dialog_text"
+            app:singleLine="false"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/sort_alphabetical_ascending_chip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/ascending_by_name"
+                app:checkedIconEnabled="false"
+                app:chipBackgroundColor="@color/blind_eye_white"
+                app:chipCornerRadius="10dp"
+                app:chipIcon="@drawable/sort_alphabetical_ascending"
+                app:chipIconTint="@color/sort_icon_grey" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/sort_alphabetical_descending_chip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/descending_by_name"
+                app:checkedIconEnabled="false"
+                app:chipBackgroundColor="@color/blind_eye_white"
+                app:chipCornerRadius="10dp"
+                app:chipIcon="@drawable/sort_alphabetical_descending" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/sort_numerical_ascending_chip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/ascending_by_id"
+                app:checkedIconEnabled="false"
+                app:chipBackgroundColor="@color/blind_eye_white"
+                app:chipCornerRadius="10dp"
+                app:chipIcon="@drawable/sort_numerical_ascending" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/sort_numerical_descending_chip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/descending_by_id"
+                app:checkedIconEnabled="false"
+                app:chipBackgroundColor="@color/blind_eye_white"
+                app:chipCornerRadius="10dp"
+                app:chipIcon="@drawable/sort_numerical_descending" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sort_option_group">
+
+            <Button
+                android:id="@+id/sort_dialog_apply_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/dark_1"
+                android:contentDescription="@string/apply"
+                android:text="@string/apply" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

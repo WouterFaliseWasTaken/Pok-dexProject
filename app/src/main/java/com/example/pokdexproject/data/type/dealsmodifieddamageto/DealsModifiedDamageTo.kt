@@ -1,7 +1,7 @@
 package com.example.pokdexproject.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
+import androidx.room.*
+import com.example.pokdexproject.data.type.TypeData
 
 @Entity(tableName = "DealsModifiedDamageTo", primaryKeys = ["typeAttacker", "typeDefender"])
 class DealsModifiedDamageTo(
@@ -9,3 +9,4 @@ class DealsModifiedDamageTo(
     @ColumnInfo val typeDefender: String,//this is one of the two types of the defense
     @ColumnInfo val modifier: Double = 1.0 //This is either 0, 0.5, 1.0, or 2.0.
 )
+

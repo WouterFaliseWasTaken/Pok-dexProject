@@ -31,9 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/title_team"
-            android:textColor="@color/white"
-            android:textSize="34sp"
-            android:textStyle="bold"
+            style="@style/title_dark_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/team_toolbar" />
 

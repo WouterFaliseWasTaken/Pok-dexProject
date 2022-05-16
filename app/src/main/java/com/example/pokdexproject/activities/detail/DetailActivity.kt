@@ -28,7 +28,7 @@ class DetailActivity : AppCompatActivity() {
 
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_detail_menu, menu)
+        menuInflater.inflate(R.menu.menu_activity_detail, menu)
         return super.onPrepareOptionsMenu(menu)
     }
 }

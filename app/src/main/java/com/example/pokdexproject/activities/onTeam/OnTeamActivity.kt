@@ -7,8 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokdexproject.R
-import com.example.pokdexproject.activities.main.MainViewModel
-import com.example.pokdexproject.activities.main.TAG
+import com.example.pokdexproject.activities.main.*
 import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityTeamBinding
 
@@ -26,6 +25,9 @@ class OnTeamActivity : AppCompatActivity() {
                 MainViewModel.MainViewModelFactory(application)
             ).get(MainViewModel::class.java)
         }
+
+        var filter = FilterByTag.ONTEAM
+        var sortByAscending : Pair<Criterion, Boolean> = Pair(Criterion.ID, true)
 
         val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { data ->
             Log.d(TAG, "Clicked Pokémon number in OnTeam:" + data.id.toString())

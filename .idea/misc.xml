@@ -8,6 +8,8 @@
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1805" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable/background_gradient.xml" value="0.1805" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable/bookmark_pokeball.xml" value="0.2425" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable/checkmark.xml" value="0.2585" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable/exit_icon.xml" value="0.2585" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable/filter_icon.xml" value="0.2425" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable/ic_baseline_chevron_right_24.xml" value="0.171" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1805" />
@@ -24,18 +26,22 @@
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_bookmark.xml" value="0.46494464944649444" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_detail.xml" value="0.33" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_detailx.xml" value="0.5" />
-        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_main.xml" value="0.378125" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_scrolling.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_team.xml" value="0.33" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/dialog_main.xml" value="0.25" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/filter_button.xml" value="0.5" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/filtering_button.xml" value="0.33" />
-        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/list_item.xml" value="0.5" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/list_item.xml" value="0.67" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/main_dialog.xml" value="0.33106884057971014" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/tes_list_item.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/test_list_item.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/type_view.xml" value="0.5" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/menu/activity_bookmark_or_team_menu.xml" value="0.378125" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/menu/activity_detail_menu.xml" value="0.378125" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/menu/activity_main_menu.xml" value="0.378125" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/menu/menu_activity_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/menu/menu_activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2425" />
       </map>
     </option>
