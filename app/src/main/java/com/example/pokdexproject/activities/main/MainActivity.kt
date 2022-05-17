@@ -2,12 +2,10 @@ package com.example.pokdexproject.activities.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.SearchView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -17,13 +15,12 @@ import com.example.pokdexproject.activities.bookmark.BookmarkActivity
 import com.example.pokdexproject.activities.onTeam.OnTeamActivity
 import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityMainBinding
-import com.example.pokdexproject.databinding.DialogMainBinding
 
 class MainActivity : AppCompatActivity() {
-
+    lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(
             this,
             R.layout.activity_main
         ).apply {
@@ -55,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                if(query.isNullOrBlank()) binding.viewModel?.setSearch("")
+                if (query.isNullOrBlank()) binding.viewModel?.setSearch("")
                 else binding.viewModel?.setSearch(query)
                 return true
             }
@@ -77,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
+
     private fun setupAppbar() {
         setSupportActionBar(findViewById(R.id.main_toolbar))
         getSupportActionBar()!!.setDisplayShowTitleEnabled(false)
@@ -85,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_sort -> {
-            MainActivitySortDialog(this ).show()
+            MainActivitySortDialog(this, binding.viewModel!!).show()
 
             true
         }
