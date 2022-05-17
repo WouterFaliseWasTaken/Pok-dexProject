@@ -18,25 +18,23 @@ class MainViewModel(application: Application) : ViewModel() {
         }
 
     private val pokemonRepository = PokemonRepository(getDatabase(application))
-    private val filter = FilterByTag.NONE
 
 
     var queryParameters = MutableLiveData(
         QueryParemeters(
             "",
             (Pair(Criterion.ID, true)),
-            FilterByTag.NONE
         )
     )
 
     fun setSearch(search:String){
-        var queryParams = queryParameters.value
+        val queryParams = queryParameters.value
         queryParams?.search = search
         queryParameters.value = queryParams
     }
 
     fun setSortBy(criterion: Pair<Criterion, Boolean>){
-        var queryParams = queryParameters.value
+        val queryParams = queryParameters.value
         queryParams?.sortByDirection = criterion
         queryParameters.value = queryParams
     }
@@ -69,10 +67,6 @@ class MainViewModel(application: Application) : ViewModel() {
     }
 }
 
-enum class FilterByTag {
-    NONE, ONTEAM, BOOKMARK
-}
-
 enum class Criterion {
     ID, NAME
 }
@@ -80,5 +74,4 @@ enum class Criterion {
 data class QueryParemeters(
     var search: String,
     var sortByDirection: Pair<Criterion, Boolean>,
-    var filterByTag: FilterByTag
 )

@@ -21,12 +21,10 @@ class BookmarkActivity : AppCompatActivity() {
             lifecycleOwner = this@BookmarkActivity
             viewModel = ViewModelProvider(
                 this@BookmarkActivity,
-                MainViewModel.MainViewModelFactory(application)
-            ).get(MainViewModel::class.java)
+                BookmarkViewModel.BookmarkViewModelFactory(application)
+            ).get(BookmarkViewModel::class.java)
         }
 
-        var filter = FilterByTag.BOOKMARK
-        var sortByAscending : Pair<Criterion,Boolean> = Pair(Criterion.ID, true)
 
         val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { data ->
             Log.d(TAG, "Clicked Pokémon number in Bookmark:" + data.id.toString())

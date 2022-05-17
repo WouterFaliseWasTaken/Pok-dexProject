@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokdexproject.R
-import com.example.pokdexproject.activities.main.*
 import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityTeamBinding
 
@@ -16,18 +15,16 @@ class OnTeamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding = DataBindingUtil.setContentView<ActivityTeamBinding>(
-            this,
+            this@OnTeamActivity,
             R.layout.activity_team
         ).apply {
             lifecycleOwner = this@OnTeamActivity
             viewModel = ViewModelProvider(
                 this@OnTeamActivity,
-                MainViewModel.MainViewModelFactory(application)
-            ).get(MainViewModel::class.java)
+                OnTeamViewModel.OnTeamViewModelFactory(application)
+            ).get(OnTeamViewModel::class.java)
         }
 
-        var filter = FilterByTag.ONTEAM
-        var sortByAscending : Pair<Criterion, Boolean> = Pair(Criterion.ID, true)
 
         val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { data ->
             Log.d(TAG, "Clicked Pokémon number in OnTeam:" + data.id.toString())

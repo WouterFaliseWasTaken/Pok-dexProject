@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.pokdexproject.activities.main.MainViewModel" />
+            type="com.example.pokdexproject.activities.bookmark.BookmarkViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
