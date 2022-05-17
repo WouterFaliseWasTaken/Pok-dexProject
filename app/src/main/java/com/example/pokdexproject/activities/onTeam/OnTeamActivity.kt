@@ -25,6 +25,7 @@ class OnTeamActivity : AppCompatActivity() {
             ).get(OnTeamViewModel::class.java)
         }
 
+        setupAppbar()
 
         val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { data ->
             Log.d(TAG, "Clicked Pokémon number in OnTeam:" + data.id.toString())
@@ -38,5 +39,11 @@ class OnTeamActivity : AppCompatActivity() {
             adapter.submitList(it)
         }
 
+    }
+
+    private fun setupAppbar() {
+        setSupportActionBar(findViewById(R.id.team_toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title="Terug"
     }
 }

@@ -25,6 +25,7 @@ class BookmarkActivity : AppCompatActivity() {
             ).get(BookmarkViewModel::class.java)
         }
 
+        setupAppbar()
 
         val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { data ->
             Log.d(TAG, "Clicked Pokémon number in Bookmark:" + data.id.toString())
@@ -38,5 +39,11 @@ class BookmarkActivity : AppCompatActivity() {
             adapter.submitList(it)
         }
 
+    }
+
+    private fun setupAppbar() {
+        setSupportActionBar(findViewById(R.id.bookmark_toolbar))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title="Terug"
     }
 }
