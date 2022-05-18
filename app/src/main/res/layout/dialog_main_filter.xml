@@ -46,20 +46,20 @@
             android:layout_marginStart="13dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="16dp"
-            tools:checkedChip="@id/type_normal_chip"
             app:chipSpacingVertical="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/filter_dialog_text"
             app:singleLine="false"
-            app:singleSelection="false">
+            app:singleSelection="false"
+            tools:checkedChip="@id/type_normal_chip">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/type_normal_chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkable="true"
-                android:text="@string/normal"/>
+                android:text="@string/normal" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/type_fire_chip"
@@ -179,8 +179,28 @@
                 android:layout_height="wrap_content"
                 android:checkable="true"
                 android:text="@string/fairy" />
-            
+
         </com.google.android.material.chip.ChipGroup>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView1"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_option_group">
+
+            <Button
+                android:id="@+id/filter_dialog_unselect_all_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/dark_1"
+                android:contentDescription="@string/apply"
+                android:text="@string/unselect_all" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
@@ -191,7 +211,7 @@
             app:cardCornerRadius="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/filter_option_group">
+            app:layout_constraintTop_toBottomOf="@+id/cardView1">
 
             <Button
                 android:id="@+id/filter_dialog_apply_button"

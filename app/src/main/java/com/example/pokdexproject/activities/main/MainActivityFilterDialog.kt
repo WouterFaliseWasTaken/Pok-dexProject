@@ -29,11 +29,15 @@ class MainActivityFilterDialog(context: Context, val viewModel: MainViewModel) :
     private fun setChecked() {
         findViewById<ChipGroup>(R.id.filter_option_group).apply {
             clearCheck()
-            for (pair in viewModel.queryParameters.value!!.typeIncluded) {
-                if (pair.value) checkChip(pair.key)
-            }
+            checkALl()
         }
 
+    }
+
+    private fun checkALl() {
+        for (pair in viewModel.queryParameters.value!!.typeIncluded) {
+            if (pair.value) checkChip(pair.key)
+        }
     }
 
     private fun checkChip(name: String) {
@@ -69,6 +73,9 @@ class MainActivityFilterDialog(context: Context, val viewModel: MainViewModel) :
         findViewById<Button>(R.id.exit_button_filter).setOnClickListener {
             dismiss()
         }
+        findViewById<Button>(R.id.filter_dialog_unselect_all_button).setOnClickListener{
+            findViewById<ChipGroup>(R.id.filter_option_group).clearCheck()
+        }
         findViewById<Button>(R.id.filter_dialog_apply_button).setOnClickListener {
             viewModel.unselectAllTypes()
             findViewById<ChipGroup>(R.id.filter_option_group).checkedChipIds.forEach {
@@ -76,7 +83,7 @@ class MainActivityFilterDialog(context: Context, val viewModel: MainViewModel) :
                     findViewById<Chip>(it).text.toString()
                 )
             }
+            dismiss()
         }
-        dismiss()
     }
 }

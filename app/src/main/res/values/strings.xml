@@ -69,5 +69,6 @@
     <string name="steel">Steel</string>
     <string name="fairy">Fairy</string>
     <string name="ghost">Ghost</string>
+    <string name="unselect_all">Alles Deselecteren</string>
 
 </resources>
