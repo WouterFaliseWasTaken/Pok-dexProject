@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokdexproject.R
-import com.example.pokdexproject.activities.main.*
 import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityBookmarkBinding
 
@@ -38,12 +37,13 @@ class BookmarkActivity : AppCompatActivity() {
         binding.viewModel?.pokemon?.observe(this) {
             adapter.submitList(it)
         }
-
     }
 
     private fun setupAppbar() {
         setSupportActionBar(findViewById(R.id.bookmark_toolbar))
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title="Terug"
+        supportActionBar?.run {
+            setDisplayHomeAsUpEnabled(true)
+            title = "Terug"
+        }
     }
 }

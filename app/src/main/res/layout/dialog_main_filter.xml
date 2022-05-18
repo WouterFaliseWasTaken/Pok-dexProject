@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/exit_button_filter"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/transparant"
+            android:contentDescription="@string/exit_dialog"
+            android:elevation="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="18dp"
+            app:icon="@drawable/exit_icon"
+            app:iconPadding="0dp"
+            app:iconTint="@color/sort_icon_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/filter_dialog_text"
+            style="@style/header2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="29dp"
+            android:text="@string/filter_dialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filter_option_group"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="16dp"
+            tools:checkedChip="@id/type_normal_chip"
+            app:chipSpacingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_dialog_text"
+            app:singleLine="false"
+            app:singleSelection="false">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_normal_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/normal"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_fire_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/fire" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_fighting_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/fighting" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_water_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/water" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_flying_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/flying" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_grass_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/grass" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_poison_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/poison" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_electric_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/electric" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_ground_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/ground" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_psychic_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/psychic" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_rock_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/rock" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_ice_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/ice" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_bug_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/bug" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_dragon_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/dragon" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_ghost_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/ghost" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_dark_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/dark" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_steel_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/steel" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/type_fairy_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="@string/fairy" />
+            
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_option_group">
+
+            <Button
+                android:id="@+id/filter_dialog_apply_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/dark_1"
+                android:contentDescription="@string/apply"
+                android:text="@string/apply" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

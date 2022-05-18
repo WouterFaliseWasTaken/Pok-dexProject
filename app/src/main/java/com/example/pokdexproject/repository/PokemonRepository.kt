@@ -21,15 +21,16 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         val search = if (pm.search.isNullOrBlank()) {
             "%"
         } else "%" + pm.search + "%"
+        val types = pm.typeIncluded.filter{it.value}.keys.toList().map{it.lowercase()}
         val daoResponse = database.pokemonDao().run {
             when (pm.sortByDirection.first) {
                 Criterion.NAME -> when (pm.sortByDirection.second) {
-                    true -> this.getPokemonSortedByNameAsc(search)
-                    false -> this.getPokemonSortedByNameDesc(search)
+                    true -> this.getPokemonSortedByNameAsc(search,types)
+                    false -> this.getPokemonSortedByNameDesc(search,types)
                 }
                 Criterion.ID -> when (pm.sortByDirection.second) {
-                    true -> this.getPokemonSortedByIdAsc(search)
-                    false -> this.getPokemonSortedByIdDesc(search)
+                    true -> this.getPokemonSortedByIdAsc(search,types)
+                    false -> this.getPokemonSortedByIdDesc(search,types)
                 }
             }
         }

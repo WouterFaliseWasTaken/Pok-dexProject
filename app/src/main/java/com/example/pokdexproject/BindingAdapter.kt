@@ -1,10 +1,11 @@
-package com.example.pokdexproject.adapter
+package com.example.pokdexproject
 
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.model.PokemonModel
 
 

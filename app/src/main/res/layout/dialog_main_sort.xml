@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/exit_button"
+            android:id="@+id/exit_button_sort"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/sort_dialog_text"
+            android:id="@+id/filter_dialog_text"
             style="@style/header2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
             app:chipSpacingVertical="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sort_dialog_text"
+            app:layout_constraintTop_toBottomOf="@id/filter_dialog_text"
             app:singleLine="false"
             app:singleSelection="true">
 

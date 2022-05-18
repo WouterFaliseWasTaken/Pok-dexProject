@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.pokdexproject.database.PokemonRoomDatabase.Companion.getDatabase
 import com.example.pokdexproject.model.PokemonModel
+import com.example.pokdexproject.model.Type
 import com.example.pokdexproject.repository.PokemonRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -24,25 +25,30 @@ class MainViewModel(application: Application) : ViewModel() {
         QueryParemeters(
             "",
             (Pair(Criterion.ID, true)),
+            mutableMapOf<String, Boolean>().apply {
+                for (type in Type.values()){
+                    this += Pair(type.unCapsLock(),true)
+                }
+            }
         )
     )
 
-    fun setSearch(search:String){
+    fun setSearch(search: String) {
         val queryParams = queryParameters.value
         queryParams?.search = search
         queryParameters.value = queryParams
     }
 
-    fun setSortBy(criterion: Pair<Criterion, Boolean>){
+    fun setSortBy(criterion: Pair<Criterion, Boolean>) {
         val queryParams = queryParameters.value
         queryParams?.sortByDirection = criterion
         queryParameters.value = queryParams
     }
 
-    var pokemon: LiveData<List<PokemonModel>> = Transformations.switchMap(queryParameters) { parameters ->
+    var pokemon: LiveData<List<PokemonModel>> =
+        Transformations.switchMap(queryParameters) { parameters ->
             pokemonRepository.getPokemon(parameters)
         }
-
 
     init {
         refreshPokemonFromRepository()
@@ -57,6 +63,20 @@ class MainViewModel(application: Application) : ViewModel() {
             }
         }
 
+    }
+
+    fun unselectAllTypes(){
+        queryParameters.value!!.typeIncluded=mutableMapOf<String, Boolean>().apply {
+            for (type in Type.values()){
+                this += Pair(type.unCapsLock(),false)
+            }
+        }
+    }
+
+    fun selectType(type: String){
+        val queryParams = queryParameters.value
+        queryParams!!.typeIncluded.put(type, true)
+        queryParameters.value = queryParams
     }
 
     class MainViewModelFactory(val application: Application) : ViewModelProvider.Factory {
@@ -74,4 +94,7 @@ enum class Criterion {
 data class QueryParemeters(
     var search: String,
     var sortByDirection: Pair<Criterion, Boolean>,
+    var typeIncluded: MutableMap<String, Boolean>
 )
+
+

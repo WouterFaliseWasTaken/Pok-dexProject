@@ -1,7 +1,7 @@
-package com.example.pokdexproject.data
+package com.example.pokdexproject.data.type.dealsmodifieddamageto
 
-import androidx.room.*
-import com.example.pokdexproject.data.type.TypeData
+import androidx.room.ColumnInfo
+import androidx.room.Entity
 
 @Entity(tableName = "DealsModifiedDamageTo", primaryKeys = ["typeAttacker", "typeDefender"])
 class DealsModifiedDamageTo(

@@ -17,7 +17,7 @@ import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupAppbar() {
         setSupportActionBar(findViewById(R.id.main_toolbar))
-        getSupportActionBar()!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
     }
 
 
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
         R.id.action_filter -> {
 
-            //todo
+            MainActivityFilterDialog(this, binding.viewModel!!).show()
             true
         }
         else -> super.onOptionsItemSelected(item)

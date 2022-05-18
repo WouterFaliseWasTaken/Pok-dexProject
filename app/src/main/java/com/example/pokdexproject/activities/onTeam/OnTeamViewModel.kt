@@ -21,7 +21,6 @@ class OnTeamViewModel(application: Application) : ViewModel() {
         }
 
     private val pokemonRepository = PokemonRepository(getDatabase(application))
-
     val pokemon: LiveData<List<PokemonModel>> = pokemonRepository.getOnTeamPokemon()
 
     init {

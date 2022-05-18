@@ -3,7 +3,6 @@ package com.example.pokdexproject.activities.main
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -22,7 +21,7 @@ class MainActivitySortDialog(context: Context, val viewModel: MainViewModel) : D
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.dialog_main)
+        setContentView(R.layout.dialog_main_sort)
         setUpListeners()
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         //todo: Make window move to the bottom of the screen
@@ -56,7 +55,7 @@ class MainActivitySortDialog(context: Context, val viewModel: MainViewModel) : D
 
             dismiss()
         }
-        findViewById<Button>(R.id.exit_button).setOnClickListener {
+        findViewById<Button>(R.id.exit_button_sort).setOnClickListener {
             dismiss()
         }
     }

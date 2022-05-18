@@ -1,11 +1,10 @@
 package com.example.pokdexproject.database
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.pokdexproject.data.DealsModifiedDamageTo
+import com.example.pokdexproject.data.type.dealsmodifieddamageto.DealsModifiedDamageTo
 import com.example.pokdexproject.data.pokemon.PokemonDao
 import com.example.pokdexproject.data.pokemon.PokemonData
 import com.example.pokdexproject.data.type.TypeDao
@@ -36,8 +35,8 @@ abstract class PokemonRoomDatabase : RoomDatabase() {
                     PokemonRoomDatabase::class.java,
                     "pokemon_database",
                 ).fallbackToDestructiveMigration()
-                    .setQueryCallback(RoomDatabase.QueryCallback { sqlQuery, bindArgs ->
-                        Log.d(TAG,("SQL Query: $sqlQuery SQL Args: $bindArgs"))
+                    .setQueryCallback({ sqlQuery, bindArgs ->
+                        //Log.d(TAG,("SQL Query: $sqlQuery SQL Args: $bindArgs"))
                     }, Executors.newSingleThreadExecutor())
                     .build()
                 INSTANCE = instance
