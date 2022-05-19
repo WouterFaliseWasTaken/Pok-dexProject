@@ -20,6 +20,10 @@ object PokeApi {
     interface PokeApiService {
         @GET("pokemon")
         suspend fun getBasicInfo(): List<PokemonApiData>
+        @GET("pokemonDetails")
+        suspend fun getDetails(): List<PokemonDetailApiData>
+        @GET("species")
+        suspend fun getSpeciesInfo(): List<PokemonSpeciesApiData>
 
         object PokeApi {
             val retrofitService: PokeApiService by lazy {

@@ -1,6 +1,7 @@
 package com.example.pokdexproject.data.pokemon
 
 import androidx.room.*
+import androidx.sqlite.db.SimpleSQLiteQuery
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -38,5 +39,7 @@ interface PokemonDao {
     @Query("SELECT * from Pokemon WHERE ((type1 IN (:types))OR(type2 IN(:types)))AND (name LIKE :search) ORDER BY id DESC")
     fun getPokemonSortedByIdDesc(search: String,types:List<String>): Flow<List<PokemonData>>
 
+    @RawQuery(observedEntities = [PokemonData::class])
+    fun getPokemonDynamic(query:SimpleSQLiteQuery):Flow<List<PokemonData>>
 
 }

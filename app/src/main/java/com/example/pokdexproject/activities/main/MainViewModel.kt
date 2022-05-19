@@ -20,11 +20,10 @@ class MainViewModel(application: Application) : ViewModel() {
 
     private val pokemonRepository = PokemonRepository(getDatabase(application))
 
-
     var queryParameters = MutableLiveData(
         QueryParemeters(
             "",
-            (Pair(Criterion.ID, true)),
+            (Pair(Criterion.ID, Direction.ASCENDING)),
             mutableMapOf<String, Boolean>().apply {
                 for (type in Type.values()){
                     this += Pair(type.unCapsLock(),true)
@@ -39,7 +38,7 @@ class MainViewModel(application: Application) : ViewModel() {
         queryParameters.value = queryParams
     }
 
-    fun setSortBy(criterion: Pair<Criterion, Boolean>) {
+    fun setSortBy(criterion: Pair<Criterion, Direction>) {
         val queryParams = queryParameters.value
         queryParams?.sortByDirection = criterion
         queryParameters.value = queryParams
@@ -87,13 +86,17 @@ class MainViewModel(application: Application) : ViewModel() {
     }
 }
 
-enum class Criterion {
-    ID, NAME
+enum class Criterion(val column:String) {
+    ID("id "), NAME("name ")
+}
+
+enum class Direction(val direction: String){
+    ASCENDING("ASC"), DESCENDING("DESC")
 }
 
 data class QueryParemeters(
     var search: String,
-    var sortByDirection: Pair<Criterion, Boolean>,
+    var sortByDirection: Pair<Criterion, Direction>,
     var typeIncluded: MutableMap<String, Boolean>
 )
 

@@ -82,7 +82,7 @@ data class VersionGroupDetail(
 data class PastType (
     val generation: Species,
     val types: List<Type>
-)   
+)
 
 data class GenerationV(
     @Json(name = "black-white")
