@@ -198,7 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/dark_1"
-                android:contentDescription="@string/apply"
+                android:contentDescription="@string/unselect_all"
                 android:text="@string/unselect_all" />
         </androidx.cardview.widget.CardView>
 

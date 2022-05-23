@@ -15,7 +15,7 @@ data class PokemonSpeciesApiData (
     @Json(name = "evolution_chain")
     val evolutionChain: EvolutionChain,
     @Json(name = "evolves_from_species")
-    val evolvesFromSpecies: Color,
+    val evolvesFromSpecies: Color?,
     @Json(name = "flavor_text_entries")
     val flavorTextEntries: List<FlavorTextEntry>,
     @Json(name = "form_descriptions")

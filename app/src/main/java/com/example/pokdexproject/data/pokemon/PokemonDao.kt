@@ -1,5 +1,6 @@
 package com.example.pokdexproject.data.pokemon
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.sqlite.db.SimpleSQLiteQuery
 import kotlinx.coroutines.flow.Flow
@@ -27,19 +28,9 @@ interface PokemonDao {
     @Query("SELECT * from Pokemon WHERE isOnTeam = 1")
     fun getOnTeamPokemon(): Flow<List<PokemonData>>
 
-    @Query("SELECT * from Pokemon WHERE ((type1 IN (:types))OR(type2 IN(:types)))AND (name LIKE :search) ORDER BY name ASC")
-    fun getPokemonSortedByNameAsc(search: String,types:List<String>): Flow<List<PokemonData>>
-
-    @Query("SELECT * from Pokemon WHERE ((type1 IN (:types))OR(type2 IN(:types)))AND (name LIKE :search) ORDER BY name DESC")
-    fun getPokemonSortedByNameDesc(search: String,types:List<String>): Flow<List<PokemonData>>
-
-    @Query("SELECT * from Pokemon WHERE ((type1 IN (:types))OR(type2 IN(:types)))AND (name LIKE :search) ORDER BY id ASC")
-    fun getPokemonSortedByIdAsc(search: String,types:List<String>): Flow<List<PokemonData>>
-
-    @Query("SELECT * from Pokemon WHERE ((type1 IN (:types))OR(type2 IN(:types)))AND (name LIKE :search) ORDER BY id DESC")
-    fun getPokemonSortedByIdDesc(search: String,types:List<String>): Flow<List<PokemonData>>
-
     @RawQuery(observedEntities = [PokemonData::class])
     fun getPokemonDynamic(query:SimpleSQLiteQuery):Flow<List<PokemonData>>
 
+    @Query("SELECT * from Pokemon WHERE id = :id")
+    fun getSpecificPokemon(id:Int): LiveData<PokemonData>
 }

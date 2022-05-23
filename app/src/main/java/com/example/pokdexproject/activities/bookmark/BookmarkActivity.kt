@@ -1,5 +1,6 @@
 package com.example.pokdexproject.activities.bookmark
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokdexproject.R
+import com.example.pokdexproject.activities.detail.DetailActivity
 import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityBookmarkBinding
 
@@ -26,9 +28,13 @@ class BookmarkActivity : AppCompatActivity() {
 
         setupAppbar()
 
-        val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { data ->
-            Log.d(TAG, "Clicked Pokémon number in Bookmark:" + data.id.toString())
-            //todo: Add intent to go to detail activity
+        val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { listItem ->
+            val intent = Intent(
+                this,
+                DetailActivity::class.java
+            )
+            intent.putExtra("id", listItem.id)
+            startActivity(intent)
         })
         with(binding.recyclerViewBookmark) {
             this.adapter = adapter

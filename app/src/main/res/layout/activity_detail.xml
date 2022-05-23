@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="pokemon"
-            type="com.example.pokdexproject.network.PokemonApiData" />
+            name="viewModel"
+            type="com.example.pokdexproject.activities.detail.DetailViewModel" />
 
         <import type="com.example.pokdexproject.model.Type" />
     </data>
@@ -15,11 +15,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:background="@drawable/bookmark_activity_background">
+        android:background="@drawable/bookmark_activity_background">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="409dp"
+            android:id="@+id/detail_toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:background="@android:color/transparent"
@@ -33,8 +33,8 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintTop_toBottomOf="@+id/detail_toolbar"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -49,6 +49,7 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:text="@{viewModel.basics.name.substring(0,1).toUpperCase() + viewModel.basics.name.substring(1,viewModel.basics.name.length()).toLowerCase()}"
                     tools:text="Bulbasaur" />
 
                 <ImageView
@@ -56,11 +57,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="21dp"
-                    app:imageURL="@{pokemon.sprites.front_default}"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerInside"
+                    app:imageURL="@{viewModel.images[0]}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_view"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    tools:srcCompat="@drawable/pokemon" />
 
                 <TextView
                     android:id="@+id/about_text"
@@ -97,7 +100,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
-                            android:text="@string/lorem_ipsum"
+                            tools:text="@string/lorem_ipsum"
+                            android:text="@{viewModel.details.flavorText}"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +127,7 @@
                             android:layout_marginTop="20dp"
                             app:layout_constraintStart_toEndOf="@id/type_label_text"
                             app:layout_constraintTop_toBottomOf="@id/description_view"
-                            app:typeEnum="@{Type.valueOf(pokemon.types[0].type.name)}" />
+                            app:typeEnum='@{Type.valueOf((viewModel.basics.type1 ?? "NULLTYPE").toUpperCase())}' />
 
                         <include
                             android:id="@+id/detail_type2"
@@ -133,7 +137,7 @@
                             android:layout_marginStart="5dp"
                             app:layout_constraintStart_toEndOf="@id/detail_type1"
                             app:layout_constraintTop_toTopOf="@id/detail_type1"
-                            app:typeEnum='@{Type.valueOf(pokemon.types[1].type.name ?? "NULLTYPE")}' />
+                            app:typeEnum='@{Type.valueOf((viewModel.basics.type2 ?? "NULLTYPE").toUpperCase())}' />
 
                         <LinearLayout
                             android:id="@+id/gen_info_label_list"
@@ -218,6 +222,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text='@{"Nr. "+ String.format("%03d",viewModel.details.id)}'
                                 tools:text="@string/one" />
 
                             <TextView
@@ -227,6 +232,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text='@{String.valueOf(viewModel.details.height-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.height%10) +" m" }'
                                 tools:text="@string/one_meter" />
 
                             <TextView
@@ -236,6 +242,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text='@{String.valueOf(viewModel.details.weight-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.weight%10) +" kg" }'
                                 tools:text="@string/one_kilogram" />
 
                             <TextView
@@ -245,7 +252,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                tools:text="@string/seed" />
+                                android:text="@{viewModel.details.category}"/>
 
                             <TextView
                                 android:id="@+id/gender_value_text"
@@ -254,7 +261,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                tools:text="@string/malefemale" />
+                                android:text="@string/malefemale" />
 
                             <TextView
                                 android:id="@+id/ability_value_text"
@@ -263,6 +270,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text="@{viewModel.abilities[0].name.substring(0,1).toUpperCase + viewModel.abilities[0].name.substring(1,viewModel.abilities[0].name.length()).toLowerCase()}"
                                 tools:text="@string/ability" />
 
                         </LinearLayout>
@@ -384,6 +392,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text="@{String.valueOf(viewModel.details.hp)}"
                                 tools:text="50" />
 
                             <TextView
@@ -393,6 +402,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text="@{String.valueOf(viewModel.details.attack)}"
                                 tools:text="50" />
 
                             <TextView
@@ -402,6 +412,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text="@{String.valueOf(viewModel.details.defense)}"
                                 tools:text="50" />
 
                             <TextView
@@ -411,6 +422,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text="@{String.valueOf(viewModel.details.spattack)}"
                                 tools:text="50" />
 
                             <TextView
@@ -420,6 +432,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text="@{String.valueOf(viewModel.details.spdeffense)}"
                                 tools:text="50" />
 
                             <TextView
@@ -429,6 +442,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text="@{String.valueOf(viewModel.details.speed)}"
                                 tools:text="50" />
 
                             <TextView
@@ -438,6 +452,7 @@
                                 android:layout_marginTop="15dp"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
+                                android:text="@{String.valueOf((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
                                 tools:text="50" />
                         </LinearLayout>
 

@@ -70,5 +70,7 @@
     <string name="fairy">Fairy</string>
     <string name="ghost">Ghost</string>
     <string name="unselect_all">Alles Deselecteren</string>
+    <string name="unBookmark">Uit Favorieten Halen</string>
+    <string name="details">Details</string>
 
 </resources>

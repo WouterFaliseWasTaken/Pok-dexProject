@@ -8,16 +8,25 @@ import android.widget.Button
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokdexproject.R
 import com.example.pokdexproject.activities.bookmark.BookmarkActivity
+import com.example.pokdexproject.activities.detail.DetailActivity
 import com.example.pokdexproject.activities.onTeam.OnTeamActivity
 import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    protected inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(aClass: Class<T>): T = f() as T
+        }
+
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(
@@ -33,7 +42,12 @@ class MainActivity : AppCompatActivity() {
         setupAppbar()
         initializeListeners(binding)
         val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { listItem ->
-            //todo: Add intent to go to detail activity
+            val intent = Intent(
+                this,
+                DetailActivity::class.java
+            )
+            intent.putExtra("id", listItem.id)
+            startActivity(intent)
         })
         with(binding.recyclerView) {
             this.adapter = adapter

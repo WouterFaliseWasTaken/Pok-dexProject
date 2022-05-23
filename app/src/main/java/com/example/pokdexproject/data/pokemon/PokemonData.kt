@@ -14,7 +14,6 @@ class PokemonData(
     @ColumnInfo val type2: String? = null,
     @ColumnInfo val isBookmarked: Boolean = false,
     @ColumnInfo val isOnTeam: Boolean = false
-    //Todo: Expand using detail data from PokeAPI
 )
 
 fun PokemonApiData.asDatabaseModel(): PokemonData {

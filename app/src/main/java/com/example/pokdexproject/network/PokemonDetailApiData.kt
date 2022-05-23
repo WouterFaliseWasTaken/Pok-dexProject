@@ -118,19 +118,19 @@ data class Versions(
 
 data class Sprites(
     @Json(name = "back_default")
-    val backDefault: String,
+    val backDefault: String?,
     @Json(name = "back_female")
     val backFemale: String?,
     @Json(name = "back_shiny")
-    val backShiny: String,
+    val backShiny: String?,
     @Json(name = "back_shiny_female")
     val backShinyFemale: String?,
     @Json(name = "front_default")
-    val frontDefault: String,
+    val frontDefault: String?,
     @Json(name = "front_female")
     val frontFemale: String?,
     @Json(name = "front_shiny")
-    val frontShiny: String,
+    val frontShiny: String?,
     @Json(name = "front_shiny_female")
     val frontShinyFemale: String?,
     val other: Other?,

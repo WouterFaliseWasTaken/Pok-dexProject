@@ -14,28 +14,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e8e2d54-a9d1-4898-8475-af7c8c52626b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/model/DetailedPokemonModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokemonSpeciesApiData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/ability/AbilityDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/ability/AbilityData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/move/MoveDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/move/MoveData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/pokemonDetails/DetailsDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/pokemonDetails/DetailsData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/pokemonDetails/image/ImageDao.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/pokemonDetails/image/ImageData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pokemon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_3_6_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Pokédex.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Pokédex.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivitySortDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivitySortDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ER Diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/ER Diagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/BindingAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/BindingAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/bookmark/BookmarkActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/bookmark/BookmarkActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/onTeam/OnTeamActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/onTeam/OnTeamActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/PokemonDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/PokemonDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/PokemonData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/PokemonData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/type/TypeDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/type/TypeDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/type/TypeData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/type/TypeData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/type/dealsmodifieddamageto/DealsModifiedDamageTo.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/type/dealsmodifieddamageto/DealsModifiedDamageToDao.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/database/PokemonRoomDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/database/PokemonRoomDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/model/DetailedPokemonModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/model/DetailedPokemonModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokeApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokeApiService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokemonDetailApiData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokemonDetailApiData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokemonSpeciesApiData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokemonSpeciesApiData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/repository/PokemonRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/repository/PokemonRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_main_filter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_main_filter.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_activity_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\jeugd\.android\avd\Pixel_3_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\jeugd\.android\avd\Pixel_3_API_30_2.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -76,7 +105,9 @@
         <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
         <option value="resourceFile" />
+        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -109,7 +140,7 @@
     <property name="android-custom-viewC:/Users/jeugd/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.0/976aa22bd46c7748fade98594298bcd36b92f844/material-1.6.0-sources.jar!/com/google/android/material/chip/ChipGroup.java_ChipGroup_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-viewC:/Users/jeugd/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.0/976aa22bd46c7748fade98594298bcd36b92f844/material-1.6.0-sources.jar!/com/google/android/material/chip/ChipGroup.java_SELECTED" value="ChipGroup" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="com.android.tools.idea.sqlite.queryhistory" value="SELECT * from Pokemon WHERE isOnTeam = 1&#10;SELECT * from Pokemon WHERE name LIKE '%%' ORDER BY id DESC&#10;SELECT * from Pokemon WHERE name LIKE '**' ORDER BY id DESC&#10;SELECT * from Pokemon WHERE name LIKE '''**''' ORDER BY id DESC&#10;SELECT * from Pokemon WHERE name = 'charmander' ORDER BY id DESC" />
+    <property name="com.android.tools.idea.sqlite.queryhistory" value="SELECT url from Image WHERE ownerId = '1'&#10;SELECT * from Pokemon WHERE id = '1'&#10;SELECT * from Pokemon WHERE id = 1&#10;SELECT * from Pokemon WHERE isOnTeam = 1&#10;SELECT * from Pokemon WHERE name LIKE '%%' ORDER BY id DESC" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Build Variants" />
     <property name="project.structure.proportion" value="0.17" />
@@ -135,6 +166,7 @@
       <recent name="com.example.pokdexproject.data.Type" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.pokdexproject.data.pokemon" />
       <recent name="com.example.pokdexproject" />
     </key>
   </component>
@@ -223,6 +255,11 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" suspend="THREAD" type="CidrExceptionBreakpoint" />
+      </default-breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.example.pokdexproject.activities.main.MainViewModel" memberName="queryParameters" />
@@ -230,7 +267,7 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="app">
-        <watch expression="((ChipGroup)this).checkableGroup" custom="com.google.android.material.chip.ChipGroup" />
+        <watch expression="(this as ChipGroup).checkableGroup" language="kotlin" custom="import com.google.android.material.chip.ChipGroup" />
       </configuration>
     </watches-manager>
   </component>

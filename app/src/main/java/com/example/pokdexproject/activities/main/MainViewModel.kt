@@ -13,11 +13,6 @@ const val TAG = "PDP.MVM"
 
 class MainViewModel(application: Application) : ViewModel() {
 
-    protected inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(aClass: Class<T>): T = f() as T
-        }
-
     private val pokemonRepository = PokemonRepository(getDatabase(application))
 
     var queryParameters = MutableLiveData(

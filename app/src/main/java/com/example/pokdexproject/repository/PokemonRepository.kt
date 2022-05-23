@@ -4,23 +4,34 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.pokdexproject.activities.main.QueryParemeters
+import com.example.pokdexproject.data.pokemon.PokemonData
+import com.example.pokdexproject.data.pokemon.ability.AbilityData
+import com.example.pokdexproject.data.pokemon.ability.asAbilityData
+import com.example.pokdexproject.data.pokemon.ability.asAbilityRelations
 import com.example.pokdexproject.data.pokemon.asDatabaseModel
+import com.example.pokdexproject.data.pokemon.move.asMoveData
+import com.example.pokdexproject.data.pokemon.move.asMoveRelations
+import com.example.pokdexproject.data.pokemon.pokemonDetails.DetailsData
+import com.example.pokdexproject.data.pokemon.pokemonDetails.image.asImageData
+import com.example.pokdexproject.data.pokemon.pokemonDetails.getDatabaseModel
 import com.example.pokdexproject.database.PokemonRoomDatabase
 import com.example.pokdexproject.model.PokemonModel
 import com.example.pokdexproject.model.asDomainModel
 import com.example.pokdexproject.network.PokeApi
+import com.example.pokdexproject.network.PokeDetailsApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+
+const val TAG = "REPOSITORY"
 
 class PokemonRepository(private val database: PokemonRoomDatabase) {
 
     fun getPokemon(
         pm: QueryParemeters
     ): LiveData<List<PokemonModel>> {
-        val search = if (pm.search.isNullOrBlank()) {
-            "%"
-        } else "%" + pm.search + "%"
+        var search = "%"
+        if (!pm.search.isNullOrBlank()) search += pm.search + "%"
         val types = pm.typeIncluded.filter { it.value }.keys.toList().map { it.lowercase() }
         val query =
             "SELECT * from Pokemon WHERE((type1 in (" +
@@ -42,12 +53,19 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         }
     }
 
-    suspend fun refreshDetails() {
+    suspend fun refreshDetails(id: Int) {
         withContext(Dispatchers.IO) {
-
-
+            val details = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getDetails(id)
+            val species = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getSpeciesInfo(id)
+            database.detailsDao().insertDetails(getDatabaseModel(details, species))
+            database.imageDao().insertAllImages(details.asImageData())
+            database.abilityDao().insertAllAbilities(details.asAbilityData())
+            database.abilityDataCrossRefDao().insertAllRelations(details.asAbilityRelations())
+            database.moveDao().insertAllMoves(details.asMoveData())
+            database.moveDataCrossRefDao().insertAllRelations(details.asMoveRelations())
         }
     }
+
 
     fun getOnTeamPokemon(): LiveData<List<PokemonModel>> {
         return database.pokemonDao().getOnTeamPokemon()
@@ -58,6 +76,23 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         return database.pokemonDao().getBookmarkedPokemon()
             .map { value -> value.map { it.asDomainModel() } }.asLiveData()
     }
+
+    fun getBasics(id: Int): LiveData<PokemonData> {
+        return database.pokemonDao().getSpecificPokemon(id)
+    }
+
+    fun getDetails(id: Int): LiveData<DetailsData> {
+        return database.detailsDao().getPokemonDetails(id)
+    }
+
+    fun getImages(id: Int): LiveData<List<String>> {
+        return database.imageDao().getPokemonsImages(id)
+    }
+
+    fun getAbilities(id: Int): LiveData<List<AbilityData>> {
+        return database.abilityDao().getAbilities(id)
+    }
+
 }
 
 private fun bindTypes(types: List<String>): String {
