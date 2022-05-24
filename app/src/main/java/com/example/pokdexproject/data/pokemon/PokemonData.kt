@@ -12,8 +12,8 @@ class PokemonData(
     @ColumnInfo val spriteURL: String = "",
     @ColumnInfo val type1: String = "",
     @ColumnInfo val type2: String? = null,
-    @ColumnInfo val isBookmarked: Boolean = false,
-    @ColumnInfo val isOnTeam: Boolean = false
+    @ColumnInfo var isBookmarked: Boolean = false,
+    @ColumnInfo var isOnTeam: Boolean = false
 )
 
 fun PokemonApiData.asDatabaseModel(): PokemonData {

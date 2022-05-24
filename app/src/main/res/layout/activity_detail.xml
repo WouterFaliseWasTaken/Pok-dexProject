@@ -10,6 +10,8 @@
             type="com.example.pokdexproject.activities.detail.DetailViewModel" />
 
         <import type="com.example.pokdexproject.model.Type" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +29,7 @@
             android:theme="?attr/actionBarTheme"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:menu="@menu/menu_activity_detail"/>
+            tools:menu="@menu/menu_activity_detail" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -89,8 +91,7 @@
                     app:contentPadding="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/about_text"
-                    tools:visibility="gone">
+                    app:layout_constraintTop_toBottomOf="@+id/about_text">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -252,18 +253,31 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:layout_marginBottom="4dp"
                                 android:text="@{viewModel.details.category}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp" />
 
-                            <TextView
-                                android:id="@+id/gender_value_text"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
-                                android:text="@string/malefemale"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp" />
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/mars_icon"
+                                    android:visibility="@{viewModel.details.genderRatio &lt; 8 ? View.VISIBLE : View.GONE}" />
+
+                                <ImageView
+                                    android:id="@+id/venus_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:src="@drawable/venus_icon"
+                                    android:visibility="@{viewModel.details.genderRatio &gt; 0 ? View.VISIBLE : View.GONE}" />
+                            </LinearLayout>
 
                             <TextView
                                 android:id="@+id/ability_value_text"
@@ -523,8 +537,9 @@
                     android:id="@+id/evolution_list"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
                     android:nestedScrollingEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -554,7 +569,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/dark_1"
-                android:text="@string/add_to_team" />
+                tools:text="@string/add_to_team" />
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

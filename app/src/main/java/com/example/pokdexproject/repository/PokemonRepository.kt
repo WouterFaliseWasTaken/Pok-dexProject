@@ -1,5 +1,6 @@
 package com.example.pokdexproject.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.asLiveData
@@ -98,6 +99,10 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
 
     fun getLineage(inputId: Int): LiveData<List<PokemonData>> {
         return database.pokemonDao().getPokemonLineage(inputId)
+    }
+
+    suspend fun updatePokemon(data: PokemonData) {
+        database.pokemonDao().updatePokemon(data)
     }
 }
 
