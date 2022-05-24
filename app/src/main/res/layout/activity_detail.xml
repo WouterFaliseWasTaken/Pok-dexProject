@@ -26,30 +26,33 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:menu="@menu/menu_activity_detail"/>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_toolbar"
+            app:layout_constraintTop_toBottomOf="@id/detail_toolbar"
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="108dp">
 
                 <TextView
                     android:id="@+id/name_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@{viewModel.basics.name.substring(0,1).toUpperCase() + viewModel.basics.name.substring(1,viewModel.basics.name.length()).toLowerCase()}"
                     android:textColor="@color/white"
                     android:textSize="34sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="@{viewModel.basics.name.substring(0,1).toUpperCase() + viewModel.basics.name.substring(1,viewModel.basics.name.length()).toLowerCase()}"
                     tools:text="Bulbasaur" />
 
                 <ImageView
@@ -99,12 +102,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="8dp"
-                            tools:text="@string/lorem_ipsum"
                             android:text="@{viewModel.details.flavorText}"
                             android:textColor="@color/black"
                             android:textSize="15sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/lorem_ipsum" />
 
                         <TextView
                             android:id="@+id/type_label_text"
@@ -219,9 +222,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text='@{"Nr. "+ String.format("%03d",viewModel.details.id)}'
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text='@{"Nr. "+ String.format("%03d",viewModel.details.id)}'
                                 tools:text="@string/one" />
 
                             <TextView
@@ -229,9 +232,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text='@{String.valueOf(viewModel.details.height-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.height%10) +" m" }'
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text='@{String.valueOf(viewModel.details.height-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.height%10) +" m" }'
                                 tools:text="@string/one_meter" />
 
                             <TextView
@@ -239,9 +242,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text='@{String.valueOf(viewModel.details.weight-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.weight%10) +" kg" }'
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text='@{String.valueOf(viewModel.details.weight-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.weight%10) +" kg" }'
                                 tools:text="@string/one_kilogram" />
 
                             <TextView
@@ -249,27 +252,27 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@{viewModel.details.category}"
                                 android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                android:text="@{viewModel.details.category}"/>
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:id="@+id/gender_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@string/malefemale"
                                 android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                android:text="@string/malefemale" />
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:id="@+id/ability_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@{viewModel.abilities[0].name.substring(0,1).toUpperCase + viewModel.abilities[0].name.substring(1,viewModel.abilities[0].name.length()).toLowerCase()}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text="@{viewModel.abilities[0].name.substring(0,1).toUpperCase + viewModel.abilities[0].name.substring(1,viewModel.abilities[0].name.length()).toLowerCase()}"
                                 tools:text="@string/ability" />
 
                         </LinearLayout>
@@ -300,7 +303,8 @@
                     app:contentPadding="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/stats_text">
+                    app:layout_constraintTop_toBottomOf="@+id/stats_text"
+                    tools:visibility="gone">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -389,9 +393,9 @@
                                 android:id="@+id/hp_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(viewModel.details.hp)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text="@{String.valueOf(viewModel.details.hp)}"
                                 tools:text="50" />
 
                             <TextView
@@ -399,9 +403,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@{String.valueOf(viewModel.details.attack)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text="@{String.valueOf(viewModel.details.attack)}"
                                 tools:text="50" />
 
                             <TextView
@@ -409,9 +413,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@{String.valueOf(viewModel.details.defense)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text="@{String.valueOf(viewModel.details.defense)}"
                                 tools:text="50" />
 
                             <TextView
@@ -419,9 +423,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@{String.valueOf(viewModel.details.spattack)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text="@{String.valueOf(viewModel.details.spattack)}"
                                 tools:text="50" />
 
                             <TextView
@@ -429,9 +433,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@{String.valueOf(viewModel.details.spdeffense)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text="@{String.valueOf(viewModel.details.spdeffense)}"
                                 tools:text="50" />
 
                             <TextView
@@ -439,9 +443,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@{String.valueOf(viewModel.details.speed)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text="@{String.valueOf(viewModel.details.speed)}"
                                 tools:text="50" />
 
                             <TextView
@@ -449,9 +453,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
+                                android:text="@{String.valueOf((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
-                                android:text="@{String.valueOf((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
                                 tools:text="50" />
                         </LinearLayout>
 
@@ -477,8 +481,10 @@
                     android:layout_marginTop="40dp"
                     android:text="@string/moveset"
                     android:textColor="@color/white"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/stats_card" />
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/moveset_card"
@@ -487,6 +493,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginEnd="16dp"
+                    android:visibility="gone"
                     app:cardCornerRadius="10dp"
                     app:contentPadding="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -501,8 +508,54 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
+                <TextView
+                    android:id="@+id/evolution_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/evolution"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/moveset_card" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/evolution_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/evolution_text"
+                    app:layout_goneMarginStart="16dp"
+                    tools:listitem="@layout/list_evolution_item" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/addToTeamButtonCard"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="34dp"
+            app:cardBackgroundColor="@color/transparant"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/addToTeamButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/dark_1"
+                android:text="@string/add_to_team" />
+        </androidx.cardview.widget.CardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

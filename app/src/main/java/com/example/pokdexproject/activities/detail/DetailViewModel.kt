@@ -8,6 +8,9 @@ import com.example.pokdexproject.data.pokemon.ability.AbilityData
 import com.example.pokdexproject.data.pokemon.pokemonDetails.DetailsData
 import com.example.pokdexproject.data.pokemon.pokemonDetails.image.ImageData
 import com.example.pokdexproject.database.PokemonRoomDatabase.Companion.getDatabase
+import com.example.pokdexproject.model.PokemonEvolutionModel
+import com.example.pokdexproject.model.PokemonModel
+import com.example.pokdexproject.model.asEvolutionModel
 import com.example.pokdexproject.repository.PokemonRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +28,12 @@ class DetailViewModel(id: Int, application: Application) : ViewModel() {
     val images: LiveData<List<String>> = pokemonRepository.getImages(id)
     val details: LiveData<DetailsData> = pokemonRepository.getDetails(id)
     val abilities: LiveData<List<AbilityData>> = pokemonRepository.getAbilities(id)
+
+    val lineage: LiveData<List<PokemonData>> = pokemonRepository.getLineage(id)
+    val evolutionChain: LiveData<List<PokemonEvolutionModel>> =
+        Transformations.map(lineage) { data ->
+            data.map{it.asEvolutionModel(id)}
+        }
 
     init {
         viewModelScope.launch {

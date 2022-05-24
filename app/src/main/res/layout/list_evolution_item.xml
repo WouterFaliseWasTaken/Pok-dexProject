@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pokemon"
+            type="com.example.pokdexproject.model.PokemonEvolutionModel" />
+
+        <import type="com.example.pokdexproject.model.Type" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/item_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@{pokemon.focused? @color/white : @color/forty_percent_white}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/item_image_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="false"
+                android:importantForAccessibility="no"
+                app:imageURL="@{pokemon.spriteUrl}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck"
+                tools:srcCompat="@drawable/pokemon" />
+
+            <TextView
+                android:id="@+id/item_name_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:text="@{pokemon.capitaliseName()}"
+                style="@style/list_item_label"
+                app:layout_constraintStart_toEndOf="@+id/item_image_1"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Bulbasaur" />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_chevron_right_24"
+                android:importantForAccessibility="no"/>
+
+            <TextView
+                android:id="@+id/item_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:text="@{pokemon.getIdString()}"
+                style="@style/list_item_id"
+                app:layout_constraintBottom_toBottomOf="@+id/item_image_1"
+                app:layout_constraintStart_toEndOf="@+id/item_image_1"
+                app:layout_constraintTop_toBottomOf="@+id/item_name_1"
+                tools:text="Nr.001" />
+
+            <include
+                android:id="@+id/item_type1"
+                layout="@layout/type_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:typeEnum="@{pokemon.type1}" />
+
+
+            <include
+                android:id="@+id/item_type2"
+                layout="@layout/type_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/item_type1"
+                app:layout_constraintTop_toTopOf="@+id/item_type1"
+                app:typeEnum='@{pokemon.type2}' />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

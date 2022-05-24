@@ -41,6 +41,7 @@ data class Move(
 )
 
 data class EvoChain(
+    val grandPredecessorId: Int?,
     val predecessorId: Int?,
     val childrenIds: List<Int>,
     val grandChildrenIds: List<Int>
@@ -52,6 +53,7 @@ fun getDetailsFromDatabase(
     imageData: List<String>,
     abilityData: List<AbilityData>,
     moveData: List<Pair<Int, MoveData>>,
+    doubleEvolvedFromId: Int,
     evolvedIds: List<Int>,
     doubleEvolvedIds: List<Int>
 ): DetailedPokemonModel {
@@ -82,6 +84,6 @@ fun getDetailsFromDatabase(
             stats.average().toInt()
         ),
         moveData.map { Move(it.first, it.second.name) },
-        EvoChain(detailsData.evolvesFromId, evolvedIds, doubleEvolvedIds)
+        EvoChain(doubleEvolvedFromId,detailsData.evolvesFromId, evolvedIds, doubleEvolvedIds)
     )
 }

@@ -14,7 +14,7 @@ data class MoveData(
 )
 
 fun PokemonDetailApiData.asMoveData():List<MoveData>{
-    return moves.map{MoveData(it.move.url.filter{it.isDigit()}.toInt(),it.move.name)}
+    return moves.map{MoveData(it.move.url.filter{it.isDigit()}.drop(1).toInt(),it.move.name)}
 }
 
 @Entity(primaryKeys = ["moveId", "ownerId"], tableName = "hasMove")
@@ -26,5 +26,5 @@ data class MoveDataCrossRef(
 
 
 fun PokemonDetailApiData.asMoveRelations():List<MoveDataCrossRef>{
-    return moves.map{ MoveDataCrossRef(it.move.url.filter{it.isDigit()}.toInt(),id) }
+    return moves.map{ MoveDataCrossRef(it.move.url.filter{it.isDigit()}.drop(1).toInt(),id) }
 }

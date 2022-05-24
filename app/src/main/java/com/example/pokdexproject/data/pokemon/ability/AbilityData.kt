@@ -13,7 +13,7 @@ data class AbilityData(
 )
 
 fun PokemonDetailApiData.asAbilityData():List<AbilityData>{
-    return abilities.map{AbilityData(it.ability.url.filter{it.isDigit()}.toInt(),it.ability.name)}
+    return abilities.map{AbilityData(it.ability.url.filter{it.isDigit()}.drop(1).toInt(),it.ability.name)}
 }
 
 @Entity(tableName = "HasAbility", primaryKeys = ["abilityId","ownerId"])
@@ -23,5 +23,5 @@ data class AbilityDataCrossRef(
 )
 
 fun PokemonDetailApiData.asAbilityRelations():List<AbilityDataCrossRef>{
-    return abilities.map{ AbilityDataCrossRef(it.ability.url.filter{it.isDigit()}.toInt(),id) }
+    return abilities.map{ AbilityDataCrossRef(it.ability.url.filter{it.isDigit()}.drop(1).toInt(),id) }
 }

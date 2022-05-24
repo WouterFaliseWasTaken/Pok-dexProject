@@ -40,7 +40,7 @@ fun getDatabaseModel(pDAP: PokemonDetailApiData, pSAP: PokemonSpeciesApiData): D
         pDAP.stats[4].baseStat,
         pDAP.stats[5].baseStat,
         if (!pSAP.evolvesFromSpecies?.url?.filter { it.isDigit() }.isNullOrBlank()) {
-            pSAP.evolvesFromSpecies!!.url.filter { it.isDigit() }.toInt()
+            pSAP.evolvesFromSpecies!!.url.filter { it.isDigit() }.drop(1).toInt()
         } else null
     )
 }

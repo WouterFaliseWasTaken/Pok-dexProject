@@ -1,16 +1,19 @@
 package com.example.pokdexproject.activities.detail
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokdexproject.R
+import com.example.pokdexproject.adapter.PokemonEvolutionListAdapter
 import com.example.pokdexproject.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
@@ -44,6 +47,15 @@ class DetailActivity : AppCompatActivity() {
             viewModel = mViewModel
         }
         setupAppbar()
+        val adapter = PokemonEvolutionListAdapter(PokemonEvolutionListAdapter.OnClickListener { })
+        with(binding.evolutionList) {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+        }
+        binding.viewModel?.evolutionChain?.observe(this) {
+            adapter.submitList(it)
+        }
+
     }
 
     private fun setupAppbar() {
@@ -57,13 +69,9 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_bookmark -> {
-            item.isVisible = false
-            findViewById<View>(R.id.action_unbookmark).isVisible = true
             true
         }
         R.id.action_unbookmark -> {
-            item.isVisible = false
-            findViewById<View>(R.id.action_bookmark).isVisible = true
             true
         }
         else -> super.onOptionsItemSelected(item)
@@ -72,7 +80,6 @@ class DetailActivity : AppCompatActivity() {
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_activity_detail, menu)
         //todo: set options to false/true depending on status
-
         return super.onPrepareOptionsMenu(menu)
     }
 }

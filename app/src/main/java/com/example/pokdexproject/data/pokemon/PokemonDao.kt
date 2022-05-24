@@ -19,18 +19,28 @@ interface PokemonDao {
     @Delete
     suspend fun deletePokemon(pokemonData: PokemonData)
 
-    @Query("SELECT * from Pokemon")
+    @Query("SELECT * FROM Pokemon")
     fun getPokemon(): Flow<List<PokemonData>>
 
-    @Query("SELECT * from Pokemon WHERE isBookmarked = 1")
+    @Query("SELECT * FROM Pokemon WHERE isBookmarked = 1")
     fun getBookmarkedPokemon(): Flow<List<PokemonData>>
 
-    @Query("SELECT * from Pokemon WHERE isOnTeam = 1")
+    @Query("SELECT * FROM Pokemon WHERE isOnTeam = 1")
     fun getOnTeamPokemon(): Flow<List<PokemonData>>
 
     @RawQuery(observedEntities = [PokemonData::class])
     fun getPokemonDynamic(query:SimpleSQLiteQuery):Flow<List<PokemonData>>
 
-    @Query("SELECT * from Pokemon WHERE id = :id")
+    @Query("SELECT * FROM Pokemon WHERE id = :id")
     fun getSpecificPokemon(id:Int): LiveData<PokemonData>
+
+    @Query("SELECT * FROM Pokemon WHERE id IN" +
+            "((SELECT evolvesFromId FROM PokemonDetails WHERE id =" 
+                + "(SELECT evolvesFromId FROM PokemonDetails WHERE id = :id))" +
+            ",(SELECT evolvesFromId FROM PokemonDetails WHERE id = :id)," +
+            "(:id)" +
+            ",(SELECT id FROM PokemonDetails WHERE evolvesFromId = :id)," +
+            "(SELECT id FROM PokemonDetails WHERE evolvesFromId IN" +
+            "(SELECT id FROM PokemonDetails WHERE evolvesFromId = :id)))")
+    fun getPokemonLineage(id:Int): LiveData<List<PokemonData>>
 }

@@ -1,7 +1,9 @@
 package com.example.pokdexproject.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.liveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.pokdexproject.activities.main.QueryParemeters
 import com.example.pokdexproject.data.pokemon.PokemonData
@@ -12,11 +14,13 @@ import com.example.pokdexproject.data.pokemon.asDatabaseModel
 import com.example.pokdexproject.data.pokemon.move.asMoveData
 import com.example.pokdexproject.data.pokemon.move.asMoveRelations
 import com.example.pokdexproject.data.pokemon.pokemonDetails.DetailsData
-import com.example.pokdexproject.data.pokemon.pokemonDetails.image.asImageData
 import com.example.pokdexproject.data.pokemon.pokemonDetails.getDatabaseModel
+import com.example.pokdexproject.data.pokemon.pokemonDetails.image.asImageData
 import com.example.pokdexproject.database.PokemonRoomDatabase
+import com.example.pokdexproject.model.PokemonEvolutionModel
 import com.example.pokdexproject.model.PokemonModel
 import com.example.pokdexproject.model.asDomainModel
+import com.example.pokdexproject.model.asEvolutionModel
 import com.example.pokdexproject.network.PokeApi
 import com.example.pokdexproject.network.PokeDetailsApi
 import kotlinx.coroutines.Dispatchers
@@ -66,7 +70,6 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         }
     }
 
-
     fun getOnTeamPokemon(): LiveData<List<PokemonModel>> {
         return database.pokemonDao().getOnTeamPokemon()
             .map { value -> value.map { it.asDomainModel() } }.asLiveData()
@@ -93,6 +96,9 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         return database.abilityDao().getAbilities(id)
     }
 
+    fun getLineage(inputId: Int): LiveData<List<PokemonData>> {
+        return database.pokemonDao().getPokemonLineage(inputId)
+    }
 }
 
 private fun bindTypes(types: List<String>): String {

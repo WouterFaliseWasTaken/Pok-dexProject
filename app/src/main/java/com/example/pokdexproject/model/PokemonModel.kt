@@ -3,7 +3,7 @@ package com.example.pokdexproject.model
 import com.example.pokdexproject.data.pokemon.PokemonData
 import com.example.pokdexproject.network.PokemonApiData
 
-data class PokemonModel(
+open class PokemonModel(
     val id: Int,
     val name: String,
     val spriteUrl: String,
@@ -70,4 +70,27 @@ enum class Type(val color: Int) {
         if (this == NULLTYPE) return ""
         return this.name[0].uppercase() + this.name.substring(1).lowercase()
     }
+}
+
+data class PokemonEvolutionModel(
+    val idS: Int,
+    val nameS: String,
+    val spriteUrlS: String,
+    val type1S: Type,
+    val type2S: Type?,
+    var isBookmarkedS: Boolean = false,
+    var isOnTeamS: Boolean = false,
+    val isFocused: Boolean
+):PokemonModel(idS,nameS,spriteUrlS,type1S,type2S,isBookmarkedS,isOnTeamS)
+fun PokemonData.asEvolutionModel(callerId:Int): PokemonEvolutionModel {
+    return PokemonEvolutionModel(
+        this.id,
+        this.name,
+        this.spriteURL,
+        Type.valueOf(this.type1.uppercase()),
+        Type.valueOf(this.type2?.uppercase() ?: "NULLTYPE"),
+        this.isBookmarked,
+        this.isOnTeam,
+        (callerId == this.id)
+    )
 }
