@@ -91,7 +91,8 @@
                     app:contentPadding="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/about_text">
+                    app:layout_constraintTop_toBottomOf="@+id/about_text"
+                    tools:visibility="gone">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -317,8 +318,7 @@
                     app:contentPadding="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/stats_text"
-                    tools:visibility="gone">
+                    app:layout_constraintTop_toBottomOf="@+id/stats_text">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -344,7 +344,7 @@
                                 android:id="@+id/attack_label_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@string/attack"
                                 android:textColor="#ACB2C1"
                                 android:textSize="15sp" />
@@ -353,7 +353,7 @@
                                 android:id="@+id/defense_label_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@string/defense"
                                 android:textColor="#ACB2C1"
                                 android:textSize="15sp" />
@@ -362,7 +362,7 @@
                                 android:id="@+id/spattack_label_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@string/special_attack"
                                 android:textColor="#ACB2C1"
                                 android:textSize="15sp" />
@@ -371,7 +371,7 @@
                                 android:id="@+id/spdefense_label_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@string/special_defense"
                                 android:textColor="#ACB2C1"
                                 android:textSize="15sp" />
@@ -380,7 +380,7 @@
                                 android:id="@+id/speed_label_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@string/speed"
                                 android:textColor="#ACB2C1"
                                 android:textSize="15sp" />
@@ -389,7 +389,7 @@
                                 android:id="@+id/total_label_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@string/total"
                                 android:textColor="#ACB2C1"
                                 android:textSize="15sp" />
@@ -416,7 +416,7 @@
                                 android:id="@+id/attack_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@{String.valueOf(viewModel.details.attack)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
@@ -426,7 +426,7 @@
                                 android:id="@+id/defense_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@{String.valueOf(viewModel.details.defense)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
@@ -436,7 +436,7 @@
                                 android:id="@+id/spattack_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@{String.valueOf(viewModel.details.spattack)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
@@ -446,7 +446,7 @@
                                 android:id="@+id/spdefense_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@{String.valueOf(viewModel.details.spdeffense)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
@@ -456,7 +456,7 @@
                                 android:id="@+id/speed_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@{String.valueOf(viewModel.details.speed)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
@@ -466,7 +466,7 @@
                                 android:id="@+id/total_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="@{String.valueOf((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
@@ -482,6 +482,67 @@
                             app:layout_constraintStart_toEndOf="@+id/stats_value_list"
                             app:layout_constraintTop_toTopOf="parent">
 
+                            <ProgressBar
+                                android:id="@+id/hp_bar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="8dp"
+                                android:progressTint="@{viewModel.details.hp > 50 ? @color/green : @color/red}"
+                                android:progress="@{viewModel.details.hp}"/>
+
+                            <ProgressBar
+                                android:id="@+id/attack_bar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="27dp"
+                                android:progressTint="@{viewModel.details.attack > 50 ? @color/green : @color/red}"
+                                android:progress="@{viewModel.details.attack}" />
+
+                            <ProgressBar
+                                android:id="@+id/defense_bar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="27dp"
+                                android:progressTint="@{viewModel.details.defense > 50 ? @color/green : @color/red}"
+                                android:progress="@{viewModel.details.defense}"/>
+
+                            <ProgressBar
+                                android:id="@+id/spattack_bar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="27dp"
+                                android:progressTint="@{viewModel.details.spattack > 50 ? @color/green : @color/red}"
+                                android:progress="@{viewModel.details.spattack}"/>
+
+                            <ProgressBar
+                                android:id="@+id/spdefense_bar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="27dp"
+                                android:progressTint="@{viewModel.details.spdeffense > 50 ? @color/green : @color/red}"
+                                android:progress="@{viewModel.details.spdeffense}"/>
+                            <ProgressBar
+                                android:id="@+id/speed_bar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="27dp"
+                                android:progressTint="@{viewModel.details.speed > 50 ? @color/green : @color/red}"
+                                android:progress="@{viewModel.details.speed}"/>
+
+                            <ProgressBar
+                                android:id="@+id/total_bar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:layout_marginTop="27dp"
+                                android:progressTint="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6) > 50 ? @color/green : @color/red}"
+                                android:progress="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"/>
                         </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

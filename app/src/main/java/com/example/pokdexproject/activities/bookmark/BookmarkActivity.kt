@@ -49,7 +49,7 @@ class BookmarkActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.bookmark_toolbar))
         supportActionBar?.run {
             setDisplayHomeAsUpEnabled(true)
-            title = "Terug"
+            title = resources.getString(R.string.back)
         }
     }
 }

@@ -75,5 +75,7 @@
     <string name="evolution">Evolutie</string>
     <string name="add_to_team">\Toevoegen aan mijn Team</string>
     <string name="remove_from_team">Van mijn team verwijderen</string>
+    <string name="back">Terug</string>
+    <string name="home">Hoofdmenu</string>
 
 </resources>

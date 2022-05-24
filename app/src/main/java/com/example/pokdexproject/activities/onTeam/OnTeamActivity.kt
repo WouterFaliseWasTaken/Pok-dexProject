@@ -51,7 +51,7 @@ class OnTeamActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.team_toolbar))
         supportActionBar?.run{
             setDisplayHomeAsUpEnabled(true)
-            title="Terug"
+            title=resources.getString(R.string.back)
         }
     }
 }

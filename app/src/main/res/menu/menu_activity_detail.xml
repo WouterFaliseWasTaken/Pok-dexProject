@@ -5,16 +5,7 @@
 
     <item
         android:id="@+id/action_bookmark"
-        android:icon="@drawable/ic_baseline_favorite_border_24"
+        tools:icon="@drawable/ic_baseline_favorite_border_24"
         android:title="@string/bookmark"
-        app:showAsAction="ifRoom"
-        android:visible="false"
-        tools:visible="true"/>
-    <item
-        android:id="@+id/action_unbookmark"
-        android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="@string/unBookmark"
-        app:showAsAction="ifRoom"
-        android:visible="false"
-        tools:visible="false"/>
+        app:showAsAction="ifRoom"/>
 </menu>
