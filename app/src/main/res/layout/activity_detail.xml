@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="21dp"
                     android:importantForAccessibility="no"
-                    app:imageURL="@{viewModel.images[0]}"
+                    app:imageURL="@{viewModel.images[viewModel.imageNr]}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_view"
@@ -318,7 +318,8 @@
                     app:contentPadding="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/stats_text">
+                    app:layout_constraintTop_toBottomOf="@+id/stats_text"
+                    tools:visibility="gone">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -488,8 +489,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="8dp"
-                                android:progressTint="@{viewModel.details.hp > 50 ? @color/green : @color/red}"
-                                android:progress="@{viewModel.details.hp}"/>
+                                android:max="127"
+                                android:progress="@{viewModel.details.hp}"
+                                android:progressTint="@{viewModel.details.hp > 50 ? @color/green : @color/red}" />
 
                             <ProgressBar
                                 android:id="@+id/attack_bar"
@@ -497,8 +499,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progressTint="@{viewModel.details.attack > 50 ? @color/green : @color/red}"
-                                android:progress="@{viewModel.details.attack}" />
+                                android:max="127"
+                                android:progress="@{viewModel.details.attack}"
+                                android:progressTint="@{viewModel.details.attack > 50 ? @color/green : @color/red}" />
 
                             <ProgressBar
                                 android:id="@+id/defense_bar"
@@ -506,8 +509,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progressTint="@{viewModel.details.defense > 50 ? @color/green : @color/red}"
-                                android:progress="@{viewModel.details.defense}"/>
+                                android:max="127"
+                                android:progress="@{viewModel.details.defense}"
+                                android:progressTint="@{viewModel.details.defense > 50 ? @color/green : @color/red}" />
 
                             <ProgressBar
                                 android:id="@+id/spattack_bar"
@@ -515,8 +519,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progressTint="@{viewModel.details.spattack > 50 ? @color/green : @color/red}"
-                                android:progress="@{viewModel.details.spattack}"/>
+                                android:max="127"
+                                android:progress="@{viewModel.details.spattack}"
+                                android:progressTint="@{viewModel.details.spattack > 50 ? @color/green : @color/red}" />
 
                             <ProgressBar
                                 android:id="@+id/spdefense_bar"
@@ -524,16 +529,17 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progressTint="@{viewModel.details.spdeffense > 50 ? @color/green : @color/red}"
-                                android:progress="@{viewModel.details.spdeffense}"/>
+                                android:progress="127"
+                                android:progressTint="@{viewModel.details.spdeffense > 50 ? @color/green : @color/red}" />
+
                             <ProgressBar
                                 android:id="@+id/speed_bar"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progressTint="@{viewModel.details.speed > 50 ? @color/green : @color/red}"
-                                android:progress="@{viewModel.details.speed}"/>
+                                android:progress="127"
+                                android:progressTint="@{viewModel.details.speed > 50 ? @color/green : @color/red}" />
 
                             <ProgressBar
                                 android:id="@+id/total_bar"
@@ -541,8 +547,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progressTint="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6) > 50 ? @color/green : @color/red}"
-                                android:progress="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"/>
+                                android:progress="127"
+                                android:progressTint="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6) > 50 ? @color/green : @color/red}" />
                         </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -574,13 +580,173 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/moveset_text"
-                    tools:layout_height="250dp">
+                    tools:layout_height="250dp"></androidx.cardview.widget.CardView>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                <TextView
+                    android:id="@+id/type_advantage_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/type_damage"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/moveset_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/type_advantage_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:contentPadding="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/type_advantage_text">
+
+                    <TableLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/no_damage_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/no_damage" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/no_damage_list"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:nestedScrollingEnabled="false"
+                                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                app:spanCount="3"
+                                tools:listitem="@layout/type_view" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/quarter_damage_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/quarter_damage" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/quarter_damage_list"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:nestedScrollingEnabled="false"
+                                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                app:spanCount="3"
+                                tools:listitem="@layout/type_view" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/half_damage_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/half_damage" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/half_damage_list"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:nestedScrollingEnabled="false"
+                                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                app:spanCount="3"
+                                tools:listitem="@layout/type_view" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/full_damage_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/full_damage" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/full_damage_list"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:nestedScrollingEnabled="false"
+                                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                app:spanCount="3"
+                                tools:listitem="@layout/type_view" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/double_damage_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/double_damage" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/double_damage_list"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:nestedScrollingEnabled="false"
+                                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                app:spanCount="3"
+                                tools:listitem="@layout/type_view" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/quadruple_damage_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/quadruple_damage" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/quadruple_damage_list"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:nestedScrollingEnabled="false"
+                                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                                app:spanCount="3"
+                                tools:listitem="@layout/type_view" />
+                        </TableRow>
+                    </TableLayout>
+
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -592,7 +758,7 @@
                     android:text="@string/evolution"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/moveset_card" />
+                    app:layout_constraintTop_toBottomOf="@+id/type_advantage_card" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/evolution_list"
@@ -606,7 +772,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/evolution_text"
                     app:layout_goneMarginStart="16dp"
-                    tools:listitem="@layout/list_evolution_item" />
+                    tools:listitem="@layout/list_evolution_item"
+                    tools:visibility="gone" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
@@ -623,7 +790,8 @@
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="gone">
 
             <Button
                 android:id="@+id/addToTeamButton"

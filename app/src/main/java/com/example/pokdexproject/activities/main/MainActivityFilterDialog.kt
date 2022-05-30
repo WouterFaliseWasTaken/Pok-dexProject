@@ -29,14 +29,19 @@ class MainActivityFilterDialog(context: Context, val viewModel: MainViewModel) :
     private fun setChecked() {
         findViewById<ChipGroup>(R.id.filter_option_group).apply {
             clearCheck()
-            checkALl()
+            checkAllIfTrue()
         }
-
     }
 
-    private fun checkALl() {
+    private fun checkAllIfTrue() {
         for (pair in viewModel.queryParameters.value!!.typeIncluded) {
             if (pair.value) checkChip(pair.key)
+        }
+    }
+
+    private fun checkAll(){
+        for(pair in viewModel.queryParameters.value!!.typeIncluded){
+            if(pair.key != "")checkChip(pair.key)
         }
     }
 
@@ -62,7 +67,7 @@ class MainActivityFilterDialog(context: Context, val viewModel: MainViewModel) :
                     "Dark" -> R.id.type_dark_chip
                     "Steel" -> R.id.type_steel_chip
                     "Fairy" -> R.id.type_fairy_chip
-                    else -> Log.e("PKD.MAFD", "Trying to check non-existent chip!")
+                    else -> Log.e("PKD.MAFD", "Trying to check non-existent chip: $name")
                 }
             )
         }
@@ -75,6 +80,9 @@ class MainActivityFilterDialog(context: Context, val viewModel: MainViewModel) :
         }
         findViewById<Button>(R.id.filter_dialog_unselect_all_button).setOnClickListener{
             findViewById<ChipGroup>(R.id.filter_option_group).clearCheck()
+        }
+        findViewById<Button>(R.id.filter_dialog_select_all_button).setOnClickListener{
+            checkAll()
         }
         findViewById<Button>(R.id.filter_dialog_apply_button).setOnClickListener {
             viewModel.unselectAllTypes()

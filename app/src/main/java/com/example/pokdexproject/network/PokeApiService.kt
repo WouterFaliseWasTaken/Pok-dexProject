@@ -1,5 +1,6 @@
 package com.example.pokdexproject.network
 
+import TypeApiData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -46,6 +47,8 @@ object PokeDetailsApi {
         suspend fun getDetails(@Path("id") id:Int): PokemonDetailApiData
         @GET("pokemon-species/{id}")
         suspend fun getSpeciesInfo(@Path("id") id:Int): PokemonSpeciesApiData
+        @GET("type/{id}")
+        suspend fun getTypeInfo(@Path("id") id:Int) :TypeApiData
 
         object PokeApi {
             val retrofitService: PokeApiService by lazy {

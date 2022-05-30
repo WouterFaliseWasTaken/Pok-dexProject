@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pokdexproject.R
 import com.example.pokdexproject.activities.bookmark.BookmarkActivity
 import com.example.pokdexproject.activities.detail.DetailActivity
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.viewModel?.pokemon?.observe(this) {
             adapter.submitList(it)
+            binding.viewModel?.refreshDetails()
         }
     }
 
@@ -87,13 +89,25 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
+        findViewById<RecyclerView>(R.id.recycler_view).addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) {
+                    //todo: Animate this so it doesn't jump and mess up the scroll
+                    // findViewById<ConstraintLayout>(R.id.collapsibleLayout).visibility = View.GONE
+                } else if (dy < 0) {
+                    //todo: Animate this so it doesn't jump and mess up the scroll
+                    // findViewById<ConstraintLayout>(R.id.collapsibleLayout).visibility = View.VISIBLE
+                }
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
     }
 
     private fun setupAppbar() {
         setSupportActionBar(findViewById(R.id.main_toolbar))
         supportActionBar!!.setDisplayShowTitleEnabled(false)
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_sort -> {

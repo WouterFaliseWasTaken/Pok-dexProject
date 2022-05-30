@@ -21,8 +21,10 @@ interface TypeDataDamageRefDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRelations(typeDataDamageRef: List<TypeDataDamageRef>)
 
-    @Query("SELECT * FROM Type WHERE id = " +"(SELECT attackType FROM DealsDamageTo WHERE ((defenseType = :defenseTypeid) AND (damageModifier = :modifier)))")
-    fun getDamageTypes(defenseTypeid:Int,modifier:Int): Flow<List<TypeData>>
-
+    @Query("SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo " +
+            "WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN " +
+            "(SELECT id FROM Type WHERE name IN (:name))" +
+            ") ORDER BY name")
+    fun getRelations(name:List<String?>):LiveData<List<DamageRelation>>
 
 }

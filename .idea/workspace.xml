@@ -14,18 +14,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e8e2d54-a9d1-4898-8475-af7c8c52626b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/adapter/TypeListAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/TypeApiData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/type_view_for_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Pokédex.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Pokédex.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/bookmark/BookmarkActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/bookmark/BookmarkActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/PokedexApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/PokedexApplication.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/onTeam/OnTeamActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/onTeam/OnTeamActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivityFilterDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivityFilterDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/adapter/PokemonEvolutionListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/adapter/PokemonEvolutionListAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/type/TypeDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/type/TypeDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/type/TypeData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/type/TypeData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/database/PokemonRoomDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/database/PokemonRoomDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/model/DetailedPokemonModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/model/DetailedPokemonModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/model/PokemonModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/model/PokemonModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokeApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/network/PokeApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/repository/PokemonRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/repository/PokemonRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_activity_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_main_filter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_main_filter.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,9 +90,9 @@
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
-        <option value="Kotlin Data Class" />
         <option value="valueResourceFile" />
+        <option value="Kotlin Data Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -97,7 +113,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
+    <property name="DEBUGGABLE_DEVICE" value="Pixel_3_API_30 [emulator-5554]" />
     <property name="DEBUGGABLE_PROCESS" value="com.example.pokdex" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -109,7 +125,7 @@
     <property name="android-custom-viewC:/Users/jeugd/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.0/976aa22bd46c7748fade98594298bcd36b92f844/material-1.6.0-sources.jar!/com/google/android/material/chip/ChipGroup.java_ChipGroup_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-viewC:/Users/jeugd/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.0/976aa22bd46c7748fade98594298bcd36b92f844/material-1.6.0-sources.jar!/com/google/android/material/chip/ChipGroup.java_SELECTED" value="ChipGroup" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="com.android.tools.idea.sqlite.queryhistory" value="SELECT * FROM Pokemon WHERE id IN((SELECT evolvesFromId FROM PokemonDetails WHERE id =(SELECT evolvesFromId FROM PokemonDetails WHERE id = 2)),(SELECT evolvesFromId FROM PokemonDetails WHERE id = 2),(2),(SELECT id FROM PokemonDetails WHERE evolvesFromId = 2),(SELECT id FROM PokemonDetails WHERE evolvesFromId IN(SELECT id FROM PokemonDetails WHERE evolvesFromId = 2))) &#10;SELECT * FROM Pokemon WHERE id IN((SELECT evolvesFromId FROM PokemonDetails WHERE id =(SELECT evolvesFromId FROM PokemonDetails WHERE id = '133')),(SELECT evolvesFromId FROM PokemonDetails WHERE id = '133'),('133'),(SELECT id FROM PokemonDetails WHERE evolvesFromId = '133'),(SELECT id FROM PokemonDetails WHERE evolvesFromId IN(SELECT id FROM PokemonDetails WHERE evolvesFromId = '133')))&#10;SELECT * FROM Pokemon WHERE id IN((SELECT evolvesFromId FROM PokemonDetails WHERE id =(SELECT evolvesFromId FROM PokemonDetails WHERE id = '1')),(SELECT evolvesFromId FROM PokemonDetails WHERE id = '1'),('1'),(SELECT id FROM PokemonDetails WHERE evolvesFromId = '1'),(SELECT id FROM PokemonDetails WHERE evolvesFromId IN(SELECT id FROM PokemonDetails WHERE evolvesFromId = '1')))&#10;SELECT * FROM Pokemon WHERE id IN((SELECT evolvesFromId FROM PokemonDetails WHERE id =(SELECT evolvesFromId FROM PokemonDetails WHERE id = '3')),(SELECT evolvesFromId FROM PokemonDetails WHERE id = '3'),'',(SELECT id FROM PokemonDetails WHERE evolvesFromId = '3'),(SELECT id FROM PokemonDetails WHERE evolvesFromId IN(SELECT id FROM PokemonDetails WHERE evolvesFromId = '3')))&#10;SELECT * FROM Pokemon WHERE id IN((SELECT evolvesFromId FROM PokemonDetails WHERE id =(SELECT evolvesFromId FROM PokemonDetails WHERE id = '3')),(SELECT evolvesFromId FROM PokemonDetails WHERE id = '3'),'3',(SELECT id FROM PokemonDetails WHERE evolvesFromId = '3'),(SELECT id FROM PokemonDetails WHERE evolvesFromId IN(SELECT id FROM PokemonDetails WHERE evolvesFromId = '3')))" />
+    <property name="com.android.tools.idea.sqlite.queryhistory" value="SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('grass', null))) ORDER BY name&#10;SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('grass', 'bug'))) ORDER BY name&#10;SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('grass', 'bug'))) GROUP BY attackType ORDER BY name&#10;SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('grass'))) GROUP BY attackType ORDER BY name&#10;SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType = (SELECT id FROM Type WHERE name = 'grass')) GROUP BY attackType ORDER BY name" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Build Variants" />

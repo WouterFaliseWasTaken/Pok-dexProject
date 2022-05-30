@@ -27,18 +27,6 @@ open class PokemonModel(
     }
 }
 
-fun PokemonApiData.asDomainModel(): PokemonModel {
-    return PokemonModel(
-        this.id,
-        this.name,
-        this.sprites.front_default,
-        Type.valueOf(this.types[0].type.name.uppercase()),
-        if (types.size > 1) {
-            Type.valueOf(this.types[1].type.name.uppercase())
-        } else Type.NULLTYPE
-    )
-}
-
 fun PokemonData.asDomainModel(): PokemonModel {
     return PokemonModel(
         this.id,
@@ -61,7 +49,7 @@ enum class Type(val color: Int) {
     BUG(0xFFA8B820.toInt()), DRAGON(0xFF7038F8.toInt()),
     GHOST(0xFF705898.toInt()), DARK(0xFF705848.toInt()),
     STEEL(0xFFB8B8D0.toInt()), FAIRY(0xFFEE99AC.toInt()),
-    NULLTYPE(0xFFFFFFFF.toInt());
+    NULLTYPE(0x00FFFFFF.toInt());
 
     /**
      * Returns Enum as capitalised, but not all caps. In case the pokemon only has 1 type, returns an empty string for the second type so things don't break.

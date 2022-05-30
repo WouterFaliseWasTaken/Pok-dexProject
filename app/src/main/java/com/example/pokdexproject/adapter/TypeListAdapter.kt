@@ -5,18 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokdexproject.databinding.ListEvolutionItemBinding
-import com.example.pokdexproject.model.PokemonEvolutionModel
+import com.example.pokdexproject.databinding.TypeViewForListBinding
+import com.example.pokdexproject.model.Type
 
-
-class PokemonEvolutionListAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<PokemonEvolutionModel, PokemonEvolutionListAdapter.PokemonDataViewHolder>(
+class TypeListAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<Type, TypeListAdapter.PokemonDataViewHolder>(
         DiffCallBack
     ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): PokemonDataViewHolder {
         return PokemonDataViewHolder(
-            ListEvolutionItemBinding.inflate(
+            TypeViewForListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -32,17 +31,17 @@ class PokemonEvolutionListAdapter(private val onClickListener: OnClickListener) 
         }
     }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<PokemonEvolutionModel>() {
+    companion object DiffCallBack : DiffUtil.ItemCallback<Type>() {
         override fun areItemsTheSame(
-            oldItem: PokemonEvolutionModel,
-            newItem: PokemonEvolutionModel
+            oldItem: Type,
+            newItem: Type
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: PokemonEvolutionModel,
-            newItem: PokemonEvolutionModel
+            oldItem: Type,
+            newItem: Type
         ): Boolean {
             return oldItem == newItem
         }
@@ -50,14 +49,14 @@ class PokemonEvolutionListAdapter(private val onClickListener: OnClickListener) 
 
     }
 
-    class OnClickListener(val clickListener: (apiData: PokemonEvolutionModel) -> Unit) {
-        fun onClick(apiData: PokemonEvolutionModel) = clickListener(apiData)
+    class OnClickListener(val clickListener: (apiData: Type) -> Unit) {
+        fun onClick(apiData: Type) = clickListener(apiData)
     }
 
-    class PokemonDataViewHolder(private var binding: ListEvolutionItemBinding) :
+    class PokemonDataViewHolder(private var binding: TypeViewForListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(pokemonModel: PokemonEvolutionModel) {
-            binding.pokemon = pokemonModel
+        fun bind(type: Type) {
+            binding.typeEnum = type
         }
     }
 }

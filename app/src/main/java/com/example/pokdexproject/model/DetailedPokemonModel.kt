@@ -6,7 +6,6 @@ import com.example.pokdexproject.data.pokemon.move.MoveData
 import com.example.pokdexproject.data.pokemon.pokemonDetails.DetailsData
 
 const val LANGUAGE = "en"
-//todo: Make this a setting
 
 data class DetailedPokemonModel(
     val name: String,

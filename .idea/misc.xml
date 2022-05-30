@@ -24,9 +24,9 @@
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/drawable/team_pokeball.xml" value="0.1865" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.1281793842034806" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_bookmark.xml" value="0.1743486973947896" />
-        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_detail.xml" value="0.843351548269581" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_detail.xml" value="0.40249433106575966" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_detailx.xml" value="0.5" />
-        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_main.xml" value="0.19444444444444445" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_scrolling.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/activity_team.xml" value="0.33" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/dialog_main.xml" value="0.25" />
@@ -40,6 +40,7 @@
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/tes_list_item.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/test_list_item.xml" value="0.19947916666666668" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/type_view.xml" value="0.5" />
+        <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/layout/type_view_for_list.xml" value="0.3233695652173913" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/menu/activity_bookmark_or_team_menu.xml" value="0.378125" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/menu/activity_detail_menu.xml" value="0.378125" />
         <entry key="..\:/Gits/Pok-dexProject/app/src/main/res/menu/activity_main_menu.xml" value="0.378125" />

@@ -1,10 +1,7 @@
 package com.example.pokdexproject.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.liveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.pokdexproject.activities.main.QueryParemeters
 import com.example.pokdexproject.data.pokemon.PokemonData
@@ -17,11 +14,13 @@ import com.example.pokdexproject.data.pokemon.move.asMoveRelations
 import com.example.pokdexproject.data.pokemon.pokemonDetails.DetailsData
 import com.example.pokdexproject.data.pokemon.pokemonDetails.getDatabaseModel
 import com.example.pokdexproject.data.pokemon.pokemonDetails.image.asImageData
+import com.example.pokdexproject.data.pokemon.type.DamageRelation
+import com.example.pokdexproject.data.pokemon.type.TypeDataDamageRefDao
+import com.example.pokdexproject.data.pokemon.type.toDatabaseModel
+import com.example.pokdexproject.data.pokemon.type.toTypeModel
 import com.example.pokdexproject.database.PokemonRoomDatabase
-import com.example.pokdexproject.model.PokemonEvolutionModel
 import com.example.pokdexproject.model.PokemonModel
 import com.example.pokdexproject.model.asDomainModel
-import com.example.pokdexproject.model.asEvolutionModel
 import com.example.pokdexproject.network.PokeApi
 import com.example.pokdexproject.network.PokeDetailsApi
 import kotlinx.coroutines.Dispatchers
@@ -71,6 +70,18 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         }
     }
 
+    suspend fun refreshTypeAdvantages(i: Int) {
+        withContext(Dispatchers.IO) {
+            val apiData = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getTypeInfo(i)
+            database.typeDao().insertType(apiData.toTypeModel())
+            database.typeDataDamageRefDao().insertRelations(apiData.toDatabaseModel())
+        }
+    }
+
+    suspend fun updatePokemon(data: PokemonData) {
+        database.pokemonDao().updatePokemon(data)
+    }
+
     fun getOnTeamPokemon(): LiveData<List<PokemonModel>> {
         return database.pokemonDao().getOnTeamPokemon()
             .map { value -> value.map { it.asDomainModel() } }.asLiveData()
@@ -101,8 +112,8 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         return database.pokemonDao().getPokemonLineage(inputId)
     }
 
-    suspend fun updatePokemon(data: PokemonData) {
-        database.pokemonDao().updatePokemon(data)
+     fun getTypeRelations(type: List<String?>): LiveData<List<DamageRelation>> {
+        return database.typeDataDamageRefDao().getRelations(type)
     }
 }
 

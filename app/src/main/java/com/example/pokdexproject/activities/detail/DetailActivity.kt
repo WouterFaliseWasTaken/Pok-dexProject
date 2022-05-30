@@ -1,6 +1,5 @@
 package com.example.pokdexproject.activities.detail
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -8,15 +7,18 @@ import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.menu.ActionMenuItem
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pokdexproject.R
 import com.example.pokdexproject.adapter.PokemonEvolutionListAdapter
+import com.example.pokdexproject.adapter.TypeListAdapter
 import com.example.pokdexproject.databinding.ActivityDetailBinding
+import com.example.pokdexproject.model.Type
 
 class DetailActivity : AppCompatActivity() {
 
@@ -63,13 +65,31 @@ class DetailActivity : AppCompatActivity() {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(context)
         }
-        binding.viewModel?.evolutionChain?.observe(this) {
-            adapter.submitList(it)
+        binding.viewModel?.run {
+            evolutionChain.observe(this@DetailActivity) {
+                adapter.submitList(it)
+            }
+            basics.observe(this@DetailActivity) {
+                setupListeners()
+            }
+            typeDamageList.observe(this@DetailActivity) {
+                setUpTypeList(binding.noDamageList, typeDamageRelations[0])//no damage
+                setUpTypeList(binding.quarterDamageList, typeDamageRelations[1])//quarter damage
+                setUpTypeList(binding.halfDamageList, typeDamageRelations[2])//half damage
+                setUpTypeList(binding.fullDamageList, typeDamageRelations[3])//full damage
+                setUpTypeList(binding.doubleDamageList, typeDamageRelations[4])//double damage
+                setUpTypeList(binding.quadrupleDamageList, typeDamageRelations[5])//quadruple damage
+            }
         }
-        binding.viewModel?.basics?.observe(this) {
-            setupListeners()
+    }
 
-        }
+
+    private fun setUpTypeList(list: RecyclerView, types: List<Type>) {
+        val adapter = TypeListAdapter(TypeListAdapter.OnClickListener {})
+        list.adapter = adapter
+        list.layoutManager = GridLayoutManager(this, 2)
+        if (types.isNotEmpty()) adapter.submitList(types)
+        //todo: Calculate the spancount dynamically
     }
 
     private fun setupListeners() {
@@ -86,7 +106,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun toggleText(button: Button) {
-        if ((localViewModel.basics.value?.isOnTeam == true).xor(localViewModel.onTeamXor)) {
+        if ((localViewModel.basics.value?.isOnTeam == true)) {
             button.text = resources.getString(R.string.remove_from_team)
         } else {
             button.text = resources.getString(R.string.add_to_team)
@@ -106,9 +126,10 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_bookmark -> {
             localViewModel.toggleBookmark()
-            if(localViewModel.bookmarkXor.xor(localViewModel.basics?.value?.isBookmarked==true))
-                item.icon = ContextCompat.getDrawable(this,R.drawable.ic_baseline_favorite_24)
-            else item.icon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_favorite_border_24)
+            if (localViewModel.basics.value?.isBookmarked == true)
+                item.icon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_favorite_24)
+            else item.icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_baseline_favorite_border_24)
             true
         }
         else -> super.onOptionsItemSelected(item)
@@ -117,8 +138,8 @@ class DetailActivity : AppCompatActivity() {
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_activity_detail, menu)
         val item = menu!!.findItem(R.id.action_bookmark)
-        if(localViewModel.bookmarkXor.xor(localViewModel.basics.value?.isBookmarked==true))
-            item.icon = ContextCompat.getDrawable(this,R.drawable.ic_baseline_favorite_24)
+        if (localViewModel.basics.value?.isBookmarked == true)
+            item.icon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_favorite_24)
         else item.icon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_favorite_border_24)
         return super.onPrepareOptionsMenu(menu)
     }

@@ -32,7 +32,7 @@ const val TAG = "QUERY"
     entities = [PokemonData::class, TypeData::class,DetailsData::class,
         ImageData::class,MoveData::class,AbilityData::class,
         TypeDataDamageRef::class,AbilityDataCrossRef::class,MoveDataCrossRef::class],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class PokemonRoomDatabase : RoomDatabase() {

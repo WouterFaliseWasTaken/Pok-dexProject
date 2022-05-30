@@ -20,8 +20,8 @@ class MainViewModel(application: Application) : ViewModel() {
             "",
             (Pair(Criterion.ID, Direction.ASCENDING)),
             mutableMapOf<String, Boolean>().apply {
-                for (type in Type.values()){
-                    this += Pair(type.unCapsLock(),true)
+                for (type in Type.values()) {
+                    this += Pair(type.unCapsLock(), true)
                 }
             }
         )
@@ -46,6 +46,15 @@ class MainViewModel(application: Application) : ViewModel() {
 
     init {
         refreshPokemonFromRepository()
+        refreshTypeAdvantages()
+    }
+
+    private fun refreshTypeAdvantages() {
+        viewModelScope.launch{
+            for(i in 1 until Type.values().size){
+                pokemonRepository.refreshTypeAdvantages(i)
+            }
+        }
     }
 
 
@@ -59,18 +68,26 @@ class MainViewModel(application: Application) : ViewModel() {
 
     }
 
-    fun unselectAllTypes(){
-        queryParameters.value!!.typeIncluded=mutableMapOf<String, Boolean>().apply {
-            for (type in Type.values()){
-                this += Pair(type.unCapsLock(),false)
+    fun unselectAllTypes() {
+        queryParameters.value!!.typeIncluded = mutableMapOf<String, Boolean>().apply {
+            for (type in Type.values()) {
+                this += Pair(type.unCapsLock(), false)
             }
         }
     }
 
-    fun selectType(type: String){
+    fun selectType(type: String) {
         val queryParams = queryParameters.value
-        queryParams!!.typeIncluded.put(type, true)
+        queryParams!!.typeIncluded[type] = true
         queryParameters.value = queryParams
+    }
+
+    fun refreshDetails() {
+        viewModelScope.launch() {
+            for (i: Int in 1..pokemon.value!!.size) {
+                pokemonRepository.refreshDetails(i)
+            }
+        }
     }
 
     class MainViewModelFactory(val application: Application) : ViewModelProvider.Factory {
@@ -81,11 +98,11 @@ class MainViewModel(application: Application) : ViewModel() {
     }
 }
 
-enum class Criterion(val column:String) {
+enum class Criterion(val column: String) {
     ID("id "), NAME("name ")
 }
 
-enum class Direction(val direction: String){
+enum class Direction(val direction: String) {
     ASCENDING("ASC"), DESCENDING("DESC")
 }
 
