@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 DetailActivity::class.java
             )
             intent.putExtra("id", listItem.id)
+            intent.putExtra("teamCount",binding.viewModel?.onTeamCount?.value)
             startActivity(intent)
         })
         with(binding.recyclerView) {
@@ -89,19 +92,6 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         }
-        findViewById<RecyclerView>(R.id.recycler_view).addOnScrollListener(object :
-            RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0) {
-                    //todo: Animate this so it doesn't jump and mess up the scroll
-                    // findViewById<ConstraintLayout>(R.id.collapsibleLayout).visibility = View.GONE
-                } else if (dy < 0) {
-                    //todo: Animate this so it doesn't jump and mess up the scroll
-                    // findViewById<ConstraintLayout>(R.id.collapsibleLayout).visibility = View.VISIBLE
-                }
-                super.onScrolled(recyclerView, dx, dy)
-            }
-        })
     }
 
     private fun setupAppbar() {

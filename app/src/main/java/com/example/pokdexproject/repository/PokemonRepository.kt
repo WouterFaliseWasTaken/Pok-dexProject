@@ -82,6 +82,14 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         database.pokemonDao().updatePokemon(data)
     }
 
+    fun countOnTeamPokemon(): LiveData<Int>{
+        return database.pokemonDao().countOnTeamPokemon().asLiveData()
+    }
+
+    fun countBookmarkedPokemon(): LiveData<Int>{
+        return database.pokemonDao().countBookmarkedPokemon().asLiveData()
+    }
+
     fun getOnTeamPokemon(): LiveData<List<PokemonModel>> {
         return database.pokemonDao().getOnTeamPokemon()
             .map { value -> value.map { it.asDomainModel() } }.asLiveData()

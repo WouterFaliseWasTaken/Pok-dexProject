@@ -529,7 +529,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progress="127"
+                                android:progress="@{viewModel.details.spdeffense}"
+                                android:max="127"
                                 android:progressTint="@{viewModel.details.spdeffense > 50 ? @color/green : @color/red}" />
 
                             <ProgressBar
@@ -538,7 +539,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progress="127"
+                                android:progress="@{viewModel.details.speed}"
+                                android:max="127"
                                 android:progressTint="@{viewModel.details.speed > 50 ? @color/green : @color/red}" />
 
                             <ProgressBar
@@ -547,7 +549,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
                                 android:layout_marginTop="27dp"
-                                android:progress="127"
+                                android:progress="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
+                                android:max="127"
                                 android:progressTint="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6) > 50 ? @color/green : @color/red}" />
                         </LinearLayout>
 

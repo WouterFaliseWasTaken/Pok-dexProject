@@ -43,4 +43,10 @@ interface PokemonDao {
             "(SELECT id FROM PokemonDetails WHERE evolvesFromId IN" +
             "(SELECT id FROM PokemonDetails WHERE evolvesFromId = :id)))")
     fun getPokemonLineage(id:Int): LiveData<List<PokemonData>>
+
+    @Query ("SELECT Count() FROM Pokemon WHERE isOnTeam = 1")
+    fun countOnTeamPokemon():Flow<Int>
+
+    @Query ("SELECT Count() FROM Pokemon WHERE isBookmarked = 1")
+    fun countBookmarkedPokemon():Flow<Int>
 }

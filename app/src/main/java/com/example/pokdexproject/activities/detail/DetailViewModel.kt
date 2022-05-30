@@ -32,6 +32,7 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
         Transformations.map(lineage) { data ->
             data.map { it.asEvolutionModel(id) }
         }
+
     val typeDamageList: LiveData<List<DamageRelation>> =
         Transformations.switchMap(basics) { basics ->
             pokemonRepository.getTypeRelations(
@@ -62,7 +63,7 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
             val (fullDamageList, rest4) = rest3.partition { it.modifier == 4 }
             val (doubleDamageList, rest5) = rest4.partition { it.modifier == 8 }
             val (quadrupleDamageList, errorList) = rest5.partition { it.modifier == 16 }
-            //did kan beter met custom partition functie(indien lijst gesoorteerd is)
+            //dit kan beter met custom partition functie(indien lijst gesoorteerd is)
             if (errorList.isNotEmpty()) Log.e(TAG, "Type Damage value outside of expected values!")
             return listOf(
                 noDamageList,
@@ -88,7 +89,6 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
             }
         }
     }
-
     fun toggleBookmark() {
         viewModelScope.launch {
             pokemonRepository.updatePokemon(
@@ -96,7 +96,6 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
             )
         }
     }
-
     fun toggleOnTeam() {
         viewModelScope.launch {
             pokemonRepository.updatePokemon(

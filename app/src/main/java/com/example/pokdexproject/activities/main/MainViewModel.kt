@@ -15,6 +15,10 @@ class MainViewModel(application: Application) : ViewModel() {
 
     private val pokemonRepository = PokemonRepository(getDatabase(application))
 
+    val onTeamCount:LiveData<Int> = pokemonRepository.countOnTeamPokemon()
+    val bookmarkedCount:LiveData<Int> = pokemonRepository.countBookmarkedPokemon()
+
+
     var queryParameters = MutableLiveData(
         QueryParemeters(
             "",

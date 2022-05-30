@@ -13,7 +13,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e8e2d54-a9d1-4898-8475-af7c8c52626b" name="Default Changelist" comment="" />
+    <list default="true" id="0e8e2d54-a9d1-4898-8475-af7c8c52626b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/detail/DetailViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/activities/main/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/PokemonDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/data/pokemon/PokemonDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/repository/PokemonRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pokdexproject/repository/PokemonRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,7 +108,7 @@
     <property name="android-custom-viewC:/Users/jeugd/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.0/976aa22bd46c7748fade98594298bcd36b92f844/material-1.6.0-sources.jar!/com/google/android/material/chip/ChipGroup.java_ChipGroup_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-viewC:/Users/jeugd/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.0/976aa22bd46c7748fade98594298bcd36b92f844/material-1.6.0-sources.jar!/com/google/android/material/chip/ChipGroup.java_SELECTED" value="ChipGroup" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="com.android.tools.idea.sqlite.queryhistory" value="SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('fire', 'flying'))) ORDER BY name&#10;SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('grass', null))) ORDER BY name&#10;SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('grass', 'bug'))) ORDER BY name&#10;SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('grass', 'bug'))) GROUP BY attackType ORDER BY name&#10;SELECT Type.name as name, DealsDamageTo.damageModifier as modifier FROM Type, DealsDamageTo WHERE (Type.id = DealsDamageTo.attackType) AND (DealsDamageTo.defenseType IN (SELECT id FROM Type WHERE name IN ('grass'))) GROUP BY attackType ORDER BY name" />
+    <property name="com.android.tools.idea.sqlite.queryhistory" value="SELECT Count() FROM Pokemon WHERE isBookmarked = 1&#10;SELECT Count() FROM Pokemon WHERE isOnTeam = 1&#10;SELECT Count FROM Pokemon WHERE isOnTeam = 1&#10;SELECT Count(*) FROM Pokemon WHERE isOnTeam = 1&#10;SELECT Count(*) FROM Pokemon WHERE isBookmarked = 1" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Build Variants" />
