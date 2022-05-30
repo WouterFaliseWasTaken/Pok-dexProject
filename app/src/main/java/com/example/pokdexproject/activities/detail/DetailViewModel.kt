@@ -50,8 +50,8 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
                 combinedList = typeDamageList.value!!.map { (it * 2) }
             } else {
                 val tempList = mutableListOf<DamageRelation>()
-                for (i in 1..((typeDamageList.value!!.size / 2 - 1))) {
-                    tempList += (typeDamageList.value!![2 * i - 1]) * (typeDamageList.value!![2 * i])
+                for (i in 0 until typeDamageList.value!!.size / 2) {
+                    tempList += (typeDamageList.value!![2 * i]) * (typeDamageList.value!![2 * i+1])
                 }
                 combinedList = tempList
             }
