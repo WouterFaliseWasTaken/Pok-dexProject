@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
                 DetailActivity::class.java
             )
             intent.putExtra("id", listItem.id)
-            intent.putExtra("teamCount",binding.viewModel?.onTeamCount?.value)
             startActivity(intent)
         })
         with(binding.recyclerView) {

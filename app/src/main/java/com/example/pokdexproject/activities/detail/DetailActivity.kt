@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
@@ -39,8 +40,7 @@ class DetailActivity : AppCompatActivity() {
             viewModelFactory {
                 DetailViewModel(
                     id,
-                    application
-                )
+                    application)
             }
         }
         localViewModel = mViewModel
@@ -98,12 +98,15 @@ class DetailActivity : AppCompatActivity() {
                 if (localViewModel.basics.value?.isOnTeam == true) R.string.remove_from_team
                 else R.string.add_to_team
             )
-            setOnClickListener {
-                localViewModel.toggleOnTeam()
-                toggleText(this)
+                setOnClickListener {
+                    if(localViewModel.basics.value?.isOnTeam == true ||((localViewModel.teamCount.value != null)&&(localViewModel.teamCount.value!!<= 5))){
+                        localViewModel.toggleOnTeam()
+                    }
+                    toggleText(this)
+                }
             }
         }
-    }
+
 
     private fun toggleText(button: Button) {
         if ((localViewModel.basics.value?.isOnTeam == true)) {

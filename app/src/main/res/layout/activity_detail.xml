@@ -611,7 +611,8 @@
 
                     <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        >
 
                         <TableRow
                             android:layout_width="match_parent"
@@ -800,7 +801,7 @@
                 android:id="@+id/addToTeamButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/dark_1"
+                android:backgroundTint='@{viewModel.teamCount >= 6 ? (viewModel.basics.isOnTeam ? @color/dark_1 : @color/sort_icon_grey) : @color/dark_1}'
                 tools:text="@string/add_to_team" />
         </androidx.cardview.widget.CardView>
 

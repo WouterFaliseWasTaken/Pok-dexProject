@@ -22,6 +22,7 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
 
     private val pokemonRepository = PokemonRepository(getDatabase(application))
 
+    val teamCount:LiveData<Int> = pokemonRepository.countOnTeamPokemon()
     val basics: LiveData<PokemonData> = pokemonRepository.getBasics(id)
     val imageNr = MutableLiveData(0)
     val images: LiveData<List<String>> = pokemonRepository.getImages(id)
@@ -32,7 +33,6 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
         Transformations.map(lineage) { data ->
             data.map { it.asEvolutionModel(id) }
         }
-
     val typeDamageList: LiveData<List<DamageRelation>> =
         Transformations.switchMap(basics) { basics ->
             pokemonRepository.getTypeRelations(
