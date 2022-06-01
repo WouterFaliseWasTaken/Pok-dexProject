@@ -111,186 +111,185 @@
                             app:layout_constraintTop_toTopOf="parent"
                             tools:text="@string/lorem_ipsum" />
 
-                        <TextView
-                            android:id="@+id/type_label_text"
-                            android:layout_width="wrap_content"
+
+
+
+                        <TableLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="21dp"
-                            android:text="@string/type"
-                            android:textColor="#ACB2C1"
-                            android:textSize="15sp"
-                            app:layout_constraintStart_toStartOf="@+id/description_view"
-                            app:layout_constraintTop_toBottomOf="@+id/description_view" />
+                            app:layout_constraintStart_toStartOf="@id/description_view"
+                            app:layout_constraintTop_toBottomOf="@id/description_view">
+                            <TableRow
+                                android:layout_marginTop="20dp">
 
-                        <include
-                            android:id="@+id/detail_type1"
-                            layout="@layout/type_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="89dp"
-                            android:layout_marginTop="20dp"
-                            app:layout_constraintStart_toEndOf="@id/type_label_text"
-                            app:layout_constraintTop_toBottomOf="@id/description_view"
-                            app:typeEnum='@{Type.valueOf((viewModel.basics.type1 ?? "NULLTYPE").toUpperCase())}' />
-
-                        <include
-                            android:id="@+id/detail_type2"
-                            layout="@layout/type_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            app:layout_constraintStart_toEndOf="@id/detail_type1"
-                            app:layout_constraintTop_toTopOf="@id/detail_type1"
-                            app:typeEnum='@{Type.valueOf((viewModel.basics.type2 ?? "NULLTYPE").toUpperCase())}' />
-
-                        <LinearLayout
-                            android:id="@+id/gen_info_label_list"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/detail_type1"
-                            app:layout_constraintStart_toStartOf="@+id/type_label_text"
-                            app:layout_constraintTop_toBottomOf="@+id/type_label_text">
-
-                            <TextView
-                                android:id="@+id/number_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text="@string/number"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/height_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text="@string/height"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/weight_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text="@string/weight"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/category_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text="@string/category"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/gender_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text="@string/gender"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/ability_labeL_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text="@string/ability"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/gen_info_value_list"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:orientation="vertical"
-                            app:layout_constraintBottom_toBottomOf="@+id/gen_info_label_list"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/gen_info_label_list"
-                            app:layout_constraintTop_toTopOf="@+id/gen_info_label_list">
-
-                            <TextView
-                                android:id="@+id/number_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text='@{"Nr. "+ String.format("%03d",viewModel.details.id)}'
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="@string/one" />
-
-                            <TextView
-                                android:id="@+id/height_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text='@{String.valueOf(viewModel.details.height-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.height%10) +" m" }'
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="@string/one_meter" />
-
-                            <TextView
-                                android:id="@+id/weight_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text='@{String.valueOf(viewModel.details.weight-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.weight%10) +" kg" }'
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="@string/one_kilogram" />
-
-                            <TextView
-                                android:id="@+id/category_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:layout_marginBottom="4dp"
-                                android:text="@{viewModel.details.category}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:orientation="horizontal">
-
-                                <ImageView
+                                <TextView
+                                    android:id="@+id/type_label_text"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/mars_icon"
-                                    android:visibility="@{viewModel.details.genderRatio &lt; 8 ? View.VISIBLE : View.GONE}" />
+                                    android:text="@string/type"
+                                    android:layout_marginTop="1dp"
+                                    android:textColor="#ACB2C1"
+                                    android:textSize="15sp"
+                                    app:layout_constraintStart_toStartOf="@+id/description_view"
+                                    app:layout_constraintTop_toBottomOf="@+id/description_view" />
+                                <LinearLayout
+                                    android:orientation="horizontal">
+                                    <include
+                                        android:id="@+id/detail_type1"
+                                        layout="@layout/type_view"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:layout_constraintStart_toEndOf="@id/type_label_text"
+                                        app:layout_constraintTop_toBottomOf="@id/description_view"
+                                        app:typeEnum='@{Type.valueOf((viewModel.basics.type1 ?? "NULLTYPE").toUpperCase())}' />
 
-                                <ImageView
-                                    android:id="@+id/venus_icon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:src="@drawable/venus_icon"
-                                    android:visibility="@{viewModel.details.genderRatio &gt; 0 ? View.VISIBLE : View.GONE}" />
-                            </LinearLayout>
+                                    <include
+                                        android:id="@+id/detail_type2"
+                                        layout="@layout/type_view"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        app:layout_constraintStart_toEndOf="@id/detail_type1"
+                                        app:layout_constraintTop_toTopOf="@id/detail_type1"
+                                        app:typeEnum='@{Type.valueOf((viewModel.basics.type2 ?? "NULLTYPE").toUpperCase())}' />
 
-                            <TextView
-                                android:id="@+id/ability_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                </LinearLayout>
+                            </TableRow>
+                            <TableRow
                                 android:layout_marginTop="15dp"
-                                android:text="@{viewModel.abilities[0].name.substring(0,1).toUpperCase + viewModel.abilities[0].name.substring(1,viewModel.abilities[0].name.length()).toLowerCase()}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="@string/ability" />
+                                >
+                                <TextView
+                                    android:id="@+id/number_label_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/number"
+                                    android:textColor="#ACB2C1"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:id="@+id/number_value_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text='@{"Nr. "+ String.format("%03d",viewModel.details.id)}'
+                                    android:textColor="#1f2029"
+                                    android:textSize="15sp"
+                                    tools:text="@string/one" />
 
-                        </LinearLayout>
+                            </TableRow>
+                            <TableRow
+                                android:layout_marginTop="15dp"
+                                >
+                                <TextView
+                                    android:id="@+id/height_label_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/height"
+                                    android:textColor="#ACB2C1"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:id="@+id/height_value_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text='@{String.valueOf(viewModel.details.height-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.height%10) +" m" }'
+                                    android:textColor="#1f2029"
+                                    android:textSize="15sp"
+                                    tools:text="@string/one_meter" />
+
+                            </TableRow>
+                            <TableRow
+                                android:layout_marginTop="15dp"
+                                >
+                                <TextView
+                                    android:id="@+id/weight_label_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/weight"
+                                    android:textColor="#ACB2C1"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:id="@+id/weight_value_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text='@{String.valueOf(viewModel.details.weight-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.weight%10) +" kg" }'
+                                    android:textColor="#1f2029"
+                                    android:textSize="15sp"
+                                    tools:text="@string/one_kilogram" />
+
+                            </TableRow>
+                            <TableRow
+                                android:layout_marginTop="15dp"
+                                >
+                                <TextView
+                                    android:id="@+id/category_label_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/category"
+                                    android:textColor="#ACB2C1"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:id="@+id/category_value_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="4dp"
+                                    android:text="@{viewModel.details.category}"
+                                    android:textColor="#1f2029"
+                                    android:textSize="15sp" />
+
+                            </TableRow>
+                            <TableRow
+                                android:layout_marginTop="15dp"
+                                >
+                                <TextView
+                                    android:id="@+id/gender_label_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/gender"
+                                    android:textColor="#ACB2C1"
+                                    android:textSize="15sp" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/mars_icon"
+                                        android:visibility="@{viewModel.details.genderRatio &lt; 8 ? View.VISIBLE : View.GONE}" />
+
+                                    <ImageView
+                                        android:id="@+id/venus_icon"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:src="@drawable/venus_icon"
+                                        android:visibility="@{viewModel.details.genderRatio &gt; 0 ? View.VISIBLE : View.GONE}" />
+                                </LinearLayout>
+
+                            </TableRow>
+                            <TableRow
+                                android:layout_marginTop="15dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/ability_labeL_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ability"
+                                    android:textColor="#ACB2C1"
+                                    android:layout_marginEnd="30dp"
+                                    android:textSize="15sp" />
+                                <TextView
+                                    android:id="@+id/ability_value_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewModel.abilities[0].name.substring(0,1).toUpperCase + viewModel.abilities[0].name.substring(1,viewModel.abilities[0].name.length()).toLowerCase()}"
+                                    android:textColor="#1f2029"
+                                    android:textSize="15sp"
+                                    tools:text="@string/ability" />
+                            </TableRow>
+
+                        </TableLayout>
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -321,17 +320,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/stats_text"
                     tools:visibility="gone">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:id="@+id/stats_label_list"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                        <TableRow>
 
                             <TextView
                                 android:id="@+id/hp_label_text"
@@ -342,219 +335,223 @@
                                 android:textSize="15sp" />
 
                             <TextView
-                                android:id="@+id/attack_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/attack"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/defense_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/defense"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/spattack_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/special_attack"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/spdefense_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/special_defense"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/speed_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/speed"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-
-                            <TextView
-                                android:id="@+id/total_label_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/total"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/stats_value_list"
-                            android:layout_width="30dp"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            app:layout_constraintStart_toEndOf="@+id/stats_label_list"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <TextView
                                 android:id="@+id/hp_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
                                 android:text="@{String.valueOf(viewModel.details.hp)}"
                                 android:textColor="#1f2029"
                                 android:textSize="15sp"
                                 tools:text="50" />
-
-                            <TextView
-                                android:id="@+id/attack_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@{String.valueOf(viewModel.details.attack)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="50" />
-
-                            <TextView
-                                android:id="@+id/defense_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@{String.valueOf(viewModel.details.defense)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="50" />
-
-                            <TextView
-                                android:id="@+id/spattack_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@{String.valueOf(viewModel.details.spattack)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="50" />
-
-                            <TextView
-                                android:id="@+id/spdefense_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@{String.valueOf(viewModel.details.spdeffense)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="50" />
-
-                            <TextView
-                                android:id="@+id/speed_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@{String.valueOf(viewModel.details.speed)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="50" />
-
-                            <TextView
-                                android:id="@+id/total_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@{String.valueOf((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
-                                tools:text="50" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/stats_bar_list"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/stats_value_list"
-                            app:layout_constraintTop_toTopOf="parent">
 
                             <ProgressBar
                                 android:id="@+id/hp_bar"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="8sp"
+                                android:layout_weight="1"
                                 android:max="127"
                                 android:progress="@{viewModel.details.hp}"
                                 android:progressTint="@{viewModel.details.hp > 50 ? @color/green : @color/red}" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/attack_label_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/attack"
+                                android:textColor="#ACB2C1"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/attack_value_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="@{String.valueOf(viewModel.details.attack)}"
+                                android:textColor="#1f2029"
+                                android:textSize="15sp"
+                                tools:text="50" />
 
                             <ProgressBar
                                 android:id="@+id/attack_bar"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
-                                android:layout_marginTop="27dp"
+                                android:layout_marginTop="8sp"
+                                android:layout_weight="1"
                                 android:max="127"
                                 android:progress="@{viewModel.details.attack}"
                                 android:progressTint="@{viewModel.details.attack > 50 ? @color/green : @color/red}" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/defense_label_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/defense"
+                                android:textColor="#ACB2C1"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/defense_value_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="@{String.valueOf(viewModel.details.defense)}"
+                                android:textColor="#1f2029"
+                                android:textSize="15sp"
+                                tools:text="50" />
 
                             <ProgressBar
                                 android:id="@+id/defense_bar"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
-                                android:layout_marginTop="27dp"
+                                android:layout_marginTop="8sp"
+                                android:layout_weight="1"
                                 android:max="127"
                                 android:progress="@{viewModel.details.defense}"
                                 android:progressTint="@{viewModel.details.defense > 50 ? @color/green : @color/red}" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/spattack_label_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/special_attack"
+                                android:textColor="#ACB2C1"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/spattack_value_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="@{String.valueOf(viewModel.details.spattack)}"
+                                android:textColor="#1f2029"
+                                android:textSize="15sp"
+                                tools:text="50" />
 
                             <ProgressBar
                                 android:id="@+id/spattack_bar"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
-                                android:layout_marginTop="27dp"
+                                android:layout_marginTop="8sp"
+                                android:layout_weight="1"
                                 android:max="127"
                                 android:progress="@{viewModel.details.spattack}"
                                 android:progressTint="@{viewModel.details.spattack > 50 ? @color/green : @color/red}" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/spdefense_label_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="@string/special_defense"
+                                android:textColor="#ACB2C1"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/spdefense_value_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="@{String.valueOf(viewModel.details.spdeffense)}"
+                                android:textColor="#1f2029"
+                                android:textSize="15sp"
+                                tools:text="50" />
 
                             <ProgressBar
                                 android:id="@+id/spdefense_bar"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
-                                android:layout_marginTop="27dp"
-                                android:progress="@{viewModel.details.spdeffense}"
+                                android:layout_marginTop="8sp"
+                                android:layout_weight="1"
                                 android:max="127"
+                                android:progress="@{viewModel.details.spdeffense}"
                                 android:progressTint="@{viewModel.details.spdeffense > 50 ? @color/green : @color/red}" />
+
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/speed_label_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/speed"
+                                android:textColor="#ACB2C1"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/speed_value_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="@{String.valueOf(viewModel.details.speed)}"
+                                android:textColor="#1f2029"
+                                android:textSize="15sp"
+                                tools:text="50" />
 
                             <ProgressBar
                                 android:id="@+id/speed_bar"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
-                                android:layout_marginTop="27dp"
-                                android:progress="@{viewModel.details.speed}"
+                                android:layout_marginTop="8sp"
+                                android:layout_weight="1"
                                 android:max="127"
+                                android:progress="@{viewModel.details.speed}"
                                 android:progressTint="@{viewModel.details.speed > 50 ? @color/green : @color/red}" />
+
+                        </TableRow>
+
+                        <TableRow android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:id="@+id/total_label_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total"
+                                android:textColor="#ACB2C1"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/total_value_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="@{String.valueOf((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
+                                android:textColor="#1f2029"
+                                android:textSize="15sp"
+                                tools:text="50" />
 
                             <ProgressBar
                                 android:id="@+id/total_bar"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="4dp"
-                                android:layout_marginTop="27dp"
-                                android:progress="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
+                                android:layout_marginTop="8sp"
+                                android:layout_weight="1"
                                 android:max="127"
+                                android:progress="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
                                 android:progressTint="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6) > 50 ? @color/green : @color/red}" />
-                        </LinearLayout>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        </TableRow>
+                    </TableLayout>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -607,12 +604,12 @@
                     app:contentPadding="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/type_advantage_text">
+                    app:layout_constraintTop_toBottomOf="@+id/type_advantage_text"
+                    tools:visibility="gone">
 
                     <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        >
+                        android:layout_height="match_parent">
 
                         <TableRow
                             android:layout_width="match_parent"

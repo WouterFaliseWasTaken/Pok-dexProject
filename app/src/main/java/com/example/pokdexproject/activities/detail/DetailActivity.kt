@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
@@ -32,15 +31,13 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val id = intent.getIntExtra("id", 0)
-
-
         val mViewModel: DetailViewModel by viewModels {
             viewModelFactory {
                 DetailViewModel(
                     id,
-                    application)
+                    application
+                )
             }
         }
         localViewModel = mViewModel
@@ -83,12 +80,13 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setUpTypeList(list: RecyclerView, types: List<Type>) {
-        val adapter = TypeListAdapter(TypeListAdapter.OnClickListener {})
-        list.adapter = adapter
-        list.layoutManager = GridLayoutManager(this, 2)
-        if (types.isNotEmpty()) adapter.submitList(types)
+        if (types.isNotEmpty()){
+            val adapter = TypeListAdapter(TypeListAdapter.OnClickListener {})
+            list.adapter = adapter
+            list.layoutManager = GridLayoutManager(this, 2)
+            adapter.submitList(types)
+        }
         //todo: Calculate the spancount dynamically
     }
 
@@ -98,15 +96,14 @@ class DetailActivity : AppCompatActivity() {
                 if (localViewModel.basics.value?.isOnTeam == true) R.string.remove_from_team
                 else R.string.add_to_team
             )
-                setOnClickListener {
-                    if(localViewModel.basics.value?.isOnTeam == true ||((localViewModel.teamCount.value != null)&&(localViewModel.teamCount.value!!<= 5))){
-                        localViewModel.toggleOnTeam()
-                    }
-                    toggleText(this)
+            setOnClickListener {
+                if (localViewModel.basics.value?.isOnTeam == true || ((localViewModel.teamCount.value != null) && (localViewModel.teamCount.value!! <= 5))) {
+                    localViewModel.toggleOnTeam()
                 }
+                toggleText(this)
             }
         }
-
+    }
 
     private fun toggleText(button: Button) {
         if ((localViewModel.basics.value?.isOnTeam == true)) {
