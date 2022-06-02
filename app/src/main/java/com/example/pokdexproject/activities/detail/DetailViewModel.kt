@@ -56,7 +56,6 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
                 }
                 combinedList = tempList
             }
-            Log.d(TAG, combinedList.toString())
             val (noDamageList, rest1) = combinedList.partition { it.modifier == 0 }
             val (quarterDamageList, rest2) = rest1.partition { it.modifier == 1 }
             val (halfDamageList, rest3) = rest2.partition { it.modifier == 2 }

@@ -15,8 +15,8 @@ class MainViewModel(application: Application) : ViewModel() {
 
     private val pokemonRepository = PokemonRepository(getDatabase(application))
 
-    val onTeamCount:LiveData<Int> = pokemonRepository.countOnTeamPokemon()
-    val bookmarkedCount:LiveData<Int> = pokemonRepository.countBookmarkedPokemon()
+    val onTeamCount: LiveData<Int> = pokemonRepository.countOnTeamPokemon()
+    val bookmarkedCount: LiveData<Int> = pokemonRepository.countBookmarkedPokemon()
 
 
     var queryParameters = MutableLiveData(
@@ -54,8 +54,8 @@ class MainViewModel(application: Application) : ViewModel() {
     }
 
     private fun refreshTypeAdvantages() {
-        viewModelScope.launch{
-            for(i in 1 until Type.values().size){
+        viewModelScope.launch {
+            for (i in 1 until Type.values().size) {
                 pokemonRepository.refreshTypeAdvantages(i)
             }
         }
@@ -87,7 +87,7 @@ class MainViewModel(application: Application) : ViewModel() {
     }
 
     fun refreshDetails() {
-        viewModelScope.launch() {
+        viewModelScope.launch {
             for (i: Int in 1..pokemon.value!!.size) {
                 pokemonRepository.refreshDetails(i)
             }

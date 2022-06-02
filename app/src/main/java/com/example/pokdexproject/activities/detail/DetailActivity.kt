@@ -1,12 +1,16 @@
 package com.example.pokdexproject.activities.detail
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
@@ -19,6 +23,7 @@ import com.example.pokdexproject.adapter.PokemonEvolutionListAdapter
 import com.example.pokdexproject.adapter.TypeListAdapter
 import com.example.pokdexproject.databinding.ActivityDetailBinding
 import com.example.pokdexproject.model.Type
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -68,6 +73,7 @@ class DetailActivity : AppCompatActivity() {
             }
             basics.observe(this@DetailActivity) {
                 setupListeners()
+                setBackgroundGradient(this.basics.value?.type1)
             }
             typeDamageList.observe(this@DetailActivity) {
                 setUpTypeList(binding.noDamageList, typeDamageRelations[0])//no damage
@@ -80,8 +86,29 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun setBackgroundGradient(type: String?) {
+        if (type != null) {
+            val color = Type.valueOf(type.uppercase()).color
+            val hSV = FloatArray(3)//Hue, Saturation, Value
+            Color.RGBToHSV(
+                (color and 0x00FF0000) shr 16,
+                (color and 0x0000FF00) shr 8,
+                color and 0x000000FF,
+                hSV
+            )
+            val gradient = GradientDrawable(
+                GradientDrawable.Orientation.LEFT_RIGHT,
+                intArrayOf(
+                    Color.HSVToColor(floatArrayOf(hSV[0], hSV[1] * 85 / 100, hSV[2])),
+                    Color.HSVToColor(floatArrayOf(hSV[0], hSV[1] * 50 / 100, hSV[2]))
+                )
+            )
+            findViewById<ConstraintLayout>(R.id.detail_layout).background = gradient
+        }
+    }
+
     private fun setUpTypeList(list: RecyclerView, types: List<Type>) {
-        if (types.isNotEmpty()){
+        if (types.isNotEmpty()) {
             val adapter = TypeListAdapter(TypeListAdapter.OnClickListener {})
             list.adapter = adapter
             list.layoutManager = GridLayoutManager(this, 2)

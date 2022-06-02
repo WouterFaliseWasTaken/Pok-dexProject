@@ -15,6 +15,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detail_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bookmark_activity_background">
@@ -71,12 +72,12 @@
 
                 <TextView
                     android:id="@+id/about_text"
+                    style="@style/detail_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/about"
-                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_image_view" />
 
@@ -112,28 +113,26 @@
                             tools:text="@string/lorem_ipsum" />
 
 
-
-
                         <TableLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintStart_toStartOf="@id/description_view"
                             app:layout_constraintTop_toBottomOf="@id/description_view">
-                            <TableRow
-                                android:layout_marginTop="20dp">
+
+                            <TableRow android:layout_marginTop="20dp">
 
                                 <TextView
                                     android:id="@+id/type_label_text"
+                                    style="@style/detail_label"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/type"
                                     android:layout_marginTop="1dp"
-                                    android:textColor="#ACB2C1"
-                                    android:textSize="15sp"
+                                    android:text="@string/type"
                                     app:layout_constraintStart_toStartOf="@+id/description_view"
                                     app:layout_constraintTop_toBottomOf="@+id/description_view" />
-                                <LinearLayout
-                                    android:orientation="horizontal">
+
+                                <LinearLayout android:orientation="horizontal">
+
                                     <include
                                         android:id="@+id/detail_type1"
                                         layout="@layout/type_view"
@@ -155,96 +154,92 @@
 
                                 </LinearLayout>
                             </TableRow>
-                            <TableRow
-                                android:layout_marginTop="15dp"
-                                >
+
+                            <TableRow android:layout_marginTop="15dp">
+
                                 <TextView
                                     android:id="@+id/number_label_text"
+                                    style="@style/detail_label"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/number"
-                                    android:textColor="#ACB2C1"
-                                    android:textSize="15sp" />
+                                    android:text="@string/number" />
+
                                 <TextView
                                     android:id="@+id/number_value_text"
+                                    style="@style/detail_value_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text='@{"Nr. "+ String.format("%03d",viewModel.details.id)}'
-                                    android:textColor="#1f2029"
-                                    android:textSize="15sp"
                                     tools:text="@string/one" />
 
                             </TableRow>
-                            <TableRow
-                                android:layout_marginTop="15dp"
-                                >
+
+                            <TableRow android:layout_marginTop="15dp">
+
                                 <TextView
                                     android:id="@+id/height_label_text"
+                                    style="@style/detail_label"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/height"
-                                    android:textColor="#ACB2C1"
-                                    android:textSize="15sp" />
+                                    android:text="@string/height" />
+
                                 <TextView
                                     android:id="@+id/height_value_text"
+                                    style="@style/detail_value_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text='@{String.valueOf(viewModel.details.height-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.height%10) +" m" }'
-                                    android:textColor="#1f2029"
-                                    android:textSize="15sp"
                                     tools:text="@string/one_meter" />
 
                             </TableRow>
-                            <TableRow
-                                android:layout_marginTop="15dp"
-                                >
+
+                            <TableRow android:layout_marginTop="15dp">
+
                                 <TextView
                                     android:id="@+id/weight_label_text"
+                                    style="@style/detail_label"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/weight"
-                                    android:textColor="#ACB2C1"
-                                    android:textSize="15sp" />
+                                    android:text="@string/weight" />
+
                                 <TextView
                                     android:id="@+id/weight_value_text"
+                                    style="@style/detail_value_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text='@{String.valueOf(viewModel.details.weight-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.weight%10) +" kg" }'
-                                    android:textColor="#1f2029"
-                                    android:textSize="15sp"
                                     tools:text="@string/one_kilogram" />
 
                             </TableRow>
-                            <TableRow
-                                android:layout_marginTop="15dp"
-                                >
+
+                            <TableRow android:layout_marginTop="15dp">
+
                                 <TextView
                                     android:id="@+id/category_label_text"
+                                    style="@style/detail_label"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/category"
-                                    android:textColor="#ACB2C1"
-                                    android:textSize="15sp" />
+                                    android:text="@string/category" />
+
                                 <TextView
                                     android:id="@+id/category_value_text"
+                                    style="@style/detail_value_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="4dp"
-                                    android:text="@{viewModel.details.category}"
-                                    android:textColor="#1f2029"
-                                    android:textSize="15sp" />
+                                    android:text="@{viewModel.details.category}" />
 
                             </TableRow>
-                            <TableRow
-                                android:layout_marginTop="15dp"
-                                >
+
+                            <TableRow android:layout_marginTop="15dp">
+
                                 <TextView
                                     android:id="@+id/gender_label_text"
+                                    style="@style/detail_label"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/gender"
-                                    android:textColor="#ACB2C1"
-                                    android:textSize="15sp" />
+                                    android:text="@string/gender" />
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -266,25 +261,23 @@
                                 </LinearLayout>
 
                             </TableRow>
-                            <TableRow
-                                android:layout_marginTop="15dp"
-                                >
+
+                            <TableRow android:layout_marginTop="15dp">
 
                                 <TextView
                                     android:id="@+id/ability_labeL_text"
+                                    style="@style/detail_label"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/ability"
-                                    android:textColor="#ACB2C1"
                                     android:layout_marginEnd="30dp"
-                                    android:textSize="15sp" />
+                                    android:text="@string/ability" />
+
                                 <TextView
                                     android:id="@+id/ability_value_text"
+                                    style="@style/detail_value_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@{viewModel.abilities[0].name.substring(0,1).toUpperCase + viewModel.abilities[0].name.substring(1,viewModel.abilities[0].name.length()).toLowerCase()}"
-                                    android:textColor="#1f2029"
-                                    android:textSize="15sp"
                                     tools:text="@string/ability" />
                             </TableRow>
 
@@ -297,12 +290,12 @@
 
                 <TextView
                     android:id="@+id/stats_text"
+                    style="@style/detail_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/stats"
-                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/gen_info_card" />
 
@@ -328,20 +321,18 @@
 
                             <TextView
                                 android:id="@+id/hp_label_text"
+                                style="@style/detail_label"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/hp"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
+                                android:text="@string/hp" />
 
                             <TextView
                                 android:id="@+id/hp_value_text"
+                                style="@style/detail_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:text="@{String.valueOf(viewModel.details.hp)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
                                 tools:text="50" />
 
                             <ProgressBar
@@ -360,20 +351,18 @@
 
                             <TextView
                                 android:id="@+id/attack_label_text"
+                                style="@style/detail_label"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/attack"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
+                                android:text="@string/attack" />
 
                             <TextView
                                 android:id="@+id/attack_value_text"
+                                style="@style/detail_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:text="@{String.valueOf(viewModel.details.attack)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
                                 tools:text="50" />
 
                             <ProgressBar
@@ -392,20 +381,18 @@
 
                             <TextView
                                 android:id="@+id/defense_label_text"
+                                style="@style/detail_label"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/defense"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
+                                android:text="@string/defense" />
 
                             <TextView
                                 android:id="@+id/defense_value_text"
+                                style="@style/detail_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:text="@{String.valueOf(viewModel.details.defense)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
                                 tools:text="50" />
 
                             <ProgressBar
@@ -424,20 +411,18 @@
 
                             <TextView
                                 android:id="@+id/spattack_label_text"
+                                style="@style/detail_label"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/special_attack"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
+                                android:text="@string/special_attack" />
 
                             <TextView
                                 android:id="@+id/spattack_value_text"
+                                style="@style/detail_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:text="@{String.valueOf(viewModel.details.spattack)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
                                 tools:text="50" />
 
                             <ProgressBar
@@ -456,21 +441,19 @@
 
                             <TextView
                                 android:id="@+id/spdefense_label_text"
+                                style="@style/detail_label"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
-                                android:text="@string/special_defense"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
+                                android:text="@string/special_defense" />
 
                             <TextView
                                 android:id="@+id/spdefense_value_text"
+                                style="@style/detail_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:text="@{String.valueOf(viewModel.details.spdeffense)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
                                 tools:text="50" />
 
                             <ProgressBar
@@ -490,20 +473,18 @@
 
                             <TextView
                                 android:id="@+id/speed_label_text"
+                                style="@style/detail_label"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/speed"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
+                                android:text="@string/speed" />
 
                             <TextView
                                 android:id="@+id/speed_value_text"
+                                style="@style/detail_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:text="@{String.valueOf(viewModel.details.speed)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
                                 tools:text="50" />
 
                             <ProgressBar
@@ -523,20 +504,18 @@
 
                             <TextView
                                 android:id="@+id/total_label_text"
+                                style="@style/detail_label"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/total"
-                                android:textColor="#ACB2C1"
-                                android:textSize="15sp" />
+                                android:text="@string/total" />
 
                             <TextView
                                 android:id="@+id/total_value_text"
+                                style="@style/detail_value_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="5dp"
                                 android:text="@{String.valueOf((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
-                                android:textColor="#1f2029"
-                                android:textSize="15sp"
                                 tools:text="50" />
 
                             <ProgressBar
@@ -584,12 +563,12 @@
 
                 <TextView
                     android:id="@+id/type_advantage_text"
+                    style="@style/detail_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/type_damage"
-                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/moveset_card" />
 
@@ -752,12 +731,12 @@
 
                 <TextView
                     android:id="@+id/evolution_text"
+                    style="@style/detail_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/evolution"
-                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/type_advantage_card" />
 
