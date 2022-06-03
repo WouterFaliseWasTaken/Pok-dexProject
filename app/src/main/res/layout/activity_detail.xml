@@ -600,7 +600,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/no_damage" />
 
-                            <androidx.recyclerview.widget.RecyclerView
+                            <com.google.android.material.chip.ChipGroup
                                 android:id="@+id/no_damage_list"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -623,7 +623,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/quarter_damage" />
 
-                            <androidx.recyclerview.widget.RecyclerView
+                            <com.google.android.material.chip.ChipGroup
                                 android:id="@+id/quarter_damage_list"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -646,7 +646,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/half_damage" />
 
-                            <androidx.recyclerview.widget.RecyclerView
+                            <com.google.android.material.chip.ChipGroup
                                 android:id="@+id/half_damage_list"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -669,7 +669,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/full_damage" />
 
-                            <androidx.recyclerview.widget.RecyclerView
+                            <com.google.android.material.chip.ChipGroup
                                 android:id="@+id/full_damage_list"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -692,7 +692,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/double_damage" />
 
-                            <androidx.recyclerview.widget.RecyclerView
+                            <com.google.android.material.chip.ChipGroup
                                 android:id="@+id/double_damage_list"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -715,7 +715,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/quadruple_damage" />
 
-                            <androidx.recyclerview.widget.RecyclerView
+                            <com.google.android.material.chip.ChipGroup
                                 android:id="@+id/quadruple_damage_list"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

@@ -1,13 +1,17 @@
 package com.example.pokdexproject.activities.detail
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Rect
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.util.Log
+import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +27,8 @@ import com.example.pokdexproject.adapter.PokemonEvolutionListAdapter
 import com.example.pokdexproject.adapter.TypeListAdapter
 import com.example.pokdexproject.databinding.ActivityDetailBinding
 import com.example.pokdexproject.model.Type
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 
 
 class DetailActivity : AppCompatActivity() {
@@ -107,14 +113,36 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpTypeList(list: RecyclerView, types: List<Type>) {
+    private fun setUpTypeList(list: ChipGroup, types: List<Type>) {
         if (types.isNotEmpty()) {
-            val adapter = TypeListAdapter(TypeListAdapter.OnClickListener {})
-            list.adapter = adapter
-            list.layoutManager = GridLayoutManager(this, 2)
-            adapter.submitList(types)
+            list.removeAllViews()
+            for(i:Int in types.indices){
+                val chip = Chip(this).apply{
+                    this.isCheckable = false
+                    this.text = (types[i].name[0].uppercase() + types[i].name.drop(1).lowercase())
+                    this.setTextColor(resources.getColor(R.color.white))
+                    this.chipBackgroundColor = ColorStateList(
+                        arrayOf(
+                            intArrayOf(android.R.attr.state_checked),
+                            intArrayOf(-android.R.attr.state_checked)
+                        ),
+                        intArrayOf(types[i].color,types[i].color)
+                    )
+                    //there are better ways of doing that, but that is SDK 23, and this is SDK 21.
+                }
+                list.addView(chip)
+            }
         }
-        //todo: Calculate the spancount dynamically
+    }
+
+    private fun getSpanCount(width: Int): Int {
+        val marginWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,(3.0f+10.0f+10.0f),resources.displayMetrics).toInt()
+        return width / (getTextWidth() + marginWidth)
+    }
+
+    private fun getTextWidth(): Int {
+        return 150//this is a complete guess
+        //todo: Calculate this properly.
     }
 
     private fun setupListeners() {

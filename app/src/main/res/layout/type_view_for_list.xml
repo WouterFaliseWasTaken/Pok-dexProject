@@ -12,7 +12,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/typeView"
+        android:id="@+id/typeViewForList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@{typeEnum.color}"
@@ -27,7 +27,7 @@
         tools:cardBackgroundColor="#0000FF">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/typeTextForList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{typeEnum.unCapsLock()}"
