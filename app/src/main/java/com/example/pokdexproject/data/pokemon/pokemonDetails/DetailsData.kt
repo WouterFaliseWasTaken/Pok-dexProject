@@ -28,7 +28,10 @@ data class DetailsData(
 fun getDatabaseModel(pDAP: PokemonDetailApiData, pSAP: PokemonSpeciesApiData): DetailsData {
     return DetailsData(
         pDAP.id,
-        pSAP.flavorTextEntries.filter { it.language.name == LANGUAGE }[0].flavorText.replace( "\n"," "),
+        pSAP.flavorTextEntries.filter { it.language.name == LANGUAGE }[0].flavorText.replace(
+            "\n",
+            " "
+        ),
         pDAP.height,
         pDAP.weight,
         pSAP.genera.filter { it.language.name == LANGUAGE }[0].genus,

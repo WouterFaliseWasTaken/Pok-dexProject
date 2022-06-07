@@ -9,7 +9,7 @@ import com.example.pokdexproject.databinding.ListItemBinding
 import com.example.pokdexproject.model.PokemonModel
 
 
-class   PokemonListAdapter(private val onClickListener: OnClickListener) :
+class PokemonListAdapter(private val onClickListener: OnClickListener) :
     ListAdapter<PokemonModel, PokemonListAdapter.PokemonDataViewHolder>(DiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): PokemonDataViewHolder {

@@ -45,12 +45,32 @@ class MainActivitySortDialog(context: Context, val viewModel: MainViewModel) : D
             findViewById<ImageView>(R.id.sort_by_id_descending_check).visibility = View.VISIBLE
         }
         findViewById<Button>(R.id.sort_dialog_apply_button).setOnClickListener {
-            when (findViewById<ChipGroup>(R.id.sort_option_group).checkedChipId){
+            when (findViewById<ChipGroup>(R.id.sort_option_group).checkedChipId) {
 
-            R.id.sort_numerical_ascending_chip -> viewModel.setSortBy((Pair(Criterion.ID,Direction.ASCENDING)))
-            R.id.sort_numerical_descending_chip -> viewModel.setSortBy((Pair(Criterion.ID,Direction.DESCENDING)))
-            R.id.sort_alphabetical_ascending_chip -> viewModel.setSortBy((Pair(Criterion.NAME,Direction.ASCENDING)))
-            R.id.sort_alphabetical_descending_chip -> viewModel.setSortBy((Pair(Criterion.NAME,Direction.DESCENDING)))
+                R.id.sort_numerical_ascending_chip -> viewModel.setSortBy(
+                    (Pair(
+                        Criterion.ID,
+                        Direction.ASCENDING
+                    ))
+                )
+                R.id.sort_numerical_descending_chip -> viewModel.setSortBy(
+                    (Pair(
+                        Criterion.ID,
+                        Direction.DESCENDING
+                    ))
+                )
+                R.id.sort_alphabetical_ascending_chip -> viewModel.setSortBy(
+                    (Pair(
+                        Criterion.NAME,
+                        Direction.ASCENDING
+                    ))
+                )
+                R.id.sort_alphabetical_descending_chip -> viewModel.setSortBy(
+                    (Pair(
+                        Criterion.NAME,
+                        Direction.DESCENDING
+                    ))
+                )
             }
 
             dismiss()

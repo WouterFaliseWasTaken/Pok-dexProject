@@ -12,7 +12,7 @@ class TypeData(
     @ColumnInfo val name: String
 )
 
-fun TypeApiData.toTypeModel():TypeData{
+fun TypeApiData.toTypeModel(): TypeData {
     return TypeData(
         this.id,
         this.name
@@ -50,12 +50,15 @@ fun TypeApiData.toDatabaseModel(): List<TypeDataDamageRef> {
             0
         )
     })
-    for(i in 1..18){
-        if(list.find{it.attackType == i} == null){
-            list.add(TypeDataDamageRef(
-                i,
-                this.id,
-                2))
+    for (i in 1..18) {
+        if (list.find { it.attackType == i } == null) {
+            list.add(
+                TypeDataDamageRef(
+                    i,
+                    this.id,
+                    2
+                )
+            )
         }
     }
     return list
@@ -64,13 +67,13 @@ fun TypeApiData.toDatabaseModel(): List<TypeDataDamageRef> {
 data class DamageRelation(
     @ColumnInfo val name: String,
     @ColumnInfo var modifier: Int
-){
-    operator fun times(other: DamageRelation):DamageRelation{
-        return DamageRelation(name,modifier*other.modifier)
+) {
+    operator fun times(other: DamageRelation): DamageRelation {
+        return DamageRelation(name, modifier * other.modifier)
     }
 
-    operator fun times(factor:Int):DamageRelation{
-        return DamageRelation(name, modifier*factor)
+    operator fun times(factor: Int): DamageRelation {
+        return DamageRelation(name, modifier * factor)
     }
 }
 

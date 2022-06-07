@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/white">
@@ -55,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                app:srcCompat="@drawable/checkmark" />
+                app:srcCompat="@drawable/checkmark"
+                android:importantForAccessibility="no"/>
 
             <ImageView
                 android:id="@+id/sort_by_name_desending_check"
@@ -63,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="46dp"
                 android:visibility="invisible"
-                app:srcCompat="@drawable/checkmark" />
+                app:srcCompat="@drawable/checkmark"
+                android:importantForAccessibility="no" />
 
             <ImageView
                 android:id="@+id/sort_by_id_ascending_check"
@@ -71,7 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="46dp"
                 android:visibility="invisible"
-                app:srcCompat="@drawable/checkmark" />
+                app:srcCompat="@drawable/checkmark"
+                android:importantForAccessibility="no" />
 
             <ImageView
                 android:id="@+id/sort_by_id_descending_check"
@@ -79,7 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="46dp"
                 android:visibility="invisible"
-                app:srcCompat="@drawable/checkmark" />
+                app:srcCompat="@drawable/checkmark"
+                android:importantForAccessibility="no" />
         </LinearLayout>
 
         <com.google.android.material.chip.ChipGroup

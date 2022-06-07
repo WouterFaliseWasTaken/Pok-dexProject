@@ -2,7 +2,6 @@ package com.example.pokdexproject.activities.onTeam
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -23,13 +22,23 @@ class OnTeamActivity : AppCompatActivity() {
             lifecycleOwner = this@OnTeamActivity
             viewModel = ViewModelProvider(
                 this@OnTeamActivity,
-                OnTeamViewModel.OnTeamViewModelFactory(application)
+                OnTeamViewModel.factory(application)
             ).get(OnTeamViewModel::class.java)
         }
 
         setupAppbar()
 
-        val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { listItem ->
+        val adapter = pokemonListAdapter()
+        with(binding.recyclerViewTeam) {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+        }
+        setUpObservers(binding, adapter)
+
+    }
+
+    private fun pokemonListAdapter() =
+        PokemonListAdapter(PokemonListAdapter.OnClickListener { listItem ->
             val intent = Intent(
                 this,
                 DetailActivity::class.java
@@ -37,21 +46,21 @@ class OnTeamActivity : AppCompatActivity() {
             intent.putExtra("id", listItem.id)
             startActivity(intent)
         })
-        with(binding.recyclerViewTeam) {
-            this.adapter = adapter
-            layoutManager = LinearLayoutManager(context)
-        }
+
+    private fun setUpObservers(
+        binding: ActivityTeamBinding,
+        adapter: PokemonListAdapter
+    ) {
         binding.viewModel?.pokemon?.observe(this) {
             adapter.submitList(it)
         }
-
     }
 
     private fun setupAppbar() {
         setSupportActionBar(findViewById(R.id.team_toolbar))
-        supportActionBar?.run{
+        supportActionBar?.run {
             setDisplayHomeAsUpEnabled(true)
-            title=resources.getString(R.string.back)
+            setDisplayShowTitleEnabled(false)
         }
     }
 }

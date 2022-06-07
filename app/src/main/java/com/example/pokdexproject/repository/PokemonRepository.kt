@@ -15,7 +15,6 @@ import com.example.pokdexproject.data.pokemon.pokemonDetails.DetailsData
 import com.example.pokdexproject.data.pokemon.pokemonDetails.getDatabaseModel
 import com.example.pokdexproject.data.pokemon.pokemonDetails.image.asImageData
 import com.example.pokdexproject.data.pokemon.type.DamageRelation
-import com.example.pokdexproject.data.pokemon.type.TypeDataDamageRefDao
 import com.example.pokdexproject.data.pokemon.type.toDatabaseModel
 import com.example.pokdexproject.data.pokemon.type.toTypeModel
 import com.example.pokdexproject.database.PokemonRoomDatabase
@@ -26,6 +25,7 @@ import com.example.pokdexproject.network.PokeDetailsApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import java.io.IOException
 
 const val TAG = "REPOSITORY"
 
@@ -35,7 +35,7 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         pm: QueryParemeters
     ): LiveData<List<PokemonModel>> {
         var search = "%"
-        if (!pm.search.isNullOrBlank()) search += pm.search + "%"
+        if (!(pm.search.isNullOrBlank())) search += pm.search + "%"
         val types = pm.typeIncluded.filter { it.value }.keys.toList().map { it.lowercase() }
         val query =
             "SELECT * from Pokemon WHERE((type1 in (" +
@@ -52,29 +52,39 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
 
     suspend fun refreshPokemon() {
         withContext(Dispatchers.IO) {
-            val pokemon = PokeApi.PokeApiService.PokeApi.retrofitService.getBasicInfo()
-            database.pokemonDao().insertAll((pokemon.map { it.asDatabaseModel() }))
+            try {
+                val pokemon = PokeApi.PokeApiService.PokeApi.retrofitService.getBasicInfo()
+                database.pokemonDao().insertAll((pokemon.map { it.asDatabaseModel() }))
+            } catch (e: IOException) {
+            }
         }
     }
 
     suspend fun refreshDetails(id: Int) {
         withContext(Dispatchers.IO) {
-            val details = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getDetails(id)
-            val species = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getSpeciesInfo(id)
-            database.detailsDao().insertDetails(getDatabaseModel(details, species))
-            database.imageDao().insertAllImages(details.asImageData())
-            database.abilityDao().insertAllAbilities(details.asAbilityData())
-            database.abilityDataCrossRefDao().insertAllRelations(details.asAbilityRelations())
-            database.moveDao().insertAllMoves(details.asMoveData())
-            database.moveDataCrossRefDao().insertAllRelations(details.asMoveRelations())
+            try {
+                val details = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getDetails(id)
+                val species =
+                    PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getSpeciesInfo(id)
+                database.detailsDao().insertDetails(getDatabaseModel(details, species))
+                database.imageDao().insertAllImages(details.asImageData())
+                database.abilityDao().insertAllAbilities(details.asAbilityData())
+                database.abilityDataCrossRefDao().insertAllRelations(details.asAbilityRelations())
+                database.moveDao().insertAllMoves(details.asMoveData())
+                database.moveDataCrossRefDao().insertAllRelations(details.asMoveRelations())
+            } catch (e: IOException) {
+            }
         }
     }
 
     suspend fun refreshTypeAdvantages(i: Int) {
         withContext(Dispatchers.IO) {
-            val apiData = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getTypeInfo(i)
-            database.typeDao().insertType(apiData.toTypeModel())
-            database.typeDataDamageRefDao().insertRelations(apiData.toDatabaseModel())
+            try {
+                val apiData = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getTypeInfo(i)
+                database.typeDao().insertType(apiData.toTypeModel())
+                database.typeDataDamageRefDao().insertRelations(apiData.toDatabaseModel())
+            } catch (e: IOException) {
+            }
         }
     }
 
@@ -82,11 +92,11 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         database.pokemonDao().updatePokemon(data)
     }
 
-    fun countOnTeamPokemon(): LiveData<Int>{
+    fun countOnTeamPokemon(): LiveData<Int> {
         return database.pokemonDao().countOnTeamPokemon().asLiveData()
     }
 
-    fun countBookmarkedPokemon(): LiveData<Int>{
+    fun countBookmarkedPokemon(): LiveData<Int> {
         return database.pokemonDao().countBookmarkedPokemon().asLiveData()
     }
 
@@ -120,7 +130,7 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         return database.pokemonDao().getPokemonLineage(inputId)
     }
 
-     fun getTypeRelations(type: List<String?>): LiveData<List<DamageRelation>> {
+    fun getTypeRelations(type: List<String?>): LiveData<List<DamageRelation>> {
         return database.typeDataDamageRefDao().getRelations(type)
     }
 }

@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AbilityDao {
@@ -26,7 +25,7 @@ interface AbilityDao {
 @Dao
 interface AbilityDataCrossRefDao {
 
-    @Insert (onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllRelations(abilityDataCrossRef: List<AbilityDataCrossRef>)
 
 }

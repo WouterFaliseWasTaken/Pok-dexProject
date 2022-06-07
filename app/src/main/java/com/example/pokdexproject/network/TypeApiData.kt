@@ -1,6 +1,6 @@
 import com.squareup.moshi.Json
 
-data class TypeApiData (
+data class TypeApiData(
     @Json(name = "damage_relations")
     val damageRelations: DamageRelations,
 
@@ -21,7 +21,7 @@ data class TypeApiData (
     val pokemon: List<Pokemon>
 )
 
-data class DamageRelations (
+data class DamageRelations(
     @Json(name = "double_damage_from")
     val doubleDamageFrom: List<Generation>,
 
@@ -41,31 +41,31 @@ data class DamageRelations (
     val noDamageTo: List<Generation>
 )
 
-data class Generation (
+data class Generation(
     val name: String,
     val url: String
 )
 
-data class GameIndex (
+data class GameIndex(
     @Json(name = "game_index")
     val gameIndex: Int,
 
     val generation: Generation
 )
 
-data class Name (
+data class Name(
     val language: Generation,
     val name: String
 )
 
-data class PastDamageRelation (
+data class PastDamageRelation(
     @Json(name = "damage_relations")
     val damageRelations: DamageRelations,
 
     val generation: Generation
 )
 
-data class Pokemon (
+data class Pokemon(
     val pokemon: Generation,
     val slot: Int
 )

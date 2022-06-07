@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokdexproject.R
@@ -19,11 +18,6 @@ import com.example.pokdexproject.adapter.PokemonListAdapter
 import com.example.pokdexproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    protected inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(aClass: Class<T>): T = f() as T
-        }
 
     private lateinit var binding: ActivityMainBinding
 
@@ -36,11 +30,20 @@ class MainActivity : AppCompatActivity() {
             lifecycleOwner = this@MainActivity
             viewModel = ViewModelProvider(
                 this@MainActivity,
-                MainViewModel.MainViewModelFactory(application)
+                MainViewModel.factory(application)
             ).get(MainViewModel::class.java)
         }
         setupAppbar()
         initializeListeners(binding)
+        val adapter = pokemonListAdapter()
+        with(binding.recyclerView) {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+        }
+        setUpObservers(adapter)
+    }
+
+    private fun pokemonListAdapter(): PokemonListAdapter {
         val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { listItem ->
             val intent = Intent(
                 this,
@@ -49,10 +52,10 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("id", listItem.id)
             startActivity(intent)
         })
-        with(binding.recyclerView) {
-            this.adapter = adapter
-            layoutManager = LinearLayoutManager(context)
-        }
+        return adapter
+    }
+
+    private fun setUpObservers(adapter: PokemonListAdapter) {
         binding.viewModel?.pokemon?.observe(this) {
             adapter.submitList(it)
             binding.viewModel?.refreshDetails()
@@ -98,7 +101,6 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_sort -> {
             MainActivitySortDialog(this, binding.viewModel!!).show()
-
             true
         }
         R.id.action_filter -> {

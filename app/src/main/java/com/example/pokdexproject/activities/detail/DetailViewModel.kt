@@ -3,6 +3,7 @@ package com.example.pokdexproject.activities.detail
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
+import com.example.pokdexproject.commonCode.doubleArgsViewModelFactory
 import com.example.pokdexproject.data.pokemon.PokemonData
 import com.example.pokdexproject.data.pokemon.ability.AbilityData
 import com.example.pokdexproject.data.pokemon.pokemonDetails.DetailsData
@@ -13,16 +14,18 @@ import com.example.pokdexproject.model.Type
 import com.example.pokdexproject.model.asEvolutionModel
 import com.example.pokdexproject.repository.PokemonRepository
 import kotlinx.coroutines.launch
-import java.io.IOException
 
 const val TAG = "PDP.DVM"
 
 class DetailViewModel(val id: Int, application: Application) : ViewModel() {
 
+    companion object {
+        val factory = doubleArgsViewModelFactory(::DetailViewModel)
+    }
 
     private val pokemonRepository = PokemonRepository(getDatabase(application))
 
-    val teamCount:LiveData<Int> = pokemonRepository.countOnTeamPokemon()
+    val teamCount: LiveData<Int> = pokemonRepository.countOnTeamPokemon()
     val basics: LiveData<PokemonData> = pokemonRepository.getBasics(id)
     val imageNr = MutableLiveData(0)
     val images: LiveData<List<String>> = pokemonRepository.getImages(id)
@@ -52,7 +55,7 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
             } else {
                 val tempList = mutableListOf<DamageRelation>()
                 for (i in 0 until typeDamageList.value!!.size / 2) {
-                    tempList += (typeDamageList.value!![2 * i]) * (typeDamageList.value!![2 * i+1])
+                    tempList += (typeDamageList.value!![2 * i]) * (typeDamageList.value!![2 * i + 1])
                 }
                 combinedList = tempList
             }
@@ -81,13 +84,10 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
 
     init {
         viewModelScope.launch {
-            try {
-                pokemonRepository.refreshDetails(id)
-            } catch (e: IOException) {
-                Log.e(TAG, e.toString())
-            }
+            pokemonRepository.refreshDetails(id)
         }
     }
+
     fun toggleBookmark() {
         viewModelScope.launch {
             pokemonRepository.updatePokemon(
@@ -95,6 +95,7 @@ class DetailViewModel(val id: Int, application: Application) : ViewModel() {
             )
         }
     }
+
     fun toggleOnTeam() {
         viewModelScope.launch {
             pokemonRepository.updatePokemon(

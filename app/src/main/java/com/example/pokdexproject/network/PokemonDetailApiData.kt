@@ -1,4 +1,3 @@
-
 //API Deserialized using https://jsonformatter.org/json-to-kotlin
 
 
@@ -52,14 +51,14 @@ data class GameIndex(
     val version: Species
 )
 
-data class HeldItem (
+data class HeldItem(
     val item: Species,
 
     @Json(name = "version_details")
     val versionDetails: List<VersionDetail>
 )
 
-data class VersionDetail (
+data class VersionDetail(
     val rarity: Int,
     val version: Species
 )
@@ -79,7 +78,7 @@ data class VersionGroupDetail(
     val versionGroup: Species
 )
 
-data class PastType (
+data class PastType(
     val generation: Species,
     val types: List<Type>
 )

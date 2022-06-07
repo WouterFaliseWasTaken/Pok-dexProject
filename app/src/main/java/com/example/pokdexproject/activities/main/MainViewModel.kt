@@ -2,16 +2,20 @@ package com.example.pokdexproject.activities.main
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.example.pokdexproject.commonCode.singleArgViewModelFactory
 import com.example.pokdexproject.database.PokemonRoomDatabase.Companion.getDatabase
 import com.example.pokdexproject.model.PokemonModel
 import com.example.pokdexproject.model.Type
 import com.example.pokdexproject.repository.PokemonRepository
 import kotlinx.coroutines.launch
-import java.io.IOException
 
 const val TAG = "PDP.MVM"
 
 class MainViewModel(application: Application) : ViewModel() {
+
+    companion object {
+        val factory = singleArgViewModelFactory(::MainViewModel)
+    }
 
     private val pokemonRepository = PokemonRepository(getDatabase(application))
 
@@ -64,10 +68,7 @@ class MainViewModel(application: Application) : ViewModel() {
 
     private fun refreshPokemonFromRepository() {
         viewModelScope.launch {
-            try {
-                pokemonRepository.refreshPokemon()
-            } catch (e: IOException) {
-            }
+            pokemonRepository.refreshPokemon()
         }
 
     }
@@ -91,13 +92,6 @@ class MainViewModel(application: Application) : ViewModel() {
             for (i: Int in 1..pokemon.value!!.size) {
                 pokemonRepository.refreshDetails(i)
             }
-        }
-    }
-
-    class MainViewModelFactory(val application: Application) : ViewModelProvider.Factory {
-
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return modelClass.getConstructor(Application::class.java).newInstance(application)
         }
     }
 }

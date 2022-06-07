@@ -23,15 +23,14 @@ import com.example.pokdexproject.data.pokemon.type.TypeDao
 import com.example.pokdexproject.data.pokemon.type.TypeData
 import com.example.pokdexproject.data.pokemon.type.TypeDataDamageRef
 import com.example.pokdexproject.data.pokemon.type.TypeDataDamageRefDao
-import com.example.pokdexproject.model.DetailedPokemonModel
 import java.util.concurrent.Executors
 
 const val TAG = "QUERY"
 
 @Database(
-    entities = [PokemonData::class, TypeData::class,DetailsData::class,
-        ImageData::class,MoveData::class,AbilityData::class,
-        TypeDataDamageRef::class,AbilityDataCrossRef::class,MoveDataCrossRef::class],
+    entities = [PokemonData::class, TypeData::class, DetailsData::class,
+        ImageData::class, MoveData::class, AbilityData::class,
+        TypeDataDamageRef::class, AbilityDataCrossRef::class, MoveDataCrossRef::class],
     version = 6,
     exportSchema = false
 )

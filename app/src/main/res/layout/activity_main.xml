@@ -27,10 +27,10 @@
             android:elevation="101dp"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:menu="@menu/menu_activity_main"
-            app:popupTheme="@style/Theme.AppCompat.Light"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:menu="@menu/menu_activity_main"
+            app:popupTheme="@style/Theme.AppCompat.Light" />
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -134,9 +134,9 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:elevation="100dp"
+                                        android:text='@{viewModel.onTeamCount.toString() + " Pokémon"}'
                                         app:layout_constraintStart_toStartOf="@+id/team_label_text"
                                         app:layout_constraintTop_toBottomOf="@+id/team_label_text"
-                                        android:text='@{viewModel.onTeamCount.toString() + " Pokémon"}'
                                         tools:ignore="TextContrastCheck"
                                         tools:text="1 Pokémon" />
 
@@ -198,9 +198,9 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:elevation="100dp"
+                                        android:text='@{viewModel.bookmarkedCount.toString() + " Pokémon"}'
                                         app:layout_constraintStart_toStartOf="@+id/bookmark_label_text"
                                         app:layout_constraintTop_toBottomOf="@+id/bookmark_label_text"
-                                        android:text='@{viewModel.bookmarkedCount.toString() + " Pokémon"}'
 
                                         tools:ignore="TextContrastCheck"
                                         tools:text="1 Pokémon" />

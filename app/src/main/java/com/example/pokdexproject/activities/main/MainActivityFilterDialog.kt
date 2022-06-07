@@ -20,28 +20,14 @@ class MainActivityFilterDialog(context: Context, val viewModel: MainViewModel) :
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.dialog_main_filter)
-        setChecked()
         setUpListeners()
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         //todo: Make window move to the bottom of the screen
     }
 
-    private fun setChecked() {
-        findViewById<ChipGroup>(R.id.filter_option_group).apply {
-            clearCheck()
-            checkAllIfTrue()
-        }
-    }
-
-    private fun checkAllIfTrue() {
+    private fun checkAll() {
         for (pair in viewModel.queryParameters.value!!.typeIncluded) {
-            if (pair.value) checkChip(pair.key)
-        }
-    }
-
-    private fun checkAll(){
-        for(pair in viewModel.queryParameters.value!!.typeIncluded){
-            if(pair.key != "")checkChip(pair.key)
+            if (pair.key != "") checkChip(pair.key)
         }
     }
 
@@ -78,10 +64,10 @@ class MainActivityFilterDialog(context: Context, val viewModel: MainViewModel) :
         findViewById<Button>(R.id.exit_button_filter).setOnClickListener {
             dismiss()
         }
-        findViewById<Button>(R.id.filter_dialog_unselect_all_button).setOnClickListener{
+        findViewById<Button>(R.id.filter_dialog_unselect_all_button).setOnClickListener {
             findViewById<ChipGroup>(R.id.filter_option_group).clearCheck()
         }
-        findViewById<Button>(R.id.filter_dialog_select_all_button).setOnClickListener{
+        findViewById<Button>(R.id.filter_dialog_select_all_button).setOnClickListener {
             checkAll()
         }
         findViewById<Button>(R.id.filter_dialog_apply_button).setOnClickListener {

@@ -2,7 +2,6 @@ package com.example.pokdexproject.activities.bookmark
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -22,13 +21,32 @@ class BookmarkActivity : AppCompatActivity() {
             lifecycleOwner = this@BookmarkActivity
             viewModel = ViewModelProvider(
                 this@BookmarkActivity,
-                BookmarkViewModel.BookmarkViewModelFactory(application)
+                BookmarkViewModel.factory(application)
             ).get(BookmarkViewModel::class.java)
         }
 
         setupAppbar()
 
-        val adapter = PokemonListAdapter(PokemonListAdapter.OnClickListener { listItem ->
+        val adapter = pokemonListAdapter()
+        with(binding.recyclerViewBookmark) {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+        }
+
+        setUpObservers(binding, adapter)
+    }
+
+    private fun setUpObservers(
+        binding: ActivityBookmarkBinding,
+        adapter: PokemonListAdapter
+    ) {
+        binding.viewModel?.pokemon?.observe(this) {
+            adapter.submitList(it)
+        }
+    }
+
+    private fun pokemonListAdapter() =
+        PokemonListAdapter(PokemonListAdapter.OnClickListener { listItem ->
             val intent = Intent(
                 this,
                 DetailActivity::class.java
@@ -36,20 +54,12 @@ class BookmarkActivity : AppCompatActivity() {
             intent.putExtra("id", listItem.id)
             startActivity(intent)
         })
-        with(binding.recyclerViewBookmark) {
-            this.adapter = adapter
-            layoutManager = LinearLayoutManager(context)
-        }
-        binding.viewModel?.pokemon?.observe(this) {
-            adapter.submitList(it)
-        }
-    }
 
     private fun setupAppbar() {
         setSupportActionBar(findViewById(R.id.bookmark_toolbar))
         supportActionBar?.run {
             setDisplayHomeAsUpEnabled(true)
-            title = resources.getString(R.string.back)
+            setDisplayShowTitleEnabled(false)
         }
     }
 }

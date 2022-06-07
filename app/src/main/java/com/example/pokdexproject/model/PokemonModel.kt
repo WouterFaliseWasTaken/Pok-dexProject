@@ -1,7 +1,6 @@
 package com.example.pokdexproject.model
 
 import com.example.pokdexproject.data.pokemon.PokemonData
-import com.example.pokdexproject.network.PokemonApiData
 
 open class PokemonModel(
     val id: Int,
@@ -49,7 +48,7 @@ enum class Type(val color: Int) {
     BUG(0xFFA8B820.toInt()), DRAGON(0xFF7038F8.toInt()),
     GHOST(0xFF705898.toInt()), DARK(0xFF705848.toInt()),
     STEEL(0xFFB8B8D0.toInt()), FAIRY(0xFFEE99AC.toInt()),
-    NULLTYPE(0x00FFFFFF.toInt());
+    NULLTYPE(0x00FFFFFF);
 
     /**
      * Returns Enum as capitalised, but not all caps. In case the pokemon only has 1 type, returns an empty string for the second type so things don't break.
@@ -69,8 +68,9 @@ data class PokemonEvolutionModel(
     var isBookmarkedS: Boolean = false,
     var isOnTeamS: Boolean = false,
     val isFocused: Boolean
-):PokemonModel(idS,nameS,spriteUrlS,type1S,type2S,isBookmarkedS,isOnTeamS)
-fun PokemonData.asEvolutionModel(callerId:Int): PokemonEvolutionModel {
+) : PokemonModel(idS, nameS, spriteUrlS, type1S, type2S, isBookmarkedS, isOnTeamS)
+
+fun PokemonData.asEvolutionModel(callerId: Int): PokemonEvolutionModel {
     return PokemonEvolutionModel(
         this.id,
         this.name,

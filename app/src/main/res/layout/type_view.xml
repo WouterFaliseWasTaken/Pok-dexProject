@@ -18,18 +18,17 @@
         app:cardBackgroundColor="@{typeEnum.color}"
         app:cardCornerRadius="100dp"
         app:cardElevation="0dp"
-        app:contentPaddingBottom="3dp"
+        app:contentPadding="3dp"
         app:contentPaddingLeft="10dp"
         app:contentPaddingRight="10dp"
-        app:contentPaddingTop="3dp"
         tools:cardBackgroundColor="#0000FF">
 
         <TextView
             android:id="@+id/textView5"
+            style="@style/type_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{typeEnum.unCapsLock()}"
-            style="@style/type_style"
             tools:text="Poison" />
     </androidx.cardview.widget.CardView>
 </layout>

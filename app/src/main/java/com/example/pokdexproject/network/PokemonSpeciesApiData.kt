@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 //API Deserialized using https://jsonformatter.org/json-to-kotlin
 
-data class PokemonSpeciesApiData (
+data class PokemonSpeciesApiData(
     @Json(name = "base_happiness")
     val baseHappiness: Int,
     @Json(name = "capture_rate")
@@ -51,46 +51,46 @@ data class PokemonSpeciesApiData (
     val varieties: List<Variety>
 )
 
-data class Color (
+data class Color(
     val name: String,
     val url: String
 )
 
-data class EvolutionChain (
+data class EvolutionChain(
     val url: String
 )
 
-data class FlavorTextEntry (
+data class FlavorTextEntry(
     @Json(name = "flavor_text")
     val flavorText: String,
     val language: Color,
     val version: Color
 )
 
-data class Genus (
+data class Genus(
     val genus: String,
     val language: Color
 )
 
-data class Name (
+data class Name(
     val language: Color,
     val name: String
 )
 
-data class PalParkEncounter (
+data class PalParkEncounter(
     val area: Color,
     @Json(name = "base_score")
     val baseScore: Int,
     val rate: Int
 )
 
-data class PokedexNumber (
+data class PokedexNumber(
     @Json(name = "entry_number")
     val entryNumber: Int,
     val pokedex: Color
 )
 
-data class Variety (
+data class Variety(
     @Json(name = "is_default")
     val isDefault: Boolean,
     val pokemon: Color

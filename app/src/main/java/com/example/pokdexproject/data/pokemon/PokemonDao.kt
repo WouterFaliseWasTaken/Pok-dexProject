@@ -29,24 +29,26 @@ interface PokemonDao {
     fun getOnTeamPokemon(): Flow<List<PokemonData>>
 
     @RawQuery(observedEntities = [PokemonData::class])
-    fun getPokemonDynamic(query:SimpleSQLiteQuery):Flow<List<PokemonData>>
+    fun getPokemonDynamic(query: SimpleSQLiteQuery): Flow<List<PokemonData>>
 
     @Query("SELECT * FROM Pokemon WHERE id = :id")
-    fun getSpecificPokemon(id:Int): LiveData<PokemonData>
+    fun getSpecificPokemon(id: Int): LiveData<PokemonData>
 
-    @Query("SELECT * FROM Pokemon WHERE id IN" +
-            "((SELECT evolvesFromId FROM PokemonDetails WHERE id =" 
+    @Query(
+        "SELECT * FROM Pokemon WHERE id IN" +
+                "((SELECT evolvesFromId FROM PokemonDetails WHERE id ="
                 + "(SELECT evolvesFromId FROM PokemonDetails WHERE id = :id))" +
-            ",(SELECT evolvesFromId FROM PokemonDetails WHERE id = :id)," +
-            "(:id)" +
-            ",(SELECT id FROM PokemonDetails WHERE evolvesFromId = :id)," +
-            "(SELECT id FROM PokemonDetails WHERE evolvesFromId IN" +
-            "(SELECT id FROM PokemonDetails WHERE evolvesFromId = :id)))")
-    fun getPokemonLineage(id:Int): LiveData<List<PokemonData>>
+                ",(SELECT evolvesFromId FROM PokemonDetails WHERE id = :id)," +
+                "(:id)" +
+                ",(SELECT id FROM PokemonDetails WHERE evolvesFromId = :id)," +
+                "(SELECT id FROM PokemonDetails WHERE evolvesFromId IN" +
+                "(SELECT id FROM PokemonDetails WHERE evolvesFromId = :id)))"
+    )
+    fun getPokemonLineage(id: Int): LiveData<List<PokemonData>>
 
-    @Query ("SELECT Count() FROM Pokemon WHERE isOnTeam = 1")
-    fun countOnTeamPokemon():Flow<Int>
+    @Query("SELECT Count() FROM Pokemon WHERE isOnTeam = 1")
+    fun countOnTeamPokemon(): Flow<Int>
 
-    @Query ("SELECT Count() FROM Pokemon WHERE isBookmarked = 1")
-    fun countBookmarkedPokemon():Flow<Int>
+    @Query("SELECT Count() FROM Pokemon WHERE isBookmarked = 1")
+    fun countBookmarkedPokemon(): Flow<Int>
 }
