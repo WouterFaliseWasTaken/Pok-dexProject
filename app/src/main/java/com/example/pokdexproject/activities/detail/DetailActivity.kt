@@ -17,7 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokdexproject.R
 import com.example.pokdexproject.adapter.PokemonEvolutionListAdapter
-import com.example.pokdexproject.commonCode.toPx
+import com.example.pokdexproject.commonCode.dpToPx
 import com.example.pokdexproject.databinding.ActivityDetailBinding
 import com.example.pokdexproject.model.Type
 import com.google.android.material.chip.Chip
@@ -107,7 +107,7 @@ class DetailActivity : AppCompatActivity() {
     private fun setUpTypeList(list: ChipGroup, types: List<Type>) {
         if (types.isNotEmpty()) {
             list.removeAllViews()
-            list.setChipSpacing(5.toPx)
+            list.setChipSpacing(5.dpToPx)
             for (i: Int in types.indices) {
                 val chip = Chip(this).apply {
                     this.isCheckable = false
@@ -121,7 +121,7 @@ class DetailActivity : AppCompatActivity() {
                         intArrayOf(types[i].color, types[i].color)
                     )
                     //there are better ways of doing that, but that is SDK 23,   and this is SDK 21.
-                    this.setPadding(10.toPx, 0.toPx, 10.toPx, 0.toPx)
+                    this.setPadding(10.dpToPx, 0.dpToPx, 10.dpToPx, 0.dpToPx)
                     this.setEnsureMinTouchTargetSize(false)
                 }
                 list.addView(chip)

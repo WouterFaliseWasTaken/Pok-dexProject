@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -310,227 +311,28 @@
                     app:contentPadding="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/stats_text"
-                    tools:visibility="gone">
-
-                    <TableLayout
+                    app:layout_constraintTop_toBottomOf="@+id/stats_text">
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+                        <com.example.pokdexproject.views.HexagonView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            custom:hp="@{viewModel.details.hp}"
+                            custom:attack="@{viewModel.details.attack}"
+                            custom:defense="@{viewModel.details.defense}"
+                            custom:speed="@{viewModel.details.speed}"
+                            custom:spattack="@{viewModel.details.spattack}"
+                            custom:spdefense="@{viewModel.details.spdeffense}"
+                            custom:max = "@{Math.max(Math.max(Math.max(Math.max(Math.max(viewModel.details.hp,viewModel.details.attack),viewModel.details.defense),viewModel.details.spattack),viewModel.details.spdeffense),viewModel.details.speed)}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent">
+                        </com.example.pokdexproject.views.HexagonView>
 
-                        <TableRow>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                            <TextView
-                                android:id="@+id/hp_label_text"
-                                style="@style/detail_label"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/hp" />
-
-                            <TextView
-                                android:id="@+id/hp_value_text"
-                                style="@style/detail_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@{String.valueOf(viewModel.details.hp)}"
-                                tools:text="50" />
-
-                            <ProgressBar
-                                android:id="@+id/hp_bar"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="4dp"
-                                android:layout_marginTop="8sp"
-                                android:layout_weight="1"
-                                android:max="127"
-                                android:progress="@{viewModel.details.hp}"
-                                android:progressTint="@{viewModel.details.hp > 50 ? @color/green : @color/red}" />
-                        </TableRow>
-
-                        <TableRow android:layout_marginTop="10dp">
-
-                            <TextView
-                                android:id="@+id/attack_label_text"
-                                style="@style/detail_label"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/attack" />
-
-                            <TextView
-                                android:id="@+id/attack_value_text"
-                                style="@style/detail_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@{String.valueOf(viewModel.details.attack)}"
-                                tools:text="50" />
-
-                            <ProgressBar
-                                android:id="@+id/attack_bar"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="4dp"
-                                android:layout_marginTop="8sp"
-                                android:layout_weight="1"
-                                android:max="127"
-                                android:progress="@{viewModel.details.attack}"
-                                android:progressTint="@{viewModel.details.attack > 50 ? @color/green : @color/red}" />
-                        </TableRow>
-
-                        <TableRow android:layout_marginTop="10dp">
-
-                            <TextView
-                                android:id="@+id/defense_label_text"
-                                style="@style/detail_label"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/defense" />
-
-                            <TextView
-                                android:id="@+id/defense_value_text"
-                                style="@style/detail_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@{String.valueOf(viewModel.details.defense)}"
-                                tools:text="50" />
-
-                            <ProgressBar
-                                android:id="@+id/defense_bar"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="4dp"
-                                android:layout_marginTop="8sp"
-                                android:layout_weight="1"
-                                android:max="127"
-                                android:progress="@{viewModel.details.defense}"
-                                android:progressTint="@{viewModel.details.defense > 50 ? @color/green : @color/red}" />
-                        </TableRow>
-
-                        <TableRow android:layout_marginTop="10dp">
-
-                            <TextView
-                                android:id="@+id/spattack_label_text"
-                                style="@style/detail_label"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/special_attack" />
-
-                            <TextView
-                                android:id="@+id/spattack_value_text"
-                                style="@style/detail_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@{String.valueOf(viewModel.details.spattack)}"
-                                tools:text="50" />
-
-                            <ProgressBar
-                                android:id="@+id/spattack_bar"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="4dp"
-                                android:layout_marginTop="8sp"
-                                android:layout_weight="1"
-                                android:max="127"
-                                android:progress="@{viewModel.details.spattack}"
-                                android:progressTint="@{viewModel.details.spattack > 50 ? @color/green : @color/red}" />
-                        </TableRow>
-
-                        <TableRow android:layout_marginTop="10dp">
-
-                            <TextView
-                                android:id="@+id/spdefense_label_text"
-                                style="@style/detail_label"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@string/special_defense" />
-
-                            <TextView
-                                android:id="@+id/spdefense_value_text"
-                                style="@style/detail_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@{String.valueOf(viewModel.details.spdeffense)}"
-                                tools:text="50" />
-
-                            <ProgressBar
-                                android:id="@+id/spdefense_bar"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="4dp"
-                                android:layout_marginTop="8sp"
-                                android:layout_weight="1"
-                                android:max="127"
-                                android:progress="@{viewModel.details.spdeffense}"
-                                android:progressTint="@{viewModel.details.spdeffense > 50 ? @color/green : @color/red}" />
-
-                        </TableRow>
-
-                        <TableRow android:layout_marginTop="10dp">
-
-                            <TextView
-                                android:id="@+id/speed_label_text"
-                                style="@style/detail_label"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/speed" />
-
-                            <TextView
-                                android:id="@+id/speed_value_text"
-                                style="@style/detail_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@{String.valueOf(viewModel.details.speed)}"
-                                tools:text="50" />
-
-                            <ProgressBar
-                                android:id="@+id/speed_bar"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="4dp"
-                                android:layout_marginTop="8sp"
-                                android:layout_weight="1"
-                                android:max="127"
-                                android:progress="@{viewModel.details.speed}"
-                                android:progressTint="@{viewModel.details.speed > 50 ? @color/green : @color/red}" />
-
-                        </TableRow>
-
-                        <TableRow android:layout_marginTop="10dp">
-
-                            <TextView
-                                android:id="@+id/total_label_text"
-                                style="@style/detail_label"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/total" />
-
-                            <TextView
-                                android:id="@+id/total_value_text"
-                                style="@style/detail_value_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="@{String.valueOf((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
-                                tools:text="50" />
-
-                            <ProgressBar
-                                android:id="@+id/total_bar"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="4dp"
-                                android:layout_marginTop="8sp"
-                                android:layout_weight="1"
-                                android:max="127"
-                                android:progress="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6)}"
-                                android:progressTint="@{((viewModel.details.hp+viewModel.details.attack+viewModel.details.defense+viewModel.details.spattack+viewModel.details.spdeffense+viewModel.details.speed)/6) > 50 ? @color/green : @color/red}" />
-
-                        </TableRow>
-                    </TableLayout>
                 </androidx.cardview.widget.CardView>
 
                 <TextView

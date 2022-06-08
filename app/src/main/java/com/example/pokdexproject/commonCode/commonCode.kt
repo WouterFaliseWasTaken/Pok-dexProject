@@ -29,9 +29,16 @@ fun <T : ViewModel, A, B> doubleArgsViewModelFactory(constructor: (A, B) -> T):
     }
 }
 
-val Number.toPx
+val Number.dpToPx
     get() = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP,
         this.toFloat(),
         Resources.getSystem().displayMetrics
     ).toInt()
+
+val Number.spToPx
+    get() = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_SP,
+        this.toFloat(),
+        Resources.getSystem().displayMetrics
+    ).toInt();

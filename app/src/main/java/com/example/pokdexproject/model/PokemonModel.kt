@@ -24,6 +24,19 @@ open class PokemonModel(
     fun capitaliseName(): String {
         return this.name[0].uppercase() + this.name.substring(1)
     }
+
+    override fun equals(other: Any?): Boolean {
+        return (other is PokemonModel && (
+                    (other.id == this.id) &&
+                    (other.name == this.name) &&
+                    (other.spriteUrl == this.spriteUrl) &&
+                    (other.type1 == this.type1) &&
+                    (other.type2 == this.type2) &&
+                    (other.isBookmarked == this.isBookmarked) &&
+                    (other.isOnTeam == this.isOnTeam)
+                )
+            )
+    }
 }
 
 fun PokemonData.asDomainModel(): PokemonModel {

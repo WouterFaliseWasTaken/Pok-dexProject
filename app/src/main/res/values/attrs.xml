@@ -1,0 +1,14 @@
+<resources>
+    <declare-styleable name="HexagonView">
+        <attr name="max" format="integer"/>
+        <attr name="strokeColorV" format="integer"/>
+        <attr name="fillColorV" format="integer"/>
+        <attr name="minorWheels" format="integer"/>
+        <attr name="hp" format="integer"/>
+        <attr name="attack" format="integer"/>
+        <attr name="defense" format="integer"/>
+        <attr name="speed" format="integer"/>
+        <attr name="spattack" format="integer"/>
+        <attr name="spdefense" format="integer"/>
+    </declare-styleable>
+</resources>
