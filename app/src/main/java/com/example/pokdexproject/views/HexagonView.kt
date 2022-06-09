@@ -22,12 +22,12 @@ class HexagonView(
     var stats = listOf<Float>()
     var labels = mutableListOf("HP", "Attack", "Defense", "Speed", "Sp. Atk", "Sp. Def")
     var textHeight = 15.spToPx.toFloat()
-    var outerRadius = 200f
-    var innerRadius = 0f
-    var innerOffsetX = 0f
-    var innerOffsetY = 0f
-    var outerOffsetX = 0f
-    var outerOffsetY = 0f
+    private var outerRadius = 200f
+    private var innerRadius = 0f
+    private var innerOffsetX = 0f
+    private var innerOffsetY = 0f
+    private var outerOffsetX = 0f
+    private var outerOffsetY = 0f
     var textWhiteSpaceFactor = 0.85f
 
     init {
@@ -107,8 +107,8 @@ class HexagonView(
         outerOffsetX = textWidth
         outerOffsetY = textHeight
         // (0,0) point of drawn hexagon
-        innerOffsetX = (textWidth + ((outerRadius - innerRadius)* (sqrt(3f) / 2)))
-        innerOffsetY = (textHeight + ((outerRadius - innerRadius)))
+        innerOffsetX = (textWidth + ((outerRadius - innerRadius) * (sqrt(3f) / 4)))
+        innerOffsetY = (textHeight + ((outerRadius - innerRadius)) / 2)
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -125,7 +125,14 @@ class HexagonView(
             )
         }
         canvas?.drawHexagonContent(innerRadius, stats, max, innerOffsetX, innerOffsetY, fillColor)
-        canvas?.drawLabels(outerRadius, labels, outerOffsetX, outerOffsetY, textPaint)
+        canvas?.drawLabels(
+            outerRadius,
+            (outerRadius - innerRadius),
+            labels,
+            outerOffsetX,
+            outerOffsetY,
+            textPaint
+        )
         super.onDraw(canvas)
     }
 
@@ -143,7 +150,7 @@ class HexagonView(
         path.moveTo(offsetX + innerRadius, (((2 * radius) * ((factor + 1) / 2)) + offsetY))
         path.lineTo((offsetX + radius + threadOffsetX), ((radius + threadOffsetY) + offsetY))
         path.lineTo((offsetX + radius + threadOffsetX), ((radius - threadOffsetY) + offsetY))
-        path.lineTo(offsetX + radius, ((offsetY).toFloat() + (radius * (1 - factor))))
+        path.lineTo(offsetX + radius, ((offsetY) + (radius * (1 - factor))))
         path.lineTo((offsetX + radius - threadOffsetX), ((radius - threadOffsetY) + offsetY))
         path.lineTo((offsetX + radius - threadOffsetX), ((radius + threadOffsetY) + offsetY))
         path.lineTo(offsetX + radius, (((2 * radius) * ((factor + 1) / 2)) + offsetY))
@@ -162,7 +169,7 @@ class HexagonView(
             offsetX + radius,
             ((2 * radius) + offsetY),
             offsetX + radius,
-            offsetY.toFloat(),
+            offsetY,
             paint
         )
         drawLine(
@@ -194,7 +201,7 @@ class HexagonView(
         val threadOffsetsY = factors.map { (radius / 2) * it }
         val threadOffsetsX = factors.map { ((sqrt(3.0F) / 2 * radius) * it) }
         val path = Path().apply {
-            moveTo(offsetX + (radius), (((offsetY).toFloat() + (radius * (1 - factors[0])))))
+            moveTo(offsetX + (radius), (((offsetY) + (radius * (1 - factors[0])))))
             lineTo((offsetX + radius + threadOffsetsX[1]), (radius - threadOffsetsY[1] + offsetY))
             lineTo((offsetX + radius + threadOffsetsX[2]), (radius + threadOffsetsY[2] + offsetY))
             lineTo(offsetX + radius, (((2 * radius) * ((factors[3] + 1) / 2)) + offsetY))
@@ -203,45 +210,47 @@ class HexagonView(
         }
         drawPath(path, fillColor)
     }
-}
 
-private fun Canvas.drawLabels(
-    radius: Float,
-    labels: List<String>,
-    offsetX: Float,
-    offsetY: Float,
-    textPaint: Paint
-) {
-    val threadOffsetY = radius / 2
-    val threadOffsetX = sqrt(3.0F) / 2 * radius
-    drawText(
-        labels[0],
-        (radius + offsetX)-10.dpToPx,
-        offsetY,
-        textPaint.apply { this.textAlign = Paint.Align.CENTER })
-    drawText(
-        labels[1],
-        (radius + offsetX + threadOffsetX)-20.dpToPx,
-        (radius - threadOffsetY + offsetY),
-        textPaint.apply { textAlign = Paint.Align.LEFT })
-    drawText(
-        labels[2],
-        (radius + offsetX + threadOffsetX)-20.dpToPx,
-        (radius + threadOffsetY + offsetY),
-        textPaint.apply { textAlign = Paint.Align.LEFT })
-    drawText(
-        labels[3],
-        (radius + offsetX)-10.dpToPx,
-        (2 * radius + offsetY),
-        textPaint.apply { textAlign = Paint.Align.CENTER })
-    drawText(
-        labels[4],
-        (radius + offsetX - threadOffsetX),
-        (radius + threadOffsetY + offsetY),
-        textPaint.apply { textAlign = Paint.Align.RIGHT })
-    drawText(
-        labels[5],
-        (radius + offsetX - threadOffsetX),
-        (radius - threadOffsetY + offsetY),
-        textPaint.apply { textAlign = Paint.Align.RIGHT })
+
+    private fun Canvas.drawLabels(
+        radius: Float,
+        radiusDelta: Float,
+        labels: List<String>,
+        offsetX: Float,
+        offsetY: Float,
+        textPaint: Paint
+    ) {
+        val threadOffsetY = radius / 2
+        val threadOffsetX = sqrt(3.0F) / 2 * radius
+        drawText(
+            labels[0],
+            ((radius + offsetX) - radiusDelta / 2),
+            offsetY,
+            textPaint.apply { this.textAlign = Paint.Align.CENTER })
+        drawText(
+            labels[1],
+            ((radius + offsetX + threadOffsetX) - radiusDelta),
+            (radius - threadOffsetY + offsetY),
+            textPaint.apply { textAlign = Paint.Align.LEFT })
+        drawText(
+            labels[2],
+            ((radius + offsetX + threadOffsetX) - radiusDelta),
+            (radius + threadOffsetY + offsetY - textHeight),
+            textPaint.apply { textAlign = Paint.Align.LEFT })
+        drawText(
+            labels[3],
+            ((radius + offsetX) - radiusDelta / 2),
+            (2 * radius + offsetY - textHeight),
+            textPaint.apply { textAlign = Paint.Align.CENTER })
+        drawText(
+            labels[4],
+            (radius + offsetX - threadOffsetX),
+            (radius + threadOffsetY + offsetY - textHeight),
+            textPaint.apply { textAlign = Paint.Align.RIGHT })
+        drawText(
+            labels[5],
+            (radius + offsetX - threadOffsetX),
+            (radius - threadOffsetY + offsetY),
+            textPaint.apply { textAlign = Paint.Align.RIGHT })
+    }
 }
