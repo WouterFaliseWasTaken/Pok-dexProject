@@ -20,7 +20,15 @@ class HexagonView(
     private var strokeColorValue = 0xFF000000.toInt()
     private var minorWheels = 0
     var stats = listOf<Float>()
-    val labels = listOf("HP", "Attack", "Defense", "Speed", "Sp. Atk", "Sp. Def")
+    var labels = mutableListOf("HP", "Attack", "Defense", "Speed", "Sp. Atk", "Sp. Def")
+    var textHeight = 15.spToPx.toFloat()
+    var outerRadius = 200f
+    var innerRadius = 0f
+    var innerOffsetX = 0f
+    var innerOffsetY = 0f
+    var outerOffsetX = 0f
+    var outerOffsetY = 0f
+    var textWhiteSpaceFactor = 0.85f
 
     init {
         context.theme.obtainStyledAttributes(
@@ -59,83 +67,115 @@ class HexagonView(
         this.color = fillColorValue;this.style = Paint.Style.FILL
     }
     val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        this.color = resources.getColor(R.color.black);this.textSize = 15.spToPx.toFloat()
+        this.color = resources.getColor(R.color.black);this.textSize = textHeight
         this.style = Paint.Style.FILL_AND_STROKE;this.textAlign = Paint.Align.CENTER
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        var height = heightMeasureSpec
-        val radius = (height - paddingTop - paddingBottom / 2f) - 2.dpToPx
-        val width = (radius * sqrt(3f) * 1.3).toInt()
-        val w = resolveSizeAndState(width, (widthMeasureSpec - paddingStart - paddingEnd), 1)
-        height = w / sqrt(3f).toInt()
-        val h = resolveSizeAndState(height, heightMeasureSpec, 1)
+        //resolve flexible layout parameters
+        val widthMeasure = resolveSize(widthMeasureSpec, widthMeasureSpec)
+        val heightMeasure = resolveSize(heightMeasureSpec, heightMeasureSpec)
+        //calculate the amount of room the text takes up
+
+        val textWidth = labels.run {
+            listOf(
+                this[1],
+                this[2],
+                this[4],
+                this[5]
+            ).maxOf { textPaint.measureText(it) }
+        }
+        //resolve padding
+        var width = (widthMeasure - paddingStart - paddingEnd).toFloat()
+        var height = (heightMeasure - paddingTop - paddingBottom).toFloat()
+        //calculate largest outer hexagon radius
+        outerRadius = minOf(
+            (((height / 2) - textHeight)),
+            ((width - (textWidth * 2)) / sqrt(3f))
+        )
+        //adjust layout parameters to outer hexagon radius + text labels
+        height = (outerRadius + textHeight) * 2
+        width = (outerRadius * sqrt(3f)) + (textWidth * 2)
+        //verify and implement calculated layout parameters
+        val h = resolveSizeAndState(height.toInt(), heightMeasureSpec, 1)
+        val w = resolveSizeAndState(width.toInt(), widthMeasureSpec, 1)
         setMeasuredDimension(w, h)
+        //calculate parameters for drawing
+        //inner radius to allow spacing between text and drawn hexagon
+        innerRadius = outerRadius * textWhiteSpaceFactor
+        // (0,0) point of invisible hexagon
+        outerOffsetX = textWidth
+        outerOffsetY = textHeight
+        // (0,0) point of drawn hexagon
+        innerOffsetX = (textWidth + ((outerRadius - innerRadius)* (sqrt(3f) / 2)))
+        innerOffsetY = (textHeight + ((outerRadius - innerRadius)))
     }
 
     override fun onDraw(canvas: Canvas?) {
-        val offsetX = paddingStart + 25.dpToPx
-        val offsetY = paddingTop + 100.dpToPx
-        val radius = ((height - paddingTop - paddingBottom) / 4f) - 2.dpToPx
-
         //spokes drawn in counterclockwise rotation,outward then across
-        canvas?.drawHexagonWheel(radius, (1.0F), offsetX, offsetY, majorThreadColor)
-        canvas?.drawHexagonSpokes(radius, offsetX, offsetY, majorThreadColor)
+        canvas?.drawHexagonWheel(innerRadius, (1.0F), innerOffsetX, innerOffsetY, majorThreadColor)
+        canvas?.drawHexagonSpokes(innerRadius, innerOffsetX, innerOffsetY, majorThreadColor)
         for (i in 1..minorWheels) {
             canvas?.drawHexagonWheel(
-                radius,
+                innerRadius,
                 (1f / (minorWheels + 1) * i),
-                offsetX,
-                offsetY,
+                innerOffsetX,
+                innerOffsetY,
                 minorThreadColor
             )
         }
-        canvas?.drawHexagonContent(radius, stats, max, offsetX, offsetY, fillColor)
-        canvas?.drawLabelsTop(radius, labels, offsetX, offsetY, (1.15f), textPaint)
+        canvas?.drawHexagonContent(innerRadius, stats, max, innerOffsetX, innerOffsetY, fillColor)
+        canvas?.drawLabels(outerRadius, labels, outerOffsetX, outerOffsetY, textPaint)
         super.onDraw(canvas)
     }
 
     private fun Canvas.drawHexagonWheel(
         radius: Float,
         factor: Float,
-        offsetX: Int,
-        offsetY: Int,
+        offsetX: Float,
+        offsetY: Float,
         paint: Paint
     ) {
-        val threadOffsetY = (radius / 2) * factor
-        val threadOffsetX = ((sqrt(3.0F) / 2 * radius) * factor)
+        val threadOffsetY = (innerRadius / 2) * factor
+        val threadOffsetX = ((sqrt(3.0F) / 2 * innerRadius) * factor)
 
         val path = Path()
-        path.moveTo(offsetX +radius, (((2 * radius) * ((factor + 1) / 2)) + offsetY))
-        path.lineTo((offsetX +radius + threadOffsetX), ((radius + threadOffsetY) + offsetY))
-        path.lineTo((offsetX +radius + threadOffsetX), ((radius - threadOffsetY) + offsetY))
-        path.lineTo(offsetX +radius, ((offsetY).toFloat() + (radius * (1 - factor))))
-        path.lineTo((offsetX +radius - threadOffsetX), ((radius - threadOffsetY) + offsetY))
-        path.lineTo((offsetX +radius - threadOffsetX), ((radius + threadOffsetY) + offsetY))
-        path.lineTo(offsetX +radius, (((2 * radius) * ((factor + 1) / 2)) + offsetY))
+        path.moveTo(offsetX + innerRadius, (((2 * radius) * ((factor + 1) / 2)) + offsetY))
+        path.lineTo((offsetX + radius + threadOffsetX), ((radius + threadOffsetY) + offsetY))
+        path.lineTo((offsetX + radius + threadOffsetX), ((radius - threadOffsetY) + offsetY))
+        path.lineTo(offsetX + radius, ((offsetY).toFloat() + (radius * (1 - factor))))
+        path.lineTo((offsetX + radius - threadOffsetX), ((radius - threadOffsetY) + offsetY))
+        path.lineTo((offsetX + radius - threadOffsetX), ((radius + threadOffsetY) + offsetY))
+        path.lineTo(offsetX + radius, (((2 * radius) * ((factor + 1) / 2)) + offsetY))
         drawPath(path, paint)
     }
 
     private fun Canvas.drawHexagonSpokes(
         radius: Float,
-        offsetX: Int,
-        offsetY: Int,
+        offsetX: Float,
+        offsetY: Float,
         paint: Paint
     ) {
         val threadOffsetY = radius / 2
         val threadOffsetX = (sqrt(3.0) / 2 * radius).toFloat()
-        drawLine(offsetX +radius, ((2 * radius) + offsetY), offsetX +radius, offsetY.toFloat(), paint)
         drawLine(
-            offsetX +radius + threadOffsetX,
+            offsetX + radius,
+            ((2 * radius) + offsetY),
+            offsetX + radius,
+            offsetY.toFloat(),
+            paint
+        )
+        drawLine(
+            offsetX + radius + threadOffsetX,
             ((radius - threadOffsetY) + offsetY),
-            offsetX +radius - threadOffsetX,
+            offsetX + radius - threadOffsetX,
             ((radius + threadOffsetY) + offsetY),
             paint
         )
         drawLine(
-            offsetX +radius + threadOffsetX,
+            offsetX + radius + threadOffsetX,
             ((radius + threadOffsetY) + offsetY),
-            offsetX +radius - threadOffsetX,
+            offsetX + radius - threadOffsetX,
             ((radius - threadOffsetY) + offsetY),
             paint
         )
@@ -146,48 +186,62 @@ class HexagonView(
         radius: Float,
         stats: List<Float>,
         max: Float,
-        offsetX: Int,
-        offsetY: Int,
+        offsetX: Float,
+        offsetY: Float,
         fillColor: Paint
     ) {
         val factors = stats.map { it / max }
         val threadOffsetsY = factors.map { (radius / 2) * it }
         val threadOffsetsX = factors.map { ((sqrt(3.0F) / 2 * radius) * it) }
         val path = Path().apply {
-            moveTo(offsetX +(radius), (((offsetY).toFloat() + (radius * (1 - factors[0])))))
-            lineTo((offsetX +radius + threadOffsetsX[1]), (radius - threadOffsetsY[1] + offsetY))
-            lineTo((offsetX +radius + threadOffsetsX[2]), (radius + threadOffsetsY[2] + offsetY))
-            lineTo(offsetX +radius, (((2 * radius) * ((factors[3] + 1) / 2)) + offsetY))
-            lineTo((offsetX +radius - threadOffsetsX[4]), (radius + threadOffsetsY[4] + offsetY))
-            lineTo((offsetX +radius - threadOffsetsX[5]), (radius - threadOffsetsY[5] + offsetY))
+            moveTo(offsetX + (radius), (((offsetY).toFloat() + (radius * (1 - factors[0])))))
+            lineTo((offsetX + radius + threadOffsetsX[1]), (radius - threadOffsetsY[1] + offsetY))
+            lineTo((offsetX + radius + threadOffsetsX[2]), (radius + threadOffsetsY[2] + offsetY))
+            lineTo(offsetX + radius, (((2 * radius) * ((factors[3] + 1) / 2)) + offsetY))
+            lineTo((offsetX + radius - threadOffsetsX[4]), (radius + threadOffsetsY[4] + offsetY))
+            lineTo((offsetX + radius - threadOffsetsX[5]), (radius - threadOffsetsY[5] + offsetY))
         }
         drawPath(path, fillColor)
     }
 }
 
-private fun Canvas.drawLabelsTop(
+private fun Canvas.drawLabels(
     radius: Float,
     labels: List<String>,
-    offsetX: Int,
-    offsetY: Int,
-    textFactor: Float,
+    offsetX: Float,
+    offsetY: Float,
     textPaint: Paint
 ) {
-    val threadOffsetY = (radius / 2) * textFactor
-    val threadOffsetX = ((sqrt(3.0F) / 2 * radius) * textFactor)
+    val threadOffsetY = radius / 2
+    val threadOffsetX = sqrt(3.0F) / 2 * radius
     drawText(
         labels[0],
-        radius + offsetX,
-        offsetY + (radius * (1 - textFactor)),
+        (radius + offsetX)-10.dpToPx,
+        offsetY,
         textPaint.apply { this.textAlign = Paint.Align.CENTER })
     drawText(
         labels[1],
-        (radius + offsetX + (threadOffsetX * textFactor)),
-        (radius - (threadOffsetY * textFactor) + offsetY),
+        (radius + offsetX + threadOffsetX)-20.dpToPx,
+        (radius - threadOffsetY + offsetY),
         textPaint.apply { textAlign = Paint.Align.LEFT })
     drawText(
+        labels[2],
+        (radius + offsetX + threadOffsetX)-20.dpToPx,
+        (radius + threadOffsetY + offsetY),
+        textPaint.apply { textAlign = Paint.Align.LEFT })
+    drawText(
+        labels[3],
+        (radius + offsetX)-10.dpToPx,
+        (2 * radius + offsetY),
+        textPaint.apply { textAlign = Paint.Align.CENTER })
+    drawText(
+        labels[4],
+        (radius + offsetX - threadOffsetX),
+        (radius + threadOffsetY + offsetY),
+        textPaint.apply { textAlign = Paint.Align.RIGHT })
+    drawText(
         labels[5],
-        (radius + offsetX - (threadOffsetX * textFactor)),
-        (radius - (threadOffsetY * textFactor) + offsetY),
+        (radius + offsetX - threadOffsetX),
+        (radius - threadOffsetY + offsetY),
         textPaint.apply { textAlign = Paint.Align.RIGHT })
 }
