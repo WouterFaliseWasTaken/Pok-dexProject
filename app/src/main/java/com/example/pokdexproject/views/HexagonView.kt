@@ -11,14 +11,15 @@ import com.example.pokdexproject.commonCode.dpToPx
 import com.example.pokdexproject.commonCode.spToPx
 import kotlin.math.sqrt
 
+@Suppress("DEPRECATION")
 class HexagonView(
     context: Context,
     attrs: AttributeSet
 ) : View(context, attrs) {
     var max = 0f
-    private var fillColorValue = 0xFF0000FF.toInt()
-    private var strokeColorValue = 0xFF000000.toInt()
-    private var minorWheels = 0
+    var fillColorValue = 0xFF0000FF.toInt()
+    var strokeColorValue = 0xFF000000.toInt()
+    var minorWheels = 0
     var stats = listOf<Float>()
     var labels = mutableListOf("HP", "Attack", "Defense", "Speed", "Sp. Atk", "Sp. Def")
     var textHeight = 15.spToPx.toFloat()

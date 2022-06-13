@@ -18,7 +18,6 @@ object PokeApi {
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(BASE_URL)
         .build()
-
     interface PokeApiService {
         @GET("pokemon")
         suspend fun getBasicInfo(): List<PokemonApiData>

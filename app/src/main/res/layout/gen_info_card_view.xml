@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.pokdexproject.activities.detail.DetailViewModel" />
+        <import type="com.example.pokdexproject.model.Type" />
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/gen_info_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="10dp"
+        app:contentPadding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_text"
+        tools:showIn="@layout/activity_detail">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/description_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.details.flavorText}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/lorem_ipsum" />
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/description_view"
+                app:layout_constraintTop_toBottomOf="@id/description_view">
+
+                <TableRow android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/type_label_text"
+                        style="@style/detail_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:text="@string/type"
+                        app:layout_constraintStart_toStartOf="@+id/description_view"
+                        app:layout_constraintTop_toBottomOf="@+id/description_view" />
+
+                    <LinearLayout android:orientation="horizontal">
+
+                        <include
+                            android:id="@+id/detail_type1"
+                            layout="@layout/type_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toEndOf="@id/type_label_text"
+                            app:layout_constraintTop_toBottomOf="@id/description_view"
+                            app:typeEnum='@{Type.valueOf((viewModel.basics.type1 ?? "NULLTYPE").toUpperCase())}' />
+
+                        <include
+                            android:id="@+id/detail_type2"
+                            layout="@layout/type_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            app:layout_constraintStart_toEndOf="@id/detail_type1"
+                            app:layout_constraintTop_toTopOf="@id/detail_type1"
+                            app:typeEnum='@{Type.valueOf((viewModel.basics.type2 ?? "NULLTYPE").toUpperCase())}' />
+
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/number_label_text"
+                        style="@style/detail_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number" />
+
+                    <TextView
+                        android:id="@+id/number_value_text"
+                        style="@style/detail_value_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@{"Nr. "+ String.format("%03d",viewModel.details.id)}'
+                        tools:text="@string/one" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/height_label_text"
+                        style="@style/detail_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/height" />
+
+                    <TextView
+                        android:id="@+id/height_value_text"
+                        style="@style/detail_value_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@{String.valueOf(viewModel.details.height-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.height%10) +" m" }'
+                        tools:text="@string/one_meter" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/weight_label_text"
+                        style="@style/detail_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weight" />
+
+                    <TextView
+                        android:id="@+id/weight_value_text"
+                        style="@style/detail_value_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@{String.valueOf(viewModel.details.weight-viewModel.details.height%10)+ "," + String.valueOf(viewModel.details.weight%10) +" kg" }'
+                        tools:text="@string/one_kilogram" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/category_label_text"
+                        style="@style/detail_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/category" />
+
+                    <TextView
+                        android:id="@+id/category_value_text"
+                        style="@style/detail_value_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@{viewModel.details.category}" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/gender_label_text"
+                        style="@style/detail_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gender" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/mars_icon"
+                            android:visibility="@{viewModel.details.genderRatio &lt; 8 ? View.VISIBLE : View.GONE}" />
+
+                        <ImageView
+                            android:id="@+id/venus_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/venus_icon"
+                            android:visibility="@{viewModel.details.genderRatio &gt; 0 ? View.VISIBLE : View.GONE}" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/ability_labeL_text"
+                        style="@style/detail_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/ability" />
+
+                    <TextView
+                        android:id="@+id/ability_value_text"
+                        style="@style/detail_value_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.abilities[0].name.substring(0,1).toUpperCase + viewModel.abilities[0].name.substring(1,viewModel.abilities[0].name.length()).toLowerCase()}"
+                        tools:text="@string/ability" />
+                </TableRow>
+
+            </TableLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
+
+                
