@@ -1,5 +1,6 @@
 package com.example.pokdexproject.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
@@ -22,6 +23,7 @@ import com.example.pokdexproject.model.PokemonModel
 import com.example.pokdexproject.model.asDomainModel
 import com.example.pokdexproject.network.PokeApi
 import com.example.pokdexproject.network.PokeDetailsApi
+import com.example.pokdexproject.network.PokeSpeciesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
@@ -54,6 +56,8 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         withContext(Dispatchers.IO) {
             try {
                 val pokemon = PokeApi.PokeApiService.PokeApi.retrofitService.getBasicInfo()
+                val t3 = System.currentTimeMillis()
+                Log.i("Network","Basics: Processed response in $t3 ns")
                 database.pokemonDao().insertAll((pokemon.map { it.asDatabaseModel() }))
             } catch (e: IOException) {
             }
@@ -64,8 +68,12 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         withContext(Dispatchers.IO) {
             try {
                 val details = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getDetails(id)
+                val t6 = System.currentTimeMillis()
+                Log.i("Network","Details: Processed response in $t6 ns" )
                 val species =
-                    PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getSpeciesInfo(id)
+                    PokeSpeciesApi.PokeApiService.PokeApi.retrofitService.getSpeciesInfo(id)
+                val t9 = System.currentTimeMillis()
+                Log.i("Network","Species: Processed response in $t9 ns" )
                 database.detailsDao().insertDetails(getDatabaseModel(details, species))
                 database.imageDao().insertAllImages(details.asImageData())
                 database.abilityDao().insertAllAbilities(details.asAbilityData())

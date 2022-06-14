@@ -54,15 +54,6 @@ class MainViewModel(application: Application) : ViewModel() {
 
     init {
         refreshPokemonFromRepository()
-        refreshTypeAdvantages()
-    }
-
-    private fun refreshTypeAdvantages() {
-        viewModelScope.launch {
-            for (i in 1 until Type.values().size) {
-                pokemonRepository.refreshTypeAdvantages(i)
-            }
-        }
     }
 
 

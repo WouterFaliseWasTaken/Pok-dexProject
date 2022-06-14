@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUpObservers(adapter: PokemonListAdapter) {
         binding.viewModel?.pokemon?.observe(this) {
             adapter.submitList(it)
+            //remove this to test single detail view load
             binding.viewModel?.refreshDetails()
         }
     }

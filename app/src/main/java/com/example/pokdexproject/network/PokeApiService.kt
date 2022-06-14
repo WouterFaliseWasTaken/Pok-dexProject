@@ -3,12 +3,19 @@ package com.example.pokdexproject.network
 import TypeApiData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
+
 object PokeApi {
+    private val logging = LoggingInterceptorA()
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
     private const val BASE_URL =
         "https://stoplight.io/mocks/appwise-be/pokemon/57519009/"
     private val moshi = Moshi.Builder()
@@ -17,7 +24,9 @@ object PokeApi {
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(BASE_URL)
+        .client(client)
         .build()
+
     interface PokeApiService {
         @GET("pokemon")
         suspend fun getBasicInfo(): List<PokemonApiData>
@@ -31,6 +40,10 @@ object PokeApi {
 }
 
 object PokeDetailsApi {
+    private val logging = LoggingInterceptorB()
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
     private const val BASE_URL =
         "https://pokeapi.co/api/v2/"
     private val moshi = Moshi.Builder()
@@ -39,14 +52,12 @@ object PokeDetailsApi {
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(BASE_URL)
+        .client(client)
         .build()
 
     interface PokeApiService {
         @GET("pokemon/{id}")
         suspend fun getDetails(@Path("id") id: Int): PokemonDetailApiData
-
-        @GET("pokemon-species/{id}")
-        suspend fun getSpeciesInfo(@Path("id") id: Int): PokemonSpeciesApiData
 
         @GET("type/{id}")
         suspend fun getTypeInfo(@Path("id") id: Int): TypeApiData
@@ -59,3 +70,30 @@ object PokeDetailsApi {
     }
 }
 
+object PokeSpeciesApi {
+    private val logging = LoggingInterceptorC()
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
+    private const val BASE_URL =
+        "https://pokeapi.co/api/v2/"
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+    private val retrofit = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(BASE_URL)
+        .client(client)
+        .build()
+
+    interface PokeApiService {
+        @GET("pokemon-species/{id}")
+        suspend fun getSpeciesInfo(@Path("id") id: Int): PokemonSpeciesApiData
+
+        object PokeApi {
+            val retrofitService: PokeApiService by lazy {
+                retrofit.create(PokeApiService::class.java)
+            }
+        }
+    }
+}
