@@ -2,6 +2,9 @@ package com.example.pokdexproject.activities.main
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.example.pokdexproject.commonCode.Stopwatch1
+import com.example.pokdexproject.commonCode.Stopwatch2
+import com.example.pokdexproject.commonCode.Stopwatch3
 import com.example.pokdexproject.commonCode.singleArgViewModelFactory
 import com.example.pokdexproject.database.PokemonRoomDatabase.Companion.getDatabase
 import com.example.pokdexproject.model.PokemonModel
@@ -53,6 +56,9 @@ class MainViewModel(application: Application) : ViewModel() {
         }
 
     init {
+        Stopwatch1.begin()
+        Stopwatch2.begin()
+        Stopwatch3.begin()
         refreshPokemonFromRepository()
     }
 
@@ -83,6 +89,9 @@ class MainViewModel(application: Application) : ViewModel() {
             for (i: Int in 1..pokemon.value!!.size) {
                 pokemonRepository.refreshDetails(i)
             }
+            Stopwatch1.report()
+            Stopwatch2.report()
+            Stopwatch3.report()
         }
     }
 }

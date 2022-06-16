@@ -5,6 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.pokdexproject.activities.main.QueryParemeters
+import com.example.pokdexproject.commonCode.Stopwatch1
+import com.example.pokdexproject.commonCode.Stopwatch2
+import com.example.pokdexproject.commonCode.Stopwatch3
 import com.example.pokdexproject.data.pokemon.PokemonData
 import com.example.pokdexproject.data.pokemon.ability.AbilityData
 import com.example.pokdexproject.data.pokemon.ability.asAbilityData
@@ -56,8 +59,7 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         withContext(Dispatchers.IO) {
             try {
                 val pokemon = PokeApi.PokeApiService.PokeApi.retrofitService.getBasicInfo()
-                val t3 = System.currentTimeMillis()
-                Log.i("Network","Basics: Processed response in $t3 ns")
+                Stopwatch1.stopRun()
                 database.pokemonDao().insertAll((pokemon.map { it.asDatabaseModel() }))
             } catch (e: IOException) {
             }
@@ -68,12 +70,10 @@ class PokemonRepository(private val database: PokemonRoomDatabase) {
         withContext(Dispatchers.IO) {
             try {
                 val details = PokeDetailsApi.PokeApiService.PokeApi.retrofitService.getDetails(id)
-                val t6 = System.currentTimeMillis()
-                Log.i("Network","Details: Processed response in $t6 ns" )
+                Stopwatch2.stopRun()
                 val species =
                     PokeSpeciesApi.PokeApiService.PokeApi.retrofitService.getSpeciesInfo(id)
-                val t9 = System.currentTimeMillis()
-                Log.i("Network","Species: Processed response in $t9 ns" )
+                Stopwatch3.stopRun()
                 database.detailsDao().insertDetails(getDatabaseModel(details, species))
                 database.imageDao().insertAllImages(details.asImageData())
                 database.abilityDao().insertAllAbilities(details.asAbilityData())

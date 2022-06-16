@@ -1,6 +1,9 @@
 package com.example.pokdexproject.network
 
 import android.util.Log
+import com.example.pokdexproject.commonCode.Stopwatch1
+import com.example.pokdexproject.commonCode.Stopwatch2
+import com.example.pokdexproject.commonCode.Stopwatch3
 import okhttp3.Interceptor
 import okhttp3.Request
 import okio.IOException
@@ -18,9 +21,8 @@ internal class LoggingInterceptorC : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
         val request: Request = chain.request()
-        Log.i("Network","Species: Request sent at " + System.currentTimeMillis() + " ms")
         val response: okhttp3.Response = chain.proceed(request)
-        Log.i("Network","Species: Response received at " + System.currentTimeMillis() + " ms")
+        Stopwatch3.startRun()
         return response
     }
 }
@@ -29,9 +31,8 @@ internal class LoggingInterceptorB : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
         val request: Request = chain.request()
-        Log.i("Network","Details: Request sent at " + System.currentTimeMillis() + " ms")
         val response: okhttp3.Response = chain.proceed(request)
-        Log.i("Network","Details: Response received at " + System.currentTimeMillis() + " ms")
+        Stopwatch2.startRun()
         return response
     }
 }
@@ -40,9 +41,8 @@ internal class LoggingInterceptorA : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
         val request: Request = chain.request()
-        Log.i("Network","Basics: Request sent at " + System.currentTimeMillis() + " ms")
         val response: okhttp3.Response = chain.proceed(request)
-        Log.i("Network","Basics: Response received at " + System.currentTimeMillis() + " ms")
+        Stopwatch1.startRun()
         return response
     }
 }
